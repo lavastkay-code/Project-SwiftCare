@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SwiftCare - Dashboard</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <div class="dashboard-container">
+
+        <!--  SIDEBAR  -->
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="icons/icon-swiftcare.svg" alt="SwiftCare" class="main-logo">
+            </div>
+
+            <nav class="nav-menu">
+                <a href="#" class="nav-item">
+                    <div class="icon-container">
+                        <img src="icons/icon-dashboard.svg" alt="Dashboard" class="nav-icon">
+                    </div>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="#" class="nav-item has-submenu active">
+                    <div class="icon-container">
+                        <img src="icons/icon-patients.svg" alt="Patients" class="nav-icon">
+                    </div>
+                    <span>Patients</span>
+                    <img src="icons/icon-chevron-down.svg" alt="" class="arrow-icon">
+                </a>
+
+                <div class="submenu">
+                    <a href="#" class="submenu-item">Register Patient</a>
+                    <a href="#" class="submenu-item">Patient Records</a>
+                </div>
+
+                <a href="#" class="nav-item">
+                    <div class="icon-container">
+                        <img src="icons/icon-doctors.svg" alt="Doctors" class="nav-icon">
+                    </div>
+                    <span>Doctors</span>
+                    <img src="icons/icon-chevron-right.svg" alt="" class="arrow-icon">
+                </a>
+
+                <a href="#" class="nav-item">
+                    <div class="icon-container">
+                        <img src="icons/icon-nurses.svg" alt="Nurses" class="nav-icon">
+                    </div>
+                    <span>Nurses</span>
+                    <img src="icons/icon-chevron-right.svg" alt="" class="arrow-icon">
+                </a>
+
+                <a href="#" class="nav-item">
+                    <div class="icon-container">
+                        <img src="icons/icon-receptionist.svg" alt="Receptionist" class="nav-icon">
+                    </div>
+                    <span>Receptionist</span>
+                    <img src="icons/icon-chevron-right.svg" alt="" class="arrow-icon">
+                </a>
+
+                <a href="#" class="nav-item">
+                    <div class="icon-container">
+                        <img src="icons/icon-cashier.svg" alt="Cashier" class="nav-icon">
+                    </div>
+                    <span>Cashier</span>
+                    <img src="icons/icon-chevron-right.svg" alt="" class="arrow-icon">
+                </a>
+
+                <a href="#" class="nav-item">
+                    <div class="icon-container">
+                        <img src="icons/icon-billings.svg" alt="Billings" class="nav-icon">
+                    </div>
+                    <span>Billings</span>
+                    <img src="icons/icon-chevron-right.svg" alt="" class="arrow-icon">
+                </a>
+
+                <a href="#" class="nav-item">
+                    <div class="icon-container">
+                        <img src="icons/icon-settings.svg" alt="Settings" class="nav-icon">
+                    </div>
+                    <span>Settings</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <!-- Logout -->
+                <a href="#" onclick="logout()" class="logout-btn">
+                    <img src="icons/icon-logout.svg" alt="Logout" class="nav-icon">
+                    <span>Logout</span>
+                </a>
+
+                <!-- Current Shift -->
+                <div class="current-shift">
+                    <p class="shift-label">Current Shift</p>
+                    <p class="shift-time">
+                        <span class="shift-type">Day Shift</span>
+                        <img src="icons/icon-shift.svg" alt="Day" class="shift-icon">
+                    </p>
+                    <p class="shift-hours">7:00AM - 7:00PM</p>
+                    <p class="shift-date">July 20, 2026</p>
+                </div>
+
+                <!-- Security Note -->
+                <div class="security-note">
+                    <img src="icons/icon-lock.svg" alt="Secure" class="lock-icon">
+                    <div>
+                        <p>Your information is safe with us</p>
+                        <p>We never share your data</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!--  MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- Top Header -->
+            <header class="top-header">
+                <div class="header-left">
+                    <button class="menu-toggle" onclick="toggleSidebar()">
+                        <img src="icons/icon-menu.svg" alt="Menu" class="hamburger-icon">
+                    </button>
+                    <h1 class="page-title">Dashboard</h1>
+                </div>
+
+                <div class="header-right">
+                    <div class="notification">
+                        <img src="icons/icon-bell.svg" alt="Notifications" class="nav-icon">
+                        <span class="notification-badge">5</span>
+                    </div>
+
+                    <div class="user-profile">
+                        <img src="icons/icon-user.svg" alt="Titi Adegoke" class="profile-img">
+                        <div class="user-info">
+                            <span class="user-name">Titi Adegoke</span>
+                            <span class="user-role">Nurse</span>
+                        </div>
+                        <img src="icons/icon-chevron-down.svg" alt="" class="dropdown-arrow">
+                    </div>
+                </div>
+            </header>
+
+            <!-- Greeting -->
+            <div class="greeting">
+                <div class="greeting-text">
+                    <h2>Good morning, Nurse Titi!</h2>
+                    <p>Here's what's happening in your ward.</p>
+                </div>
+
+                <!-- Search Patient -->
+                <div class="search-box">
+                    <input type="text" placeholder="Search patient..." class="search-input">
+                    <img src="icons/icon-search.svg" alt="Search" class="search-icon">
+                </div>
+
+                <!-- Date Picker -->
+                <div class="date-picker">
+                    <img src="icons/icon-calendar.svg" alt="Calendar" class="calendar-icon">
+                    <span id="current-date">July 20, 2026 | Monday</span>
+                    <img src="icons/icon-chevron-down.svg" alt="" class="dropdown-arrow">
+                </div>
+            </div>
+
+            <!-- Quick Access -->
+            <section class="quick-access-section">
+                <h2 class="section-title">Quick Access</h2>
+
+                <div class="quick-access">
+                    <a href="#" class="card">
+                        <div class="card-icon total">
+                            <img src="icons/icon-total-patients.svg" alt="" class="card-icon-img">
+                        </div>
+                        <div class="card-content">
+                            <h3>Total Patients</h3>
+                            <p>View all patients</p>
+                        </div>
+                        <img src="icons/icon-chevron-right.svg" alt="" class="card-arrow">
+                    </a>
+
+                    <a href="#" class="card">
+                        <div class="card-icon critical">
+                            <img src="icons/icon-critical.svg" alt="" class="card-icon-img">
+                        </div>
+                        <div class="card-content">
+                            <h3>Critical Patients</h3>
+                            <p>Needs constant checkup</p>
+                        </div>
+                        <img src="icons/icon-chevron-right.svg" alt="" class="card-arrow">
+                    </a>
+
+                    <a href="#" class="card">
+                        <div class="card-icon meds">
+                            <img src="icons/icon-meds-due.svg" alt="" class="card-icon-img">
+                        </div>
+                        <div class="card-content">
+                            <h3>Medications Due</h3>
+                            <p>Within the next 2 hours</p>
+                        </div>
+                        <img src="icons/icon-chevron-right.svg" alt="" class="card-arrow">
+                    </a>
+
+                    <a href="#" class="card">
+                        <div class="card-icon completed">
+                            <img src="icons/icon-completed.svg" alt="" class="card-icon-img">
+                        </div>
+                        <div class="card-content">
+                            <h3>Completed Tasks</h3>
+                            <p>Today</p>
+                        </div>
+                        <img src="icons/icon-chevron-right.svg" alt="" class="card-arrow">
+                    </a>
+
+                    <a href="#" class="card">
+                        <div class="card-icon appointments">
+                            <img src="icons/icon-appointments.svg" alt="" class="card-icon-img">
+                        </div>
+                        <div class="card-content">
+                            <h3>Appointments</h3>
+                            <p>Manage appointments</p>
+                        </div>
+                        <img src="icons/icon-chevron-right.svg" alt="" class="card-arrow">
+                    </a>
+
+                    <a href="#" class="card">
+                        <div class="card-icon alerts">
+                            <img src="icons/icon-alerts.svg" alt="" class="card-icon-img">
+                        </div>
+                        <div class="card-content">
+                            <h3>Alerts</h3>
+                            <p>Needs immediate attention</p>
+                        </div>
+                        <img src="icons/icon-chevron-right.svg" alt="" class="card-arrow">
+                    </a>
+                </div>
+            </section>
+
+            <!-- Patients Overview -->
+            <section class="patients-section">
+                <div class="section-header">
+                    <h2>Patients Overview</h2>
+                    <a href="#" class="view-all-btn">
+                        View all patients 
+                        <span class="seperator"></span>
+                        <img src="icons/icon-arrow.svg" alt="" class="arrow-icon">
+                    </a>
+                </div>
+
+                <div class="table-container">
+                    <table class="patients-table">
+                        <thead>
+                            <tr>
+                                <th>Patient's Name</th>
+                                <th>Reason for Visit</th>
+                                <th>Priority</th>
+                                <th>Status</th>
+                                <th>Arrival Time</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="patient-info">
+                                        <div class="avatar">
+                                            <img src="icons/icon-user-vic.svg" alt="" class="patient-avatar">
+                                        </div>
+                                        <div>
+                                            <div class="patient-name">Mr. John Okafor</div>
+                                            <div class="age">45 years</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>General checkup</td>
+                                <td><span class="priority medium">Medium</span></td>
+                                <td>
+                                    <span class="status waiting">
+                                        <img src="icons/icon-waiting.svg" alt="" class="status-icon">
+                                        Waiting
+                                    </span>
+                                </td>
+                                <td>08:00AM</td>
+                                <td class="actions">
+                                    <button class="action-btn vitals">
+                                        <img src="icons/icon-vitals-heart.svg" alt="" class="btn-icon">
+                                        Input Vitals
+                                    </button>
+                                    <button class="action-btn send">
+                                        <img src="icons/icon-arrow-right.svg" alt="" class="btn-icon">
+                                        Send to Doctor
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div class="patient-info">
+                                        <div class="avatar">
+                                            <img src="icons/icon-user-vic.svg" alt="" class="patient-avatar">
+                                        </div>
+                                        <div>
+                                            <div class="patient-name">Mr. John Okafor</div>
+                                            <div class="age">45 years</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Chest discomfort</td>
+                                <td><span class="priority critical">Critical</span></td>
+                                <td>
+                                    <span class="status in-progress">
+                                        <img src="icons/icon-in-progress.svg" alt="" class="status-icon">
+                                        In Progress
+                                    </span>
+                                </td>
+                                <td>08:45AM</td>
+                                <td class="actions">
+                                    <button class="action-btn vitals">
+                                        <img src="icons/icon-vitals-heart.svg" alt="" class="btn-icon">
+                                        Input Vitals
+                                    </button>
+                                    <button class="action-btn send">
+                                        <img src="icons/icon-arrow-right.svg" alt="" class="btn-icon">
+                                        Send to Doctor
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div class="patient-info">
+                                        <div class="avatar">
+                                            <img src="icons/icon-user-vic.svg" alt="" class="patient-avatar">
+                                        </div>
+                                        <div>
+                                            <div class="patient-name">Mr. John Okafor</div>
+                                            <div class="age">45 years</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Headache</td>
+                                <td><span class="priority low">Low</span></td>
+                                <td>
+                                    <span class="status waiting">
+                                        <img src="icons/icon-waiting.svg" alt="" class="status-icon">
+                                        Waiting
+                                    </span>
+                                </td>
+                                <td>09:15AM</td>
+                                <td class="actions">
+                                    <button class="action-btn vitals">
+                                        <img src="icons/icon-vitals-heart.svg" alt="" class="btn-icon">
+                                        Input Vitals
+                                    </button>
+                                    <button class="action-btn send">
+                                       <img src="icons/icon-arrow-right.svg" alt="" class="btn-icon"> 
+                                        Send to Doctor
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div class="patient-info">
+                                        <div class="avatar">
+                                            <img src="icons/icon-user-vic.svg" alt="" class="patient-avatar">
+                                        </div>
+                                        <div>
+                                            <div class="patient-name">Mr. John Okafor</div>
+                                            <div class="age">45 years</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Malaria</td>
+                                <td><span class="priority medium">Medium</span></td>
+                                <td>
+                                    <span class="status waiting">
+                                        <img src="icons/icon-waiting.svg" alt="" class="status-icon">
+                                        Waiting
+                                    </span>
+                                </td>
+                                <td>09:50AM</td>
+                                <td class="actions">
+                                    <button class="action-btn vitals">
+                                        <img src="icons/icon-vitals-heart.svg" alt="" class="btn-icon">
+                                        Input Vitals
+                                    </button>
+                                    <button class="action-btn send">
+                                        <img src="icons/icon-arrow-right.svg" alt="" class="btn-icon">
+                                        Send to Doctor
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div class="patient-info">
+                                        <div class="avatar">
+                                            <img src="icons/icon-user-vic.svg" alt="" class="patient-avatar">
+                                        </div>
+                                        <div>
+                                            <div class="patient-name">Mr. John Okafor</div>
+                                            <div class="age">45 years</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Cardiac arrest</td>
+                                <td><span class="priority critical">Critical</span></td>
+                                <td>
+                                    <span class="status in-progress">
+                                        <img src="icons/icon-in-progress.svg" alt="" class="status-icon">
+                                        In Progress
+                                    </span>
+                                </td>
+                                <td>10:00AM</td>
+                                <td class="actions">
+                                    <button class="action-btn vitals">
+                                        <img src="icons/icon-vitals-heart.svg" alt="" class="btn-icon">
+                                        Input Vitals
+                                    </button>
+                                    <button class="action-btn send">
+                                        <img src="icons/icon-arrow-right.svg" alt="" class="btn-icon">
+                                        Send to Doctor
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Chart -->
+            <section class="chart-section">
+                <img src="icons/chart-graphic.svg" alt="Patient Activity Chart" class="chart-image">
+            </section>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <p>2026 SwiftCare. All rights reserved</p>
+                <p>Need help? <a href="#">Contact Support</a></p>
+            </footer>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

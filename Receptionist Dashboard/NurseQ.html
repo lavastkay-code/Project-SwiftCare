@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reception Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="NurseQ.css">
+</head>
+<body>
+    <div class="app">
+        <aside class="sidebar">
+          <div class="logo">
+            <img src="Assets/logo.png" alt="SwiftCare Logo" class="logo-img">
+          </div>
+
+          <nav class="nav">
+            <ul class="nav-list">
+
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fa-solid fa-house nav-icon"></i>
+                  <span>Dashboard</span>
+                </a>
+              </li>
+
+              <li class="nav-item has-submenu">
+                <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="patients-submenu">
+                  <i class="fa-solid fa-user nav-icon"></i>
+                  <span>Patients</span>
+                  <i class="fa-solid fa-chevron-down nav-arrow"></i>
+                </button>
+                <ul class="submenu" id="patients-submenu">
+                  <li><button type="button" class="submenu-link popup-trigger" id="openPatientPopup">Register Patient</button></li>
+                  <li><a href="#" class="submenu-link">Patient Records</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item has-submenu">
+                <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="doctors-submenu">
+                  <i class="fa-solid fa-user-doctor nav-icon"></i>
+                  <span>Doctors</span>
+                  <i class="fa-solid fa-chevron-down nav-arrow"></i>
+                </button>
+                <ul class="submenu" id="doctors-submenu">
+                  <li><a href="#" class="submenu-link">Add Doctor</a></li>
+                  <li><a href="#" class="submenu-link">Doctor List</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item has-submenu">
+                <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="nurses-submenu">
+                  <i class="fa-solid fa-user-nurse nav-icon"></i>
+                  <span>Nurses</span>
+                  <i class="fa-solid fa-chevron-down nav-arrow"></i>
+                </button>
+                <ul class="submenu" id="nurses-submenu">
+                  <li><a href="#" class="submenu-link">Add Nurse</a></li>
+                  <li><a href="#" class="submenu-link">Nurse List</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item has-submenu">
+                <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="receptionist-submenu">
+                  <i class="fa-solid fa-user-tie nav-icon"></i>
+                  <span>Receptionist</span>
+                  <i class="fa-solid fa-chevron-down nav-arrow"></i>
+                </button>
+                <ul class="submenu" id="receptionist-submenu">
+                  <li><a href="#" class="submenu-link">Add Receptionist</a></li>
+                  <li><a href="#" class="submenu-link">Receptionist List</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item has-submenu">
+                <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="cashier-submenu">
+                  <i class="fa-solid fa-cash-register nav-icon"></i>
+                  <span>Cashier</span>
+                  <i class="fa-solid fa-chevron-down nav-arrow"></i>
+                </button>
+                <ul class="submenu" id="cashier-submenu">
+                  <li><a href="#" class="submenu-link">Add Cashier</a></li>
+                  <li><a href="#" class="submenu-link">Cashier List</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item has-submenu">
+                <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="billings-submenu">
+                  <i class="fa-solid fa-file-invoice-dollar nav-icon"></i>
+                  <span>Billings</span>
+                  <i class="fa-solid fa-chevron-down nav-arrow"></i>
+                </button>
+                <ul class="submenu" id="billings-submenu">
+                  <li><a href="#" class="submenu-link">Create Invoice</a></li>
+                  <li><a href="#" class="submenu-link">Invoice History</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fa-solid fa-gear nav-icon"></i>
+                  <span>Settings</span>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="#" class="nav-link logout-link">
+                  <i class="fa-solid fa-right-from-bracket nav-icon"></i>
+                  <span>Logout</span>
+                </a>
+              </li>
+
+            </ul>
+          </nav>
+
+          <div class="info-box">
+            <i class="fa-solid fa-lock info-icon"></i>
+            <p>Your information is safe with us<br>We never share your data</p>
+          </div>
+        </aside>
+
+        <main class="main">
+          <header class="topbar">
+            <button class="hamburger" id="hamburgerBtn">☰</button>
+            <h1>Dashboard</h1>
+
+            <div class="topbar-right">
+              <div class="bell-wrapper">
+                <span class="bell"><img src="Assets/bell.png" alt=""></span>
+                <span class="badge">2</span>
+              </div>
+              <div class="divider"></div>
+              <div class="user-info">
+                <div class="avatar"><img src="Assets/recept.png" alt=""></div>
+                <div class="user-text">
+                  <div class="user-name">Bola John</div>
+                  <div class="user-role">Receptionist</div>
+                </div>
+                <span class="dropdown-arrow">
+                  <i class="fa-solid fa-chevron-down nav-arrow"></i>
+                </span>
+              </div>
+            </div>
+          </header>
+
+          <!-- ADD TO NURSE TRIAGE QUEUE PANEL -->
+          <section class="queue-add-panel">
+            <button class="popup-close panel-close" id="closeNurseQueuePanel" aria-label="Close">
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L19 19M19 1L1 19" stroke="white" stroke-width="3" stroke-linecap="round"/>
+              </svg>
+            </button>
+
+            <div class="dq-header">
+              <h1>Add to Nurse Triage Queue</h1>
+              <p>Patient will be seen by the nurse first</p>
+            </div>
+
+            <div class="dq-patient">
+              <div class="dq-photo">
+                <img src="Assets/patient-photo.jpg" alt="Patient photo">
+              </div>
+
+              <div class="dq-patient-info">
+                <h2 class="dq-name">Adeoye Oyewale</h2>
+
+                <div class="dq-row">
+                  <p>Patient ID</p>
+                  <h3>SWC-00012345</h3>
+                </div>
+                <div class="dq-row">
+                  <p>Department</p>
+                  <h3>General Medicine</h3>
+                </div>
+                <div class="dq-row">
+                  <p>Doctor</p>
+                  <h3>Dr. Chenedu Okafor</h3>
+                </div>
+              </div>
+            </div>
+
+            <div class="dq-details">
+              <h2 class="dq-section-title">Queue Details</h2>
+
+              <div class="dq-row">
+                <p>Queue Type</p>
+                <h3>Nurse Triage</h3>
+              </div>
+              <div class="dq-row">
+                <p>Priority</p>
+                <span class="dq-badge">Normal</span>
+              </div>
+              <div class="dq-row">
+                <p>Estimated</p>
+                <h3>15 - 20 mins</h3>
+              </div>
+            </div>
+
+            <div class="dq-actions">
+              <a href="DoctorQ.html" class="dq-primary-btn" id="addToTriageBtn">
+                Add to Triage Queue
+              </a>
+            </div>
+          </section>
+        </main>
+    </div>
+
+    <dialog id="patient-popup" class="patient-popup">
+      <button class="popup-close" id="closePatientPopup" aria-label="Close">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1L19 19M19 1L1 19" stroke="white" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <div class="popup-header">
+        <h1>Patient Management</h1>
+        <p>Register, Search, view and manage patient records</p>
+      </div>
+
+      <a href="#" class="popup-option-card">
+        <div class="popup-option-icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="21" cy="14" r="8" stroke="#0d0d0d" stroke-width="3.2"/>
+            <path d="M6 42c0-9.4 6.7-15 15-15s15 5.6 15 15" stroke="#0d0d0d" stroke-width="3.2" stroke-linecap="round"/>
+            <path d="M38 12v10M33 17h10" stroke="#0d0d0d" stroke-width="3.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="popup-option-text">
+          <h2>Register New Patient</h2>
+          <p>Add a new patient to the system</p>
+        </div>
+      </a>
+
+      <a href="SearchP.html" class="popup-option-card">
+        <div class="popup-option-icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="13" stroke="#0d0d0d" stroke-width="3.2"/>
+            <path d="M29.5 29.5L41 41" stroke="#0d0d0d" stroke-width="3.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="popup-option-text">
+          <h2>Search Existing Patient</h2>
+          <p>Find and manage existing patient records</p>
+        </div>
+      </a>
+    </dialog>
+
+    <script>
+      const toggleButtons = document.querySelectorAll('.nav-toggle');
+
+      toggleButtons.forEach((btn) => {
+        const parentItem = btn.closest('.has-submenu');
+
+        btn.addEventListener('click', () => {
+          const isOpen = parentItem.classList.toggle('open');
+          btn.setAttribute('aria-expanded', isOpen);
+        });
+      });
+
+      const patientPopup = document.getElementById('patient-popup');
+      const openPatientBtn = document.getElementById('openPatientPopup');
+      const closePatientBtn = document.getElementById('closePatientPopup');
+
+      openPatientBtn.addEventListener('click', () => {
+        patientPopup.showModal();
+      });
+
+      closePatientBtn.addEventListener('click', () => {
+        patientPopup.close();
+      });
+
+      patientPopup.addEventListener('click', (e) => {
+        if (e.target === patientPopup) {
+          patientPopup.close();
+        }
+      });
+
+      // Add to Nurse Triage Queue panel
+      document.getElementById('closeNurseQueuePanel').addEventListener('click', () => {
+        document.querySelector('.queue-add-panel').style.display = 'none';
+      });
+
+      document.getElementById('addToTriageBtn').addEventListener('click', () => {
+        console.log('Add patient to triage queue');
+      });
+    </script>
+</body>
+</html>

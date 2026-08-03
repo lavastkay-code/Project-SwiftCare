@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <title>SwiftCare - Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar" id="sidebar">
+
+            <div class="sidebar-content">
+
+                <!-- LOGO -->
+                <div class="logo-container">
+                    <img
+                        src="icons/logo.svg"
+                        alt="SwiftCare"
+                        class="logo"
+                    >
+                </div>
+
+
+                <!-- NAVIGATION -->
+                <nav class="navigation">
+
+                    <!-- Dashboard -->
+                    <a
+                        href="#"
+                        class="nav-item active"
+                    >
+                        <img
+                            src="icons/dashboard.svg"
+                            alt=""
+                            class="nav-icon"
+                        >
+
+                        <span>Dashboard</span>
+                    </a>
+
+
+                    <!-- Patients -->
+                    <a
+                        href="#"
+                        class="nav-item expandable"
+                    >
+                        <div class="nav-item-left">
+
+                            <img
+                                src="icons/patients.svg"
+                                alt=""
+                                class="nav-icon"
+                            >
+
+                            <span>Patients</span>
+
+                        </div>
+
+                        <img
+                            src="icons/chevron-right.svg"
+                            alt=""
+                            class="arrow-icon"
+                        >
+                    </a>
+
+
+                    <!-- Doctors -->
+                    <a
+                        href="#"
+                        class="nav-item expandable"
+                    >
+                        <div class="nav-item-left">
+
+                            <img
+                                src="icons/doctors.svg"
+                                alt=""
+                                class="nav-icon"
+                            >
+
+                            <span>Doctors</span>
+
+                        </div>
+
+                        <img
+                            src="icons/chevron-right.svg"
+                            alt=""
+                            class="arrow-icon"
+                        >
+                    </a>
+
+
+                    <!-- Nurses -->
+                    <div class="nav-group">
+
+                        <button
+                            type="button"
+                            class="nav-item expandable nurse-toggle"
+                            id="nurseToggle"
+                        >
+
+                            <div class="nav-item-left">
+
+                                <img
+                                    src="icons/nurses.svg"
+                                    alt=""
+                                    class="nav-icon"
+                                >
+
+                                <span>Nurses</span>
+
+                            </div>
+
+                            <img
+                                src="icons/chevron-down.svg"
+                                alt=""
+                                class="arrow-icon nurse-arrow"
+                            >
+
+                        </button>
+
+
+                        <!-- Nurse submenu -->
+                        <div class="submenu" id="nurseSubmenu">
+
+                            <a
+                                href="#"
+                                class="submenu-item active-sub"
+                            >
+                                Triage Queue
+                            </a>
+
+                            <a
+                                href="#"
+                                class="submenu-item"
+                            >
+                                Vitals Records
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Receptionist -->
+                    <a
+                        href="#"
+                        class="nav-item expandable"
+                    >
+                        <div class="nav-item-left">
+
+                            <img
+                                src="icons/receptionist.svg"
+                                alt=""
+                                class="nav-icon"
+                            >
+
+                            <span>Receptionist</span>
+
+                        </div>
+
+                        <img
+                            src="icons/chevron-right.svg"
+                            alt=""
+                            class="arrow-icon"
+                        >
+                    </a>
+
+
+                    <!-- Cashier -->
+                    <a
+                        href="#"
+                        class="nav-item expandable"
+                    >
+                        <div class="nav-item-left">
+
+                            <img
+                                src="icons/cashier.svg"
+                                alt=""
+                                class="nav-icon"
+                            >
+
+                            <span>Cashier</span>
+
+                        </div>
+
+                        <img
+                            src="icons/chevron-right.svg"
+                            alt=""
+                            class="arrow-icon"
+                        >
+                    </a>
+
+
+                    <!-- Billings -->
+                    <a
+                        href="#"
+                        class="nav-item expandable"
+                    >
+                        <div class="nav-item-left">
+
+                            <img
+                                src="icons/billings.svg"
+                                alt=""
+                                class="nav-icon"
+                            >
+
+                            <span>Billings</span>
+
+                        </div>
+
+                        <img
+                            src="icons/chevron-right.svg"
+                            alt=""
+                            class="arrow-icon"
+                        >
+                    </a>
+
+
+                    <!-- Settings -->
+                    <a
+                        href="#"
+                        class="nav-item"
+                    >
+                        <img
+                            src="icons/settings.svg"
+                            alt=""
+                            class="nav-icon"
+                        >
+
+                        <span>Settings</span>
+                    </a>
+
+
+                    <!-- Logout -->
+                    <a
+                        href="#"
+                        class="nav-item logout"
+                    >
+                        <img
+                            src="icons/logout.svg"
+                            alt=""
+                            class="nav-icon"
+                        >
+
+                        <span>Logout</span>
+                    </a>
+
+                </nav>
+
+            </div>
+
+
+            <!-- SIDEBAR BOTTOM -->
+            <div class="sidebar-bottom">
+
+                <!-- Current shift -->
+                <div class="shift-information">
+
+                    <span class="shift-title">
+                        Current Shift
+                    </span>
+
+                    <div class="day-shift">
+                        <span>Day Shift</span>
+                        <img src="icons/sunlight.svg" alt="sunlight-icon">
+                    </div>
+
+                    <span class="shift-time">
+                        7:00AM - 7:00PM
+                    </span>
+
+                    <span>
+                        July 20, 2026
+                    </span>
+
+                </div>
+
+
+                <!-- Security -->
+                <div class="security-message">
+
+                    <img
+                        src="icons/lock.svg"
+                        alt=""
+                        class="security-icon"
+                    >
+
+                    <span class="security-text">
+                        Your information is safe with us<br>
+                        We never share your data
+                    </span>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+
+        <main class="main">
+
+            <!-- TOP BAR -->
+
+            <header class="topbar">
+
+                <div class="topbar-left">
+
+                    <!-- Mobile menu -->
+                    <button
+                        type="button"
+                        class="menu-button"
+                        id="menuButton"
+                        aria-label="Open menu"
+                    >
+                        <img
+                            src="icons/menu.svg"
+                            alt=""
+                        >
+                    </button>
+
+
+                    <h1>
+                        Dashboard
+                    </h1>
+
+                </div>
+
+
+                <!-- TOP RIGHT -->
+                <div class="topbar-right">
+
+                    <!-- Notification -->
+                    <button
+                        type="button"
+                        class="notification-button"
+                        aria-label="Notifications"
+                    >
+
+                        <img
+                            src="icons/notification.svg"
+                            alt="Notification-bell"
+                        >
+
+                        <span class="notification-badge">5</span>
+
+                    </button>
+
+
+                    <!-- Profile -->
+                    <button
+                        type="button"
+                        class="profile"
+                    >
+
+                        <div class="profile-image">
+
+                            <img
+                                src="icons/profile.svg"
+                                alt="Titi Adegoke"
+                            >
+
+                        </div>
+
+
+                        <div class="profile-details">
+
+                            <strong>
+                                Titi Adegoke
+                            </strong>
+
+                            <span>
+                                Nurse
+                            </span>
+
+                        </div>
+
+
+                        <img
+                            src="icons/chevron-down.svg"
+                            alt=""
+                            class="profile-arrow"
+                        >
+
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- PAGE CONTENT -->
+
+            <section class="content">
+
+                <!-- PAGE HEADER -->
+                <div class="page-header">
+
+                    <div class="page-heading">
+
+                        <h2>
+                            My Triage Queue
+                        </h2>
+
+                        <p>
+                            Review and start triage for patients
+                        </p>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="refresh-button"
+                        id="refreshButton"
+                    >
+                        Refresh
+                    </button>
+
+                </div>
+
+
+                <!-- FILTER BUTTONS -->
+
+                <div
+                    class="filters"
+                    role="tablist"
+                >
+
+                    <button
+                        type="button"
+                        class="filter-button all"
+                        data-filter="all"
+                    >
+                        All (12)
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="filter-button"
+                        data-filter="checkin"
+                    >
+                        Check-In / Triage (9)
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="filter-button"
+                        data-filter="progress"
+                    >
+                        In Progress (2)
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="filter-button"
+                        data-filter="completed"
+                    >
+                        Completed (1)
+                    </button>
+
+                </div>
+
+
+                <!-- PATIENT TABLE -->
+
+                <div class="table-container">
+
+                    <table class="patient-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>#</th>
+
+                                <th>Patient</th>
+
+                                <th>Patient ID</th>
+
+                                <th>Department</th>
+
+                                <th>Queue Stage</th>
+
+                                <th>Wait time</th>
+
+                                <th>Action</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="patientTable">
+
+                            <!-- Patient 1 -->
+                            <tr data-status="checkin">
+
+                                <td>
+                                    1.
+                                </td>
+
+                                <td class="patient-name">
+                                    Adeoye Oyewale
+                                </td>
+
+                                <td>
+                                    SWC-00012345
+                                </td>
+
+                                <td>
+                                    General Medicine
+                                </td>
+
+                                <td>
+                                    Check-in
+                                </td>
+
+                                <td>
+                                    12mins
+                                </td>
+
+                                <td>
+
+                                    <button
+                                        type="button"
+                                        class="action-button start-button primary"
+                                    >
+                                        Start Triage
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+
+                            <!-- Patient 2 -->
+                            <tr data-status="checkin">
+
+                                <td>
+                                    2.
+                                </td>
+
+                                <td class="patient-name">
+                                    Mary Jane
+                                </td>
+
+                                <td>
+                                    SWC-00012346
+                                </td>
+
+                                <td>
+                                    General Medicine
+                                </td>
+
+                                <td>
+                                    Check-in
+                                </td>
+
+                                <td>
+                                    14mins
+                                </td>
+
+                                <td>
+
+                                    <button
+                                        type="button"
+                                        class="action-button start-button"
+                                    >
+                                        Start Triage
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+
+                            <!-- Patient 3 -->
+                            <tr data-status="checkin">
+
+                                <td>
+                                    3.
+                                </td>
+
+                                <td class="patient-name">
+                                    Joshua Edward
+                                </td>
+
+                                <td>
+                                    SWC-00012347
+                                </td>
+
+                                <td>
+                                    Pediatric
+                                </td>
+
+                                <td>
+                                    Check-in
+                                </td>
+
+                                <td>
+                                    17mins
+                                </td>
+
+                                <td>
+
+                                    <button
+                                        type="button"
+                                        class="action-button start-button"
+                                    >
+                                        Start Triage
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+
+                            <!-- Patient 4 -->
+                            <tr data-status="checkin">
+
+                                <td>
+                                    4.
+                                </td>
+
+                                <td class="patient-name">
+                                    Blessing Akenji
+                                </td>
+
+                                <td>
+                                    SWC-00012348
+                                </td>
+
+                                <td>
+                                    Orthopedic
+                                </td>
+
+                                <td>
+                                    Check-in
+                                </td>
+
+                                <td>
+                                    20mins
+                                </td>
+
+                                <td>
+
+                                    <button
+                                        type="button"
+                                        class="action-button start-button"
+                                    >
+                                        Start Triage
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+
+                            <!-- Patient 5 -->
+                            <tr data-status="checkin">
+
+                                <td>
+                                    5.
+                                </td>
+
+                                <td class="patient-name">
+                                    Yusuf Hassa
+                                </td>
+
+                                <td>
+                                    SWC-00012349
+                                </td>
+
+                                <td>
+                                    General Medicine
+                                </td>
+
+                                <td>
+                                    Check-in
+                                </td>
+
+                                <td>
+                                    25mins
+                                </td>
+
+                                <td>
+
+                                    <button
+                                        type="button"
+                                        class="action-button start-button"
+                                    >
+                                        Start Triage
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+
+                            <!-- Patient 6 -->
+                            <tr data-status="progress">
+
+                                <td>
+                                    6.
+                                </td>
+
+                                <td class="patient-name">
+                                    Chidinma Anaje
+                                </td>
+
+                                <td>
+                                    SWC-00012310
+                                </td>
+
+                                <td>
+                                    Orthopedic
+                                </td>
+
+                                <td>
+
+                                    <span class="stage-badge in-triage">
+                                        In Triage
+                                    </span>
+
+                                </td>
+
+                                <td>
+                                    5mins
+                                </td>
+
+                                <td>
+
+                                    <button
+                                        type="button"
+                                        class="action-button resume-button"
+                                    >
+                                        Resume
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+
+                            <!-- Patient 7 -->
+                            <tr data-status="checkin">
+
+                                <td>
+                                    7.
+                                </td>
+
+                                <td class="patient-name">
+                                    Haruna Bala
+                                </td>
+
+                                <td>
+                                    SWC-00012311
+                                </td>
+
+                                <td>
+                                    Pediatric
+                                </td>
+
+                                <td>
+                                    Check-in
+                                </td>
+
+                                <td>
+                                    30mins
+                                </td>
+
+                                <td>
+
+                                    <button
+                                        type="button"
+                                        class="action-button start-button"
+                                    >
+                                        Start Triage
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- TABLE FOOTER -->
+
+                <div class="table-footer">
+
+                    <p>
+                        Showing 1 to 7 of 21 entries
+                    </p>
+
+
+                    <div class="pagination">
+
+                        <button
+                            type="button"
+                            class="pagination-button"
+                            aria-label="Previous page"
+                        >
+                           &#8249
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="pagination-button active"
+                        >
+                            1
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="pagination-button"
+                        >
+                            2
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="pagination-button"
+                        >
+                            3
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="pagination-button"
+                            aria-label="Next page"
+                        >
+                        &#8250
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- MOBILE OVERLAY -->
+    <div
+        class="sidebar-overlay"
+        id="sidebarOverlay"
+    ></div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

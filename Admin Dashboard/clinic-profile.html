@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SwiftCare - Clinic Profile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    
+    <link rel="stylesheet" href="css/clinic-profile.css">
+</head>
+<body>
+
+<div class="app-container">
+    <aside class="sidebar">
+
+      <div class="logo">
+        <img src="image/logo-2.png" alt="SwiftCare Logo" />
+      </div>
+
+      <div class="sidebar-content">
+
+        <h2>Let’s set up your clinic workspace</h2>
+
+        <p>
+          Create a secure and organized environment to manage your
+          hospital operations efficiently.
+        </p>
+
+        <div class="features">
+
+          <div class="feature-item">
+            <i class="fa-solid fa-shield-halved"></i>
+
+            <div>
+              <strong>Secure & Compliant</strong>
+              <p>Your data is protected with enterprise-grade security.</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <i class="fa-solid fa-user-doctor"></i>
+
+            <div>
+              <strong>Role-based Access</strong>
+              <p>Get real-time insights and make smarter decisions.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="building-image"></div>
+
+      <div class="privacy-box">
+
+        <i class="fa-solid fa-lock"></i>
+
+        <div>
+          <strong>Your information is safe with us</strong>
+          <small>We never share your data</small>
+        </div>
+
+      </div>
+
+    </aside>
+
+    <main class="main-content">
+        <div class="stepper">
+
+            <div class="step done">
+                <div class="circle">1</div>
+                <span>Admin Account</span>
+                <small>Create your admin account</small>
+            </div>
+
+            <div class="step active">
+                <div class="circle">2</div>
+                <span>Clinic Profile</span>
+                <small>Provide clinic information</small>
+            </div>
+
+            <div class="step">
+                <div class="circle">3</div>
+                <span>General Settings</span>
+                <small>Set up operational preferences</small>
+            </div>
+
+            <div class="step">
+                <div class="circle">4</div>
+                <span>Review & Finish</span>
+                <small>Confirm and complete</small>
+            </div>
+
+        </div>
+        <section class="profile-card">
+            <div class="form-panel">
+
+                <div class="page-header">
+                    <div>
+                        <h2>Clinic Profile Information</h2>
+                        <p>Manage your clinic and contact information</p>
+                    </div>
+                </div>
+
+                <form id="clinicForm">
+                    <div class="form-grid">
+
+                        <div class="field">
+                            <label for="clinicName">Clinic Name</label>
+
+                            <div class="input-box">
+                                <i class="fa-regular fa-hospital"></i>
+
+                                <input
+                                    type="text"
+                                    id="clinicName"
+                                    placeholder="Medford Clinic"
+                                    required
+                                >
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="clinicType">Clinic Type</label>
+
+                            <div class="input-box select-box">
+                                <i class="fa-solid fa-building"></i>
+
+                                <select id="clinicType" required>
+                                    <option value="">Select Hospital</option>
+                                    <option>General Hospital</option>
+                                    <option>Specialist Hospital</option>
+                                    <option>Clinic</option>
+                                    <option>Diagnostic Center</option>
+                                    <option>Medford Clinic</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="phone">Phone Number</label>
+
+                            <div class="input-box">
+                                <i class="fa-solid fa-phone"></i>
+
+                                <input
+                                    type="tel"
+                                    id="phone"
+                                    placeholder="Enter phone number"
+                                    maxlength="15"
+                                    required
+                                >
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="email">Email Address</label>
+
+                            <div class="input-box">
+                                <i class="fa-regular fa-envelope"></i>
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    placeholder="Enter email address"
+                                    required
+                                >
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="year">
+                                Established Year <span>(Optional)</span>
+                            </label>
+
+                            <div class="input-box">
+                                <i class="fa-regular fa-calendar"></i>
+
+                                <input
+                                    type="number"
+                                    id="year"
+                                    placeholder="2018"
+                                    min="1900"
+                                    max="2100"
+                                >
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="website">
+                                Website <span>(Optional)</span>
+                            </label>
+
+                            <div class="input-box">
+                                <i class="fa-solid fa-globe"></i>
+
+                                <input
+                                    type="url"
+                                    id="website"
+                                    placeholder="www.medfordclinic.com"
+                                >
+                            </div>
+                        </div>
+
+                    </div>
+                    <h3 class="section-title">Clinic Address</h3>
+
+                    <div class="form-grid address-grid">
+
+                        <div class="field">
+                            <label for="address1">Address Line 1</label>
+
+                            <div class="input-box">
+                                <i class="fa-solid fa-location-dot"></i>
+
+                                <input
+                                    type="text"
+                                    id="address1"
+                                    placeholder="12, Medical Road"
+                                    required
+                                >
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="address2">
+                                Address Line 2 <span>(Optional)</span>
+                            </label>
+
+                            <div class="input-box">
+                                <i class="fa-solid fa-location-dot"></i>
+
+                                <input
+                                    type="text"
+                                    id="address2"
+                                    placeholder="Ikeja"
+                                >
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="city">City</label>
+
+                            <div class="input-box">
+                                <input
+                                    type="text"
+                                    id="city"
+                                    placeholder="Lagos"
+                                    required
+                                >
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="state">State</label>
+
+                            <div class="input-box select-box">
+                                <select id="state" required>
+                                    <option value="">Select state</option>
+                                    <option>Abia</option>
+                                    <option>Adamawa</option>
+                                    <option>Akwa Ibom</option>
+                                    <option>Anambra</option>
+                                    <option>Bauchi</option>
+                                    <option>Bayelsa</option>
+                                    <option>Benue</option>
+                                    <option>Borno</option>
+                                    <option>Cross River</option>
+                                    <option>Delta</option>
+                                    <option>Ebonyi</option>
+                                    <option>Edo</option>
+                                    <option>Ekiti</option>
+                                    <option>Enugu</option>
+                                    <option>FCT Abuja</option>
+                                    <option>Gombe</option>
+                                    <option>Imo</option>
+                                    <option>Jigawa</option>
+                                    <option>Kaduna</option>
+                                    <option>Kano</option>
+                                    <option>Katsina</option>
+                                    <option>Kebbi</option>
+                                    <option>Kogi</option>
+                                    <option>Kwara</option>
+                                    <option>Lagos</option>
+                                    <option>Nasarawa</option>
+                                    <option>Niger</option>
+                                    <option>Ogun</option>
+                                    <option>Ondo</option>
+                                    <option>Osun</option>
+                                    <option>Oyo</option>
+                                    <option>Plateau</option>
+                                    <option>Rivers</option>
+                                    <option>Sokoto</option>
+                                    <option>Taraba</option>
+                                    <option>Yobe</option>
+                                    <option>Zamfara</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="country">Country</label>
+
+                            <div class="input-box select-box">
+                                <select id="country" required>
+                                    <option value="">Select Country</option>
+                                    <option>Nigeria</option>
+                                    <option>Ghana</option>
+                                    <option>Kenya</option>
+                                    <option>South Africa</option>
+                                    <option>United State of America</option>
+                                    <option>United Kingdom</option>
+                                    <option>Australia</option>
+                                    <option>New-Zealand</option>
+                                    <option>Argentina</option>
+                                    <option>Spain</option>
+                                    <option>Brazil</option>
+                                    <option>Others</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="field postal-field">
+                            <label for="postalCode">Postal Code</label>
+
+                            <div class="input-box">
+                                <input
+                                    type="text"
+                                    id="postalCode"
+                                    placeholder="101104"
+                                >
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="discard-btn">
+                            Discard
+                        </button>
+
+                        <button type="submit" class="save-btn">
+                            Save Changes
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+            <aside class="side-panel">
+
+                <div class="next-card">
+
+                    <h3>What’s next?</h3>
+
+                    <div class="timeline">
+
+                        <div class="timeline-item">
+                            <div class="timeline-icon purple">
+                                <i class="fa-solid fa-gear"></i>
+                            </div>
+
+                            <div>
+                                <strong>Operational Settings</strong>
+                                <p>Set working days, time zone and currency</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-line"></div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-icon red">
+                                <i class="fa-solid fa-file-lines"></i>
+                            </div>
+
+                            <div>
+                                <strong>Review & Finish</strong>
+                                <p>Review your details and create your workspace</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="success-box">
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        <p>
+                            You can always update these details later from settings
+                        </p>
+                    </div>
+
+                </div>
+                <div class="profile-card-side">
+
+                    <div class="profile-preview" id="profilePreview">
+
+                        <div class="placeholder" id="placeholder">
+                            <i class="fa-solid fa-image"></i>
+                            <span>No profile picture</span>
+                        </div>
+
+                        <img id="previewImage" alt="Profile Preview">
+
+                    </div>
+
+                    <input
+                        type="file"
+                        id="profileInput"
+                        accept="image/png, image/jpeg, image/jpg"
+                        hidden
+                    >
+
+                    <div class="profile-actions">
+
+                        <button
+                            type="button"
+                            id="addProfileBtn"
+                            class="profile-btn primary"
+                        >
+                            Add Profile Picture
+                        </button>
+
+                        <button
+                            type="button"
+                            id="removeProfileBtn"
+                            class="profile-btn danger"
+                            disabled
+                        >
+                            Remove
+                        </button>
+
+                    </div>
+
+                    <p class="profile-note">
+                        Recommended size: 400 × 400px. JPG, PNG or SVG
+                    </p>
+
+                </div>
+                <div class="wave-box">
+
+                    <svg viewBox="0 0 400 180" preserveAspectRatio="none">
+
+                        <defs>
+
+                            <linearGradient id="waveOrange" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#ff8f5a" stop-opacity="0.95" />
+                                <stop offset="100%" stop-color="#ff6d4a" stop-opacity="0.6" />
+                            </linearGradient>
+
+                            <linearGradient id="waveBlue" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#2f6bff" stop-opacity="0.92" />
+                                <stop offset="100%" stop-color="#4757ff" stop-opacity="0.7" />
+                            </linearGradient>
+
+                        </defs>
+
+                        <rect width="400" height="180" fill="#dceeff" />
+
+                        <path
+                            d="M0 118 C40 132 80 88 120 74 C160 60 200 126 240 138 C280 150 320 126 360 136 C380 142 392 150 400 156 L400 180 L0 180 Z"
+                            fill="url(#waveOrange)"
+                        />
+
+                        <path
+                            d="M0 162 C32 154 64 176 96 164 C128 152 160 102 192 112 C224 122 256 176 288 168 C320 160 352 124 384 132 C392 134 396 144 400 154 L400 180 L0 180 Z"
+                            fill="url(#waveBlue)"
+                        />
+                    </svg>
+                </div>
+            </aside>
+        </section>
+        <footer class="footer">
+            <span>2026 SwiftCare. All rights reserved</span>
+            <div>
+                Need help?
+                <a href="#">Contact Support</a>
+            </div>
+        </footer>
+    </main>
+</div>
+<script src="JavaScript/clinic-profile.js"></script>
+</body>
+</html>

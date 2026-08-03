@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SwiftCare — Check-in Analytics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+
+  <!-- ===================== SIDEBAR ===================== -->
+  <aside class="sidebar">
+    <div class="logo">
+      <span class="swift">Swift</span><span class="care">Care</span>
+      <span class="plus-badge"><i class="fa-solid fa-plus"></i></span>
+    </div>
+
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a class="nav-link" href="dashboard.html"><i class="fa-solid fa-house nav-icon"></i><span>Dashboard</span></a>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link"><i class="fa-solid fa-user nav-icon"></i><span>Patients</span><i class="fa-solid fa-chevron-down nav-arrow"></i></button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link"><i class="fa-solid fa-user-doctor nav-icon"></i><span>Doctors</span><i class="fa-solid fa-chevron-right nav-arrow"></i></button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link"><i class="fa-solid fa-user-nurse nav-icon"></i><span>Nurses</span><i class="fa-solid fa-chevron-right nav-arrow"></i></button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link"><i class="fa-solid fa-user-tie nav-icon"></i><span>Receptionist</span><i class="fa-solid fa-chevron-right nav-arrow"></i></button>
+      </li>
+      <li class="nav-item active">
+        <button class="nav-link"><i class="fa-solid fa-cash-register nav-icon"></i><span>Cashier</span><i class="fa-solid fa-chevron-down nav-arrow"></i></button>
+        <ul class="submenu">
+          <li><a class="submenu-link" href="invoice-record-list.html">Patient Invoice</a></li>
+          <li><a class="submenu-link" href="review-charges-mary.html">Review Charges</a></li>
+          <li><a class="submenu-link" href="payment-cash-mary.html">Record Payment</a></li>
+          <li><a class="submenu-link" href="receipt-mary.html">Receipt</a></li>
+        </ul>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link"><i class="fa-solid fa-file-invoice-dollar nav-icon"></i><span>Billing</span><i class="fa-solid fa-chevron-right nav-arrow"></i></button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link"><i class="fa-solid fa-gear nav-icon"></i><span>Settings</span><i class="fa-solid fa-chevron-right nav-arrow"></i></button>
+      </li>
+      <li class="nav-item spacer"></li>
+      <li class="nav-item">
+        <a class="nav-link logout-link"><i class="fa-solid fa-right-from-bracket nav-icon"></i><span>Logout</span></a>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- ===================== MAIN ===================== -->
+  <main class="main">
+
+    <!-- ---------- HEADER ---------- -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="hamburger">☰</button>
+        <h1>Dashboard</h1>
+        <div class="bell-wrapper">
+          <i class="fa-solid fa-bell"></i>
+          <span class="badge">5</span>
+        </div>
+      </div>
+
+      <div class="topbar-right">
+        <div class="user-info">
+          <div class="avatar"><img src="assets/sandra-duke.jpg" alt=""></div>
+          <div class="user-text">
+            <div class="user-name">Sandra Duke</div>
+            <div class="user-role">(Cashier)</div>
+          </div>
+          <span class="dropdown-arrow"><i class="fa-solid fa-chevron-down"></i></span>
+        </div>
+        <div class="search-row">
+          <div class="search-box">
+            <input type="text" placeholder="Search Patient name/ID">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+          <div class="date-pill">
+            <i class="fa-regular fa-calendar"></i>
+            <span>July 20, 2026 | Monday</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section class="page" id="s196">
+      <div class="row5">
+        <div class="checkin-stat">
+          <span class="cap" style="font-weight:700;color:#333;">Today's Check - ins</span>
+          <span class="n">37</span>
+          <span class="cap">Today's Cumulative Patient Check -ins</span>
+          <svg class="sparkline" viewBox="0 0 100 24" preserveAspectRatio="none"><polyline points="0,4 15,18 30,10 45,20 60,6 75,16 100,10" fill="none" stroke="#7C6FE0" stroke-width="2"/></svg>
+        </div>
+        <div class="mini-pill"><span class="ic" style="background:var(--blue);"><i class="fa-solid fa-user-group"></i></span><div><div class="val">12</div><div class="lbl">New Patients</div></div></div>
+        <div class="mini-pill"><span class="ic" style="background:var(--green);"><i class="fa-solid fa-file-medical"></i></span><div><div class="val">25</div><div class="lbl">Follow - ups Visits</div></div></div>
+        <div class="mini-pill"><span class="ic" style="background:var(--orange);"><i class="fa-solid fa-truck-medical"></i></span><div><div class="val">3</div><div class="lbl">Emergency Cases</div></div></div>
+      </div>
+
+      <div class="chart-wrap">
+        <div class="legend">
+          <div class="legend-item"><span class="legend-swatch" style="background:#7C6FE0"></span>Cash Payment</div>
+          <div class="legend-item"><span class="legend-swatch" style="background:#D9D9DF"></span>POS / Card Terminal</div>
+          <div class="legend-item"><span class="legend-swatch" style="background:#F08A8A"></span>Bank Transfer</div>
+        </div>
+        <div class="bars">
+          <div class="bar-group">
+            <div class="bar-col"><div class="bar cash" style="height:220px"></div><span class="bar-num">500</span></div>
+            <div class="bar-col"><div class="bar bank" style="height:90px"></div><span class="bar-num">200</span></div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-col"><div class="bar pos" style="height:175px"></div><span class="bar-num">400</span></div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-col"><div class="bar pos" style="height:175px"></div><span class="bar-num">400</span></div>
+            <div class="bar-col"><div class="bar cash" style="height:220px"></div><span class="bar-num">500</span></div>
+            <div class="bar-col"><div class="bar bank" style="height:90px"></div><span class="bar-num">200</span></div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-col"><div class="bar pos" style="height:175px"></div><span class="bar-num">400</span></div>
+            <div class="bar-col"><div class="bar cash" style="height:220px"></div><span class="bar-num">500</span></div>
+            <div class="bar-col"><div class="bar bank" style="height:90px"></div><span class="bar-num">200</span></div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-col"><div class="bar pos" style="height:175px"></div><span class="bar-num">400</span></div>
+            <div class="bar-col"><div class="bar cash" style="height:220px"></div><span class="bar-num">500</span></div>
+            <div class="bar-col"><div class="bar bank" style="height:90px"></div><span class="bar-num">200</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="split-chart-bottom">
+        <div class="list-card">
+          <h3>Recent Check - in Activity</h3>
+          <table>
+            <thead><tr><th>Patient Name</th><th>Description</th><th>Service</th></tr></thead>
+            <tbody>
+              <tr><td>Mary Johnson</td><td>July 25, 2026</td><td>Service</td></tr>
+              <tr><td>Mary Johnson</td><td>July 25, 2026</td><td>Cash Payments</td></tr>
+              <tr><td>Mary Johnson</td><td>July 25, 2026</td><td>Service</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="top-perform">
+          <h4>Top Performing Payment Service</h4>
+          <p>Cash payment are the highest</p>
+          <span class="top-pill"><i class="fa-solid fa-sack-dollar"></i> Cash payments</span>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

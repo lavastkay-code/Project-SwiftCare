@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reception Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="CheckInP.css">
+</head>
+<body>
+    <div class="app">
+        <aside class="sidebar">
+          <div class="logo">
+            <img src="Assets/logo.png" alt="SwiftCare Logo" class="logo-img">
+          </div>
+
+          <nav class="nav">
+            <ul class="nav-list">
+
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fa-solid fa-house nav-icon"></i>
+                  <span>Dashboard</span>
+                </a>
+              </li>
+
+              <li class="nav-item has-submenu">
+                <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="patients-submenu">
+                  <i class="fa-solid fa-user nav-icon"></i>
+                  <span>Patients</span>
+                  <i class="fa-solid fa-chevron-down nav-arrow"></i>
+                </button>
+                <ul class="submenu" id="patients-submenu">
+                  <li><button type="button" class="submenu-link popup-trigger" id="openPatientPopup">Register Patient</button></li>
+                  <li><a href="#" class="submenu-link">Patient Records</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item has-submenu">
+                <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="doctors-submenu">
+                  <i class="fa-solid fa-user-doctor nav-icon"></i>
+                  <span>Doctors</span>
+                  <i class="fa-solid fa-chevron-down nav-arrow"></i>
+                </button>
+                <ul class="submenu" id="doctors-submenu">
+                  <li><a href="#" class="submenu-link">Add Doctor</a></li>
+                  <li><a href="#" class="submenu-link">Doctor List</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item has-submenu">
+                <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="nurses-submenu">
+                  <i class="fa-solid fa-user-nurse nav-icon"></i>
+                  <span>Nurses</span>
+                  <i class="fa-solid fa-chevron-down nav-arrow"></i>
+                </button>
+                <ul class="submenu" id="nurses-submenu">
+                  <li><a href="#" class="submenu-link">Add Nurse</a></li>
+                  <li><a href="#" class="submenu-link">Nurse List</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item has-submenu">
+                <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="receptionist-submenu">
+                  <i class="fa-solid fa-user-tie nav-icon"></i>
+                  <span>Receptionist</span>
+                  <i class="fa-solid fa-chevron-down nav-arrow"></i>
+                </button>
+                <ul class="submenu" id="receptionist-submenu">
+                  <li><a href="#" class="submenu-link">Add Receptionist</a></li>
+                  <li><a href="#" class="submenu-link">Receptionist List</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item has-submenu">
+                <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="cashier-submenu">
+                  <i class="fa-solid fa-cash-register nav-icon"></i>
+                  <span>Cashier</span>
+                  <i class="fa-solid fa-chevron-down nav-arrow"></i>
+                </button>
+                <ul class="submenu" id="cashier-submenu">
+                  <li><a href="#" class="submenu-link">Add Cashier</a></li>
+                  <li><a href="#" class="submenu-link">Cashier List</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item has-submenu">
+                <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="billings-submenu">
+                  <i class="fa-solid fa-file-invoice-dollar nav-icon"></i>
+                  <span>Billings</span>
+                  <i class="fa-solid fa-chevron-down nav-arrow"></i>
+                </button>
+                <ul class="submenu" id="billings-submenu">
+                  <li><a href="#" class="submenu-link">Create Invoice</a></li>
+                  <li><a href="#" class="submenu-link">Invoice History</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fa-solid fa-gear nav-icon"></i>
+                  <span>Settings</span>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="#" class="nav-link logout-link">
+                  <i class="fa-solid fa-right-from-bracket nav-icon"></i>
+                  <span>Logout</span>
+                </a>
+              </li>
+
+            </ul>
+          </nav>
+
+          <div class="info-box">
+            <i class="fa-solid fa-lock info-icon"></i>
+            <p>Your information is safe with us<br>We never share your data</p>
+          </div>
+        </aside>
+
+        <main class="main">
+          <header class="topbar">
+            <button class="hamburger" id="hamburgerBtn">☰</button>
+            <h1>Dashboard</h1>
+
+            <div class="topbar-right">
+              <div class="bell-wrapper">
+                <span class="bell"><img src="Assets/bell.png" alt=""></span>
+                <span class="badge">2</span>
+              </div>
+              <div class="divider"></div>
+              <div class="user-info">
+                <div class="avatar"><img src="Assets/recept.png" alt=""></div>
+                <div class="user-text">
+                  <div class="user-name">Bola John</div>
+                  <div class="user-role">Receptionist</div>
+                </div>
+                <span class="dropdown-arrow">
+                  <i class="fa-solid fa-chevron-down nav-arrow"></i>
+                </span>
+              </div>
+            </div>
+          </header>
+                <section class="checkin-wrapper">
+
+    <div class="checkin-container">
+
+        <button class="checkin-close">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="checkin-header">
+            <h1>Check-In Patient</h1>
+            <p>Review check-In details before confirming</p>
+        </div>
+
+        <div class="patient-summary">
+
+            <div class="summary-row">
+                <span class="label">Patient Name</span>
+                <span class="value">Adeoye Oyewale</span>
+            </div>
+
+            <div class="summary-row">
+                <span class="label">Patient ID</span>
+                <span class="value">SWC-00012345</span>
+            </div>
+
+            <div class="summary-row">
+                <span class="label">Appointment Type</span>
+                <span class="value">Scheduled Appointment</span>
+            </div>
+
+            <div class="summary-row">
+                <span class="label">Department</span>
+                <span class="value">General Medicine</span>
+            </div>
+
+            <div class="summary-row">
+                <span class="label">Doctor</span>
+                <span class="value">Dr. Chinedu Okafor</span>
+            </div>
+
+            <div class="summary-row">
+                <span class="label">Appointment Time</span>
+                <span class="value">29 July 2026, 10:30AM</span>
+            </div>
+
+        </div>
+
+        <div class="checkin-actions">
+
+            <button class="back-btn">
+                Back
+            </button>
+
+            <button class="confirm-btn" id="confirmCheckInBtn">
+                Confirm Check-In
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+        </main>
+    </div>
+
+    <dialog id="patient-popup" class="patient-popup">
+      <button class="popup-close" id="closePatientPopup" aria-label="Close">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1L19 19M19 1L1 19" stroke="white" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <div class="popup-header">
+        <h1>Patient Management</h1>
+        <p>Register, Search, view and manage patient records</p>
+      </div>
+
+      <a href="#" class="popup-option-card">
+        <div class="popup-option-icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="21" cy="14" r="8" stroke="#0d0d0d" stroke-width="3.2"/>
+            <path d="M6 42c0-9.4 6.7-15 15-15s15 5.6 15 15" stroke="#0d0d0d" stroke-width="3.2" stroke-linecap="round"/>
+            <path d="M38 12v10M33 17h10" stroke="#0d0d0d" stroke-width="3.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="popup-option-text">
+          <h2>Register New Patient</h2>
+          <p>Add a new patient to the system</p>
+        </div>
+      </a>
+
+      <a href="SearchP.html" class="popup-option-card">
+        <div class="popup-option-icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="13" stroke="#0d0d0d" stroke-width="3.2"/>
+            <path d="M29.5 29.5L41 41" stroke="#0d0d0d" stroke-width="3.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="popup-option-text">
+          <h2>Search Existing Patient</h2>
+          <p>Find and manage existing patient records</p>
+        </div>
+      </a>
+    </dialog>
+
+    <!-- CHECK-IN SUCCESSFUL POPUP -->
+    <dialog id="checkin-success-popup" class="checkin-success-popup">
+      <div class="success-icon">
+        <svg width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 12.5L9.5 17L19 7" stroke="white" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <h2 class="success-title">Check-In Successful!</h2>
+      <p class="success-subtitle">Mary Johnson has been checked in successfully,</p>
+
+      <p class="success-time">Check-In Time: 20 July 2026, 10:15AM</p>
+      <p class="success-queue-note">Patient has been added to the queue.</p>
+
+      <div class="success-actions">
+        <button type="button" class="print-slip-btn" id="printSlipBtn">Print Slip</button>
+        <a href="NurseQ.html" class="add-to-queue-btn" id="addToQueueBtn">
+          Add to Queue
+        </a>        
+      </div>
+    </dialog>
+
+    <script>
+      const toggleButtons = document.querySelectorAll('.nav-toggle');
+
+      toggleButtons.forEach((btn) => {
+        const parentItem = btn.closest('.has-submenu');
+
+        btn.addEventListener('click', () => {
+          const isOpen = parentItem.classList.toggle('open');
+          btn.setAttribute('aria-expanded', isOpen);
+        });
+      });
+
+      const patientPopup = document.getElementById('patient-popup');
+      const openPatientBtn = document.getElementById('openPatientPopup');
+      const closePatientBtn = document.getElementById('closePatientPopup');
+
+      openPatientBtn.addEventListener('click', () => {
+        patientPopup.showModal();
+      });
+
+      closePatientBtn.addEventListener('click', () => {
+        patientPopup.close();
+      });
+
+      patientPopup.addEventListener('click', (e) => {
+        if (e.target === patientPopup) {
+          patientPopup.close();
+        }
+      });
+
+      // Check-In Successful popup
+      const checkinSuccessPopup = document.getElementById('checkin-success-popup');
+      const confirmCheckInBtn = document.getElementById('confirmCheckInBtn');
+      const printSlipBtn = document.getElementById('printSlipBtn');
+      const addToQueueBtn = document.getElementById('addToQueueBtn');
+
+      confirmCheckInBtn.addEventListener('click', () => {
+        checkinSuccessPopup.showModal();
+      });
+
+      printSlipBtn.addEventListener('click', () => {
+        window.print();
+      });
+
+      addToQueueBtn.addEventListener('click', () => {
+        console.log('Add patient to queue');
+      });
+    </script>
+</body>
+</html>

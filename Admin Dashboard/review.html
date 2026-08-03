@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SwiftCare - Review & Finish</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+    <link rel="stylesheet" href="css/review.css" />
+</head>
+<body>
+
+<div class="app-container">
+
+    <aside class="sidebar">
+
+      <div class="logo">
+        <img src="image/logo-2.png" alt="SwiftCare Logo" />
+      </div>
+
+      <div class="sidebar-content">
+
+        <h2>Let’s set up your clinic workspace</h2>
+
+        <p>
+          Create a secure and organized environment to manage your
+          hospital operations efficiently.
+        </p>
+
+        <div class="features">
+
+          <div class="feature-item">
+            <i class="fa-solid fa-shield-halved"></i>
+
+            <div>
+              <strong>Secure & Compliant</strong>
+              <p>Your data is protected with enterprise-grade security.</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <i class="fa-solid fa-user-doctor"></i>
+
+            <div>
+              <strong>Role-based Access</strong>
+              <p>Get real-time insights and make smarter decisions.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="building-image"></div>
+
+      <div class="privacy-box">
+
+        <i class="fa-solid fa-lock"></i>
+
+        <div>
+          <strong>Your information is safe with us</strong>
+          <small>We never share your data</small>
+        </div>
+
+      </div>
+
+    </aside>
+    <main class="main-content">
+
+        <div class="stepper">
+
+            <div class="step done">
+                <div class="circle">1</div>
+                <span>Admin Account</span>
+                <small>Create your admin account</small>
+            </div>
+
+            <div class="step done">
+                <div class="circle">2</div>
+                <span>Clinic Profile</span>
+                <small>Provide clinic information</small>
+            </div>
+
+            <div class="step done">
+                <div class="circle">3</div>
+                <span>General Settings</span>
+                <small>Set up operational preferences</small>
+            </div>
+
+            <div class="step active">
+                <div class="circle">4</div>
+                <span>Review & Finish</span>
+                <small>Confirm and complete</small>
+            </div>
+
+        </div>
+
+        <section class="review-card">
+
+            <div class="page-header">
+
+                <h2>Review & Finish</h2>
+
+                <p>Review your details and create your clinic workspace</p>
+
+            </div>
+
+            <div class="summary-section">
+
+                <div class="section-header">
+
+                    <h3>Clinic Information</h3>
+
+                    <a href="signup.html" class="edit-link">
+                        <i class="fa-solid fa-pen"></i>
+                        Edit
+                    </a>
+
+                </div>
+
+                <div class="summary-grid four">
+
+                    <div class="summary-item">
+
+                        <div class="item-label">
+                            <i class="fa-regular fa-hospital"></i>
+                            <span>Clinic Name</span>
+                        </div>
+
+                        <div class="item-value" id="reviewClinicName">MedFord Hospital</div>
+
+                    </div>
+
+                    <div class="summary-item">
+
+                        <div class="item-label">
+                            <i class="fa-regular fa-envelope"></i>
+                            <span>Email Address</span>
+                        </div>
+
+                        <div class="item-value" id="reviewEmail">admin@medford.com</div>
+
+                    </div>
+
+                    <div class="summary-item">
+
+                        <div class="item-label">
+                            <i class="fa-solid fa-phone"></i>
+                            <span>Phone Number</span>
+                        </div>
+
+                        <div class="item-value" id="reviewPhone">+234 123 456 7890</div>
+
+                    </div>
+
+                    <div class="summary-item">
+
+                        <div class="item-label">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>State</span>
+                        </div>
+
+                        <div class="item-value" id="reviewState">Lagos State</div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="summary-section">
+
+                <div class="section-header">
+
+                    <h3>Clinic Profile</h3>
+
+                    <a href="clinic-profile.html" class="edit-link">
+                        <i class="fa-solid fa-pen"></i>
+                        Edit
+                    </a>
+
+                </div>
+
+                <div class="summary-grid two">
+
+                    <div class="summary-item">
+
+                        <div class="item-label">
+                            <i class="fa-regular fa-hospital"></i>
+                            <span>Clinic Type</span>
+                        </div>
+
+                        <div class="item-value" id="reviewClinicType">General Hospital</div>
+
+                    </div>
+
+                    <div class="summary-item">
+
+                        <div class="item-label">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>Address</span>
+                        </div>
+
+                        <div class="item-value" id="reviewAddress">12, Medical Road</div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="summary-section">
+
+                <div class="section-header">
+
+                    <h3>Operational settings</h3>
+
+                    <a href="general-settings.html" class="edit-link">
+                        <i class="fa-solid fa-pen"></i>
+                        Edit
+                    </a>
+
+                </div>
+
+                <div class="summary-grid four operational-grid">
+
+                    <div class="summary-item">
+
+                        <div class="item-label">
+                            <i class="fa-regular fa-calendar-days"></i>
+                            <span>Working Days</span>
+                        </div>
+
+                        <div class="item-value" id="reviewDays">Mon, Tue, Wed, Thu, Fri</div>
+
+                    </div>
+
+                    <div class="summary-item">
+
+                        <div class="item-label">
+                            <i class="fa-solid fa-globe"></i>
+                            <span>Time Zone</span>
+                        </div>
+
+                        <div class="item-value" id="reviewTimezone">(GMT +01:00) West Africa Time (Lagos)</div>
+
+                    </div>
+
+                    <div class="summary-item">
+
+                        <div class="item-label">
+                            <i class="fa-solid fa-money-bill-wave"></i>
+                            <span>Currency</span>
+                        </div>
+
+                        <div class="item-value" id="reviewCurrency">Nigerian Naira (NGN)</div>
+
+                    </div>
+
+                    <div class="summary-item">
+
+                        <div class="item-label">
+                            <i class="fa-regular fa-calendar-days"></i>
+                            <span>Date Format</span>
+                        </div>
+
+                        <div class="item-value" id="reviewDateFormat">DD MM YYYY</div>
+
+                    </div>
+
+                    <div class="summary-item">
+
+                        <div class="item-label">
+                            <i class="fa-regular fa-clock"></i>
+                            <span>Appointment Duration</span>
+                        </div>
+
+                        <div class="item-value" id="reviewDuration">30 Minutes</div>
+
+                    </div>
+
+                    <div class="summary-item">
+
+                        <div class="item-label">
+                            <i class="fa-solid fa-calendar-check"></i>
+                            <span>Online Booking</span>
+                        </div>
+
+                        <div class="item-value" id="reviewBooking">Disabled</div>
+
+                    </div>
+
+                    <div class="summary-item">
+
+                        <div class="item-label">
+                            <i class="fa-regular fa-bell"></i>
+                            <span>Reminders</span>
+                        </div>
+
+                        <div class="item-value" id="reviewReminders">Enabled</div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="success-banner">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                <div>
+                    <strong>Everything looks good!</strong>
+                    <span>Click Create Workspace to finish setting up your clinic</span>
+                </div>
+
+            </div>
+
+            <div class="form-actions">
+                <a href="general-settings.html" class="back-btn">
+                    Back
+                </a>
+                <a href="authenticate.html" class="create-btn">
+                    Create Workspace
+                </a>
+            </div>
+
+        </section>
+
+        <footer class="footer">
+
+            <span>2026 SwiftCare. All rights reserved</span>
+
+            <div>
+                Need help?
+                <a href="#">Contact Support</a>
+            </div>
+
+        </footer>
+
+    </main>
+
+</div>
+
+<script src="JavaScript/review.js"></script>
+
+</body>
+</html>

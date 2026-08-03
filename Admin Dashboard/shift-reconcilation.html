@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SwiftCare — Shift Reconciliation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page-nav"><a class="page-nav-link" href="dashboard.html">Dashboard</a><a class="page-nav-link" href="checkin-analytics.html">Check-in Analytics</a><a class="page-nav-link" href="invoice-record-list.html">Invoice Record List</a><a class="page-nav-link" href="review-charges-mary.html">Review Charges – Mary Johnson</a><a class="page-nav-link" href="payment-cash-mary.html">Payment (Cash) – Mary Johnson</a><a class="page-nav-link" href="receipt-mary.html">Generate Receipt – Mary Johnson</a><a class="page-nav-link" href="checkout-complete-mary.html">Checkout Complete – Mary Johnson</a><a class="page-nav-link" href="review-charges-john.html">Review Charges – John Deo</a><a class="page-nav-link" href="payment-bank-john.html">Payment (Bank Transfer) – John Deo</a><a class="page-nav-link" href="bank-transfer-details-john.html">Bank Transfer Details – John Deo</a><a class="page-nav-link" href="receipt-john.html">Generate Receipt – John Deo</a><a class="page-nav-link" href="payment-pos-sam.html">Payment (POS) – Mr Sam</a><a class="page-nav-link" href="receipt-sam.html">Generate Receipt – Mr Sam</a><a class="page-nav-link" href="shift-reconciliation.html">Shift Reconciliation</a></div>
+<div class="app">
+
+  <!-- ===================== SIDEBAR ===================== -->
+  <aside class="sidebar">
+    <div class="logo">
+      <span class="swift">Swift</span><span class="care">Care</span>
+      <span class="plus-badge"><i class="fa-solid fa-plus"></i></span>
+    </div>
+
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a class="nav-link" href="dashboard.html"><i class="fa-solid fa-house nav-icon"></i><span>Dashboard</span></a>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link"><i class="fa-solid fa-user nav-icon"></i><span>Patients</span><i class="fa-solid fa-chevron-down nav-arrow"></i></button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link"><i class="fa-solid fa-user-doctor nav-icon"></i><span>Doctors</span><i class="fa-solid fa-chevron-right nav-arrow"></i></button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link"><i class="fa-solid fa-user-nurse nav-icon"></i><span>Nurses</span><i class="fa-solid fa-chevron-right nav-arrow"></i></button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link"><i class="fa-solid fa-user-tie nav-icon"></i><span>Receptionist</span><i class="fa-solid fa-chevron-right nav-arrow"></i></button>
+      </li>
+      <li class="nav-item active">
+        <button class="nav-link"><i class="fa-solid fa-cash-register nav-icon"></i><span>Cashier</span><i class="fa-solid fa-chevron-down nav-arrow"></i></button>
+        <ul class="submenu">
+          <li><a class="submenu-link" href="invoice-record-list.html">Patient Invoice</a></li>
+          <li><a class="submenu-link" href="review-charges-mary.html">Review Charges</a></li>
+          <li><a class="submenu-link" href="payment-cash-mary.html">Record Payment</a></li>
+          <li><a class="submenu-link" href="receipt-mary.html">Receipt</a></li>
+        </ul>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link"><i class="fa-solid fa-file-invoice-dollar nav-icon"></i><span>Billing</span><i class="fa-solid fa-chevron-right nav-arrow"></i></button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link"><i class="fa-solid fa-gear nav-icon"></i><span>Settings</span><i class="fa-solid fa-chevron-right nav-arrow"></i></button>
+      </li>
+      <li class="nav-item spacer"></li>
+      <li class="nav-item">
+        <a class="nav-link logout-link"><i class="fa-solid fa-right-from-bracket nav-icon"></i><span>Logout</span></a>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- ===================== MAIN ===================== -->
+  <main class="main">
+
+    <!-- ---------- HEADER ---------- -->
+   <section class="page" id="s194">
+  <div class="page-title-card"><h2 style="margin:0;">Daily Shift Summary & Reconciliation</h2></div>
+
+  <div class="recon-grid">
+    <div class="recon-card">
+      <div class="card-head">Cash Drawer Reconciliation</div>
+      <div class="card-body">
+        <div class="recon-row"><span>System Expected Cash</span></div>
+        <div class="recon-row"><span>Currency</span><span>₦80,000</span></div>
+        <div class="recon-row strong"><span>Expected Total</span><span>₦80,000</span></div>
+        <div class="recon-row" style="border-bottom:none;padding-bottom:2px;"><span>Cashier Counted Cash</span></div>
+        <div class="cash-denoms"><span>Currency</span><span>₦1,000</span><span>₦500</span><span>₦200</span><span>₦100</span></div>
+        <div class="cash-denoms" style="border-top:1px solid var(--border);padding-top:10px;"><span>Cash</span><span>₦60,000</span><span>₦10,000</span><span>₦6,000</span><span>₦4,000</span></div>
+        <div class="recon-row strong" style="border-bottom:none;"><span>Counted Total:</span><span>₦80,000</span></div>
+      </div>
+    </div>
+
+    <div class="recon-card">
+      <div class="card-head">Pos Batch Closure</div>
+      <div class="card-body">
+        <div class="pos-total"><span>Total verified sum:</span><span>₦25,000</span></div>
+        <button class="btn-blue">Close POS Batch</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="recon-grid">
+    <div class="recon-card">
+      <div class="card-head">Bank Transfer Reconciliation Log</div>
+      <div class="card-body">
+        <table>
+          <thead><tr><th>Transfer Ref</th><th>Account</th><th>Amount</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>#12345678</td><td>0123 4567 891039,000</td><td>₦39,000</td><td><span class="reconciled-pill">Reconciled</span></td></tr>
+          </tbody>
+        </table>
+        <div class="recon-row strong" style="justify-content:center;gap:10px;border-bottom:none;margin-top:8px;"><span>Reconciled sum</span><span>₦39,000</span></div>
+      </div>
+    </div>
+
+    <div class="recon-card">
+      <div class="card-head">Shift Handover Report</div>
+      <div class="card-body">
+        <p class="handover-text">Handing over cash of <strong>₦80,000</strong> and POS of <strong>₦25,000</strong><br>Bank transfer of <strong>₦39,000</strong> Shift is mostly positive.</p>
+        <div class="handover-sign">Sandra Duke.</div>
+        <button class="btn btn-fill-green" style="margin:0;">Submit Handover</button>
+      </div>
+    </div>
+  </div>
+</section>

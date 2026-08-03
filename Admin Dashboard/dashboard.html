@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SwiftCare — Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+
+  <!-- ===================== SIDEBAR ===================== -->
+  <aside class="sidebar">
+    <div class="logo">
+      <span class="swift">Swift</span><span class="care">Care</span>
+      <span class="plus-badge"><i class="fa-solid fa-plus"></i></span>
+    </div>
+
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a class="nav-link" href="dashboard.html"><i class="fa-solid fa-house nav-icon"></i><span>Dashboard</span></a>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link"><i class="fa-solid fa-user nav-icon"></i><span>Patients</span><i class="fa-solid fa-chevron-down nav-arrow"></i></button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link"><i class="fa-solid fa-user-doctor nav-icon"></i><span>Doctors</span><i class="fa-solid fa-chevron-right nav-arrow"></i></button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link"><i class="fa-solid fa-user-nurse nav-icon"></i><span>Nurses</span><i class="fa-solid fa-chevron-right nav-arrow"></i></button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link"><i class="fa-solid fa-user-tie nav-icon"></i><span>Receptionist</span><i class="fa-solid fa-chevron-right nav-arrow"></i></button>
+      </li>
+      <li class="nav-item active">
+        <button class="nav-link"><i class="fa-solid fa-cash-register nav-icon"></i><span>Cashier</span><i class="fa-solid fa-chevron-down nav-arrow"></i></button>
+        <ul class="submenu">
+          <li><a class="submenu-link" href="invoice-record-list.html">Patient Invoice</a></li>
+          <li><a class="submenu-link" href="review-charges-mary.html">Review Charges</a></li>
+          <li><a class="submenu-link" href="payment-cash-mary.html">Record Payment</a></li>
+          <li><a class="submenu-link" href="receipt-mary.html">Receipt</a></li>
+        </ul>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link"><i class="fa-solid fa-file-invoice-dollar nav-icon"></i><span>Billing</span><i class="fa-solid fa-chevron-right nav-arrow"></i></button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link"><i class="fa-solid fa-gear nav-icon"></i><span>Settings</span><i class="fa-solid fa-chevron-right nav-arrow"></i></button>
+      </li>
+      <li class="nav-item spacer"></li>
+      <li class="nav-item">
+        <a class="nav-link logout-link"><i class="fa-solid fa-right-from-bracket nav-icon"></i><span>Logout</span></a>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- ===================== MAIN ===================== -->
+  <main class="main">
+
+    <!-- ---------- HEADER ---------- -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="hamburger">☰</button>
+        <h1>Dashboard</h1>
+        <div class="bell-wrapper">
+          <i class="fa-solid fa-bell"></i>
+          <span class="badge">5</span>
+        </div>
+      </div>
+
+      <div class="topbar-right">
+        <div class="user-info">
+          <div class="avatar"><img src="assets/sandra-duke.jpg" alt=""></div>
+          <div class="user-text">
+            <div class="user-name">Sandra Duke</div>
+            <div class="user-role">(Cashier)</div>
+          </div>
+          <span class="dropdown-arrow"><i class="fa-solid fa-chevron-down"></i></span>
+        </div>
+        <div class="search-row">
+          <div class="search-box">
+            <input type="text" placeholder="Search Patient name/ID">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+          <div class="date-pill">
+            <i class="fa-regular fa-calendar"></i>
+            <span>July 20, 2026 | Monday</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section class="page" id="s192">
+      <div class="page-title-card">
+        <h2>Welcome back, Sandra</h2>
+        <p>Here's what's happening in the hospital today</p>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-card blue">
+          <div class="stat-top"><span class="stat-icon"><i class="fa-solid fa-user-group"></i></span><span class="stat-label">Total Patients</span></div>
+          <div class="stat-value">37</div>
+          <svg class="sparkline" viewBox="0 0 100 24" preserveAspectRatio="none"><polyline points="0,14 15,10 30,16 45,8 60,14 75,6 100,12" fill="none" stroke="#5b8def" stroke-width="2"/></svg>
+        </div>
+        <div class="stat-card green">
+          <div class="stat-top"><span class="stat-icon" style="color:#27AE60"><i class="fa-solid fa-stethoscope"></i></span><span class="stat-label">Doctors on Duty</span></div>
+          <div class="stat-value">12</div>
+          <svg class="sparkline" viewBox="0 0 100 24" preserveAspectRatio="none"><polyline points="0,18 20,6 40,14 60,4 80,10 100,2" fill="none" stroke="#27AE60" stroke-width="2"/></svg>
+        </div>
+        <div class="stat-card orange">
+          <div class="stat-top"><span class="stat-icon" style="color:#F2994A"><i class="fa-solid fa-chart-line"></i></span><span class="stat-label">Revenue Today</span></div>
+          <div class="stat-value">₦4,200</div>
+          <svg class="sparkline" viewBox="0 0 100 24" preserveAspectRatio="none"><polyline points="0,20 15,20 15,10 30,10 30,18 45,18 45,4 60,4 60,16 75,16 75,8 100,8" fill="none" stroke="#F2994A" stroke-width="2"/></svg>
+        </div>
+        <div class="stat-card white">
+          <div class="stat-top"><span class="stat-icon" style="background:var(--blue-light);color:var(--blue)"><i class="fa-solid fa-user-group"></i></span><span class="stat-label">Patients in consultation</span></div>
+          <div class="stat-value">21</div>
+          <svg class="sparkline" viewBox="0 0 100 24" preserveAspectRatio="none"><polyline points="0,10 20,18 40,8 60,16 80,6 100,14" fill="none" stroke="#7C6FE0" stroke-width="2"/></svg>
+        </div>
+        <div class="stat-card white">
+          <div class="stat-top"><span class="stat-icon" style="background:var(--blue-light);color:var(--blue)"><i class="fa-solid fa-user-group"></i></span><span class="stat-label">Pending Transaction</span></div>
+          <div class="stat-value">2</div>
+          <svg class="sparkline" viewBox="0 0 100 24" preserveAspectRatio="none"><polyline points="0,20 25,6 50,18 75,4 100,10" fill="none" stroke="#7C6FE0" stroke-width="2"/></svg>
+        </div>
+      </div>
+
+      <div class="split-2">
+        <div class="list-card">
+          <h3>Checked In Waiting</h3>
+          <div class="activity-row"><span class="dot-avatar"><i class="fa-solid fa-user"></i></span><span class="name">John Doe has been registered</span><span class="time">10:30 AM</span></div>
+          <div class="activity-row"><span class="dot-avatar"><i class="fa-solid fa-user"></i></span><span class="name">Mary Johnson has checked in</span><span class="time">11:25 AM</span></div>
+          <div class="activity-row"><span class="dot-avatar"><i class="fa-solid fa-user"></i></span><span class="name">Roberts Lee</span><span class="time">14:31 AM</span></div>
+          <div class="activity-row"><span class="dot-avatar"><i class="fa-solid fa-user"></i></span><span class="name">James Taylor</span><span class="time">22:18 AM</span></div>
+          <a class="view-all">View all activities</a>
+        </div>
+
+        <div class="list-card">
+          <div class="head-row"><h3>In Consultation</h3><a class="view-all link">View all</a></div>
+          <table>
+            <thead><tr><th>Time</th><th>Patient</th><th>Doctor</th><th>Department</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>09:00 AM</td><td>John Doe</td><td>Dr. Sarah S.</td><td>Cardiology</td><td><span class="status-pill pending-orange">Pending</span></td></tr>
+              <tr><td>10:00 AM</td><td>Mary Johnson</td><td>Dr. Michael B.</td><td>General</td><td><span class="status-pill paid">Completed</span></td></tr>
+              <tr><td>02:00 PM</td><td>Roberts Lee</td><td>Dr. David W.</td><td>Neurology</td><td><span class="status-pill paid">Completed</span></td></tr>
+              <tr><td>05:00 PM</td><td>James Taylor</td><td>Dr. Brown W.</td><td>General</td><td><span class="status-pill paid">Completed</span></td></tr>
+              <tr><td>07:15 PM</td><td>Ray Taylor</td><td>Dr. Green W.</td><td>General</td><td><span class="status-pill paid">Completed</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="split-2" style="grid-template-columns:1fr 2.4fr;">
+        <div class="list-card">
+          <h3>Awaiting Payment</h3>
+          <div class="pending-row"><span>James Taylor</span><span class="pending-badge">Pending</span></div>
+          <div class="pending-row"><span>Mary Johnson</span><span class="pending-badge">Pending</span></div>
+          <div class="pending-row"><span>Roberts Lee</span><span class="pending-badge">Pending</span></div>
+          <div class="pending-row"><span>Ray Taylor</span><span class="pending-badge">Pending</span></div>
+          <a class="view-all" style="margin-top:14px;">View all activities</a>
+        </div>
+
+        <div class="txn-table-card">
+          <div class="head-row"><h3>Recent Transactions</h3><a class="view-all link">View all</a></div>
+          <table>
+            <thead><tr><th>Patient's Name</th><th>Patient ID</th><th>Service Type</th><th>Amount Paid</th><th>Payment Method</th><th>Date</th><th>Status</th><th>Action</th></tr></thead>
+            <tbody>
+              <tr><td>Mr. John Deo</td><td>PAT1023</td><td>ER visit</td><td>₦39,000</td><td>Bank Transfer</td><td>20/7/2026</td><td><span class="status-pill paid">Paid</span></td><td><div class="action-icons"><i class="fa-regular fa-eye"></i><i class="fa-solid fa-print"></i><i class="fa-solid fa-download"></i></div></td></tr>
+              <tr><td>Mary Johnson</td><td>PAT 1025</td><td>Consultation</td><td>₦80,000</td><td>Cash</td><td>20/7/2026</td><td><span class="status-pill paid">Paid</span></td><td><div class="action-icons"><i class="fa-regular fa-eye"></i><i class="fa-solid fa-print"></i><i class="fa-solid fa-download"></i></div></td></tr>
+              <tr><td>Roberts Lee</td><td>PAT 2351</td><td>Pharmacy</td><td>₦15,000</td><td>Cash</td><td>20/7/2026</td><td><span class="status-pill pending-orange">Pending</span></td><td><div class="action-icons"><i class="fa-regular fa-eye"></i><i class="fa-solid fa-print"></i><i class="fa-solid fa-download"></i></div></td></tr>
+              <tr><td>Mr. Okafor</td><td>PAT 3427</td><td>Consultation</td><td>₦10,000</td><td>Mobile</td><td>20/7/2026</td><td><span class="status-pill pending-orange">Pending</span></td><td><div class="action-icons"><i class="fa-regular fa-eye"></i><i class="fa-solid fa-print"></i><i class="fa-solid fa-download"></i></div></td></tr>
+              <tr><td>Mr. Sam Okafor</td><td>PAT 3851</td><td>Pharmacy</td><td>₦10,000</td><td>Credit Card</td><td>20/7/2026</td><td><span class="status-pill paid">Paid</span></td><td><div class="action-icons"><i class="fa-regular fa-eye"></i><i class="fa-solid fa-print"></i><i class="fa-solid fa-download"></i></div></td></tr>
+              <tr><td>Mr. Sam</td><td>PAT 3851</td><td>Pharmacy</td><td>₦25,000</td><td>Credit Card</td><td>20/7/2026</td><td><span class="status-pill paid">Paid</span></td><td><div class="action-icons"><i class="fa-regular fa-eye"></i><i class="fa-solid fa-print"></i><i class="fa-solid fa-download"></i></div></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

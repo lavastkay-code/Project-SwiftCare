@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SwiftCare — Payment (Cash) – Mary Johnson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page-nav"><a class="page-nav-link" href="dashboard.html">Dashboard</a><a class="page-nav-link" href="checkin-analytics.html">Check-in Analytics</a><a class="page-nav-link" href="invoice-record-list.html">Invoice Record List</a><a class="page-nav-link" href="review-charges-mary.html">Review Charges – Mary Johnson</a><a class="page-nav-link" href="payment-cash-mary.html">Payment (Cash) – Mary Johnson</a><a class="page-nav-link" href="receipt-mary.html">Generate Receipt – Mary Johnson</a><a class="page-nav-link" href="checkout-complete-mary.html">Checkout Complete – Mary Johnson</a><a class="page-nav-link" href="review-charges-john.html">Review Charges – John Deo</a><a class="page-nav-link" href="payment-bank-john.html">Payment (Bank Transfer) – John Deo</a><a class="page-nav-link" href="bank-transfer-details-john.html">Bank Transfer Details – John Deo</a><a class="page-nav-link" href="receipt-john.html">Generate Receipt – John Deo</a><a class="page-nav-link" href="payment-pos-sam.html">Payment (POS) – Mr Sam</a><a class="page-nav-link" href="receipt-sam.html">Generate Receipt – Mr Sam</a><a class="page-nav-link" href="shift-reconciliation.html">Shift Reconciliation</a></div>
+<div class="app">
+
+  <!-- ===================== SIDEBAR ===================== -->
+  <aside class="sidebar">
+    <div class="logo">
+      <span class="swift">Swift</span><span class="care">Care</span>
+      <span class="plus-badge"><i class="fa-solid fa-plus"></i></span>
+    </div>
+
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a class="nav-link" href="dashboard.html"><i class="fa-solid fa-house nav-icon"></i><span>Dashboard</span></a>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link"><i class="fa-solid fa-user nav-icon"></i><span>Patients</span><i class="fa-solid fa-chevron-down nav-arrow"></i></button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link"><i class="fa-solid fa-user-doctor nav-icon"></i><span>Doctors</span><i class="fa-solid fa-chevron-right nav-arrow"></i></button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link"><i class="fa-solid fa-user-nurse nav-icon"></i><span>Nurses</span><i class="fa-solid fa-chevron-right nav-arrow"></i></button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link"><i class="fa-solid fa-user-tie nav-icon"></i><span>Receptionist</span><i class="fa-solid fa-chevron-right nav-arrow"></i></button>
+      </li>
+      <li class="nav-item active">
+        <button class="nav-link"><i class="fa-solid fa-cash-register nav-icon"></i><span>Cashier</span><i class="fa-solid fa-chevron-down nav-arrow"></i></button>
+        <ul class="submenu">
+          <li><a class="submenu-link" href="invoice-record-list.html">Patient Invoice</a></li>
+          <li><a class="submenu-link" href="review-charges-mary.html">Review Charges</a></li>
+          <li><a class="submenu-link" href="payment-cash-mary.html">Record Payment</a></li>
+          <li><a class="submenu-link" href="receipt-mary.html">Receipt</a></li>
+        </ul>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link"><i class="fa-solid fa-file-invoice-dollar nav-icon"></i><span>Billing</span><i class="fa-solid fa-chevron-right nav-arrow"></i></button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link"><i class="fa-solid fa-gear nav-icon"></i><span>Settings</span><i class="fa-solid fa-chevron-right nav-arrow"></i></button>
+      </li>
+      <li class="nav-item spacer"></li>
+      <li class="nav-item">
+        <a class="nav-link logout-link"><i class="fa-solid fa-right-from-bracket nav-icon"></i><span>Logout</span></a>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- ===================== MAIN ===================== -->
+  <main class="main">
+
+    <!-- ---------- HEADER ---------- -->
+    <section class="page" id="s188">
+  <div class="info-cards">
+    <div class="info-card blue"><div class="label">Patient Name</div><div class="value">Mary Johnson</div></div>
+    <div class="info-card green"><div class="label">Invoice ID</div><div class="value">PAT 1025</div></div>
+    <div class="info-card orange"><div class="label">Date</div><div class="value">July 20th 2026</div></div>
+    <div class="info-card status">
+      <div class="label" style="margin-bottom:4px;">Review Status</div>
+      <div class="progress-track"><div class="progress-fill" style="width:90%;"></div></div>
+      <div class="progress-label">90% Complete</div>
+    </div>
+  </div>
+
+  <div class="payment-outer">
+    <div class="payment-card">
+      <h4>Payment Method</h4>
+      <div class="tabs">
+        <div class="tab active">Cash Payment</div>
+        <div class="tab">POS / Card Terminal</div>
+        <div class="tab">Bank Transfer</div>
+      </div>
+      <div class="amount-block">
+        <div style="font-weight:700;font-size:13.5px;">Payment Amount</div>
+        <h2>₦1900.00</h2>
+      </div>
+      <div class="method-select-label">Select Payment Method</div>
+      <div class="method-row selected"><i class="fa-solid fa-cash-register icon"></i>Cash Payment<span class="toggle on"></span></div>
+      <div class="method-row"><i class="fa-solid fa-mobile-screen icon"></i>Bank Transfer<span class="toggle"></span></div>
+      <div class="method-row"><i class="fa-regular fa-credit-card icon"></i>POS / Card Terminal<span class="toggle"></span></div>
+
+      <div class="payment-actions">
+        <button class="btn btn-submit">Submit Payment <i class="fa-solid fa-arrow-right"></i></button>
+        <button class="btn btn-outline">Process Payment & Clear Cash Gate</button>
+        <button class="btn btn-fill-green">Print Thermal Receipt</button>
+        <button class="btn btn-outline">Send SMS/Email Receipt</button>
+      </div>
+    </div>
+  </div>
+</section>

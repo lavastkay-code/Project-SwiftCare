@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SwiftCare | Log in</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="page">
+
+    <!-- LEFT PANEL -->
+    <aside class="hero-panel">
+      <div class="hero-top">
+        <div class="logo">
+          <img src="logo.png" alt="SwiftCare" class="logo-img" />
+        </div>
+
+        <h1 class="hero-heading">Let's set up your<br />clinic workspace</h1>
+        <p class="hero-sub">Create a secure and organized environment to manage your hospital operations efficiently.</p>
+
+        <ul class="hero-features">
+          <li>
+            <span class="feature-icon" aria-hidden="true">🔒</span>
+            <div>
+              <strong>Secure &amp; Compliant</strong>
+              <span>Your data is protected with enterprise-grade security</span>
+            </div>
+          </li>
+          <li>
+            <span class="feature-icon" aria-hidden="true">👥</span>
+            <div>
+              <strong>Role-based Access</strong>
+              <span>Get real-time insights and make smarter decisions</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="hero-note-wrap">
+        <p class="hero-note">
+          <span aria-hidden="true">🔒</span> Your information is safe with us. We never share your data.
+        </p>
+      </div>
+    </aside>
+
+    <!-- RIGHT PANEL -->
+    <main class="auth-panel">
+
+      <nav class="top-nav">
+        <div class="nav-inner">
+          <div class="nav-links">
+            <a href="#">Appointments</a>
+            <a href="#">Billing</a>
+            <a href="#">FAQ</a>
+            <a href="#" class="nav-icon" aria-label="Notifications">🔔</a>
+            <a href="#">Contact</a>
+          </div>
+          <div class="nav-right">
+            <button class="icon-btn" aria-label="Menu">☰</button>
+            <button class="icon-btn avatar-btn" aria-label="Account">👤</button>
+          </div>
+        </div>
+      </nav>
+
+      <div class="auth-wrap">
+        <form class="auth-card" id="authForm" novalidate>
+          <h2 class="card-title">Log in</h2>
+          <p class="welcome-text">Welcome to SwiftCare</p>
+
+          <label class="field-label" for="countryCode">Country/Region</label>
+          <select id="countryCode" name="countryCode">
+            <option value="+44">United Kingdom (+44)</option>
+            <option value="+234">Nigeria (+234)</option>
+            <option value="+1">United States (+1)</option>
+            <option value="+233">Ghana (+233)</option>
+          </select>
+
+          <label class="field-label" for="phone">Phone number</label>
+          <input type="tel" id="phone" name="phone" placeholder="Phone number" autocomplete="tel" />
+
+          <label class="field-label" for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Enter Email Address" autocomplete="email" required />
+          <p class="field-error" id="emailError" role="alert"></p>
+
+          <label class="field-label" for="password">Password</label>
+          <div class="password-wrap">
+            <input type="password" id="password" name="password" placeholder="Input password" autocomplete="current-password" required />
+            <button type="button" class="toggle-pw" data-target="password" aria-label="Show password">👁</button>
+          </div>
+          <a href="#" class="forgot-link">Forgot password?</a>
+          <p class="field-error" id="passwordError" role="alert"></p>
+
+          <button type="submit" class="btn-primary" id="continueBtn">Continue</button>
+
+          <p class="signup-link">Don't have an Account? <a href="admin-account.html">Sign Up</a></p>
+        </form>
+      </div>
+
+      <div class="wave" aria-hidden="true">
+        <img src="image.jpg" alt="" />
+      </div>
+
+      <footer class="auth-footer">
+        <span>2026 SwiftCare. All rights reserved</span>
+        <span>Need help? <a href="#">Contact Support</a></span>
+      </footer>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
