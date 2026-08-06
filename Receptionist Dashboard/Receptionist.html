@@ -8,380 +8,380 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="Receptionist.css">
+    <link rel="stylesheet" href="Receptionist.css">   
 </head>
 <body>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
     <div class="app">
-        <!-- Side bar -->
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+          <!-- Logo -->
+          <div class="logo">
+            <img src="Assets/logo.png" alt="SwiftCare Logo" class="logo-img" role="img">
+          </div>
 
-<aside class="sidebar">
+          <!-- Nav -->
+          <nav class="nav">
+            <ul class="nav-list">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fa-solid fa-house nav-icon"></i>
+                  <span>Dashboard</span>
+                </a>
+              </li>
 
-  <!-- Logo -->
-  <div class="logo">
-    <img src="Assets/logo.png" alt="SwiftCare Logo" class="logo-img" role="img">
-  </div>
+              <!-- Expandable: Patients -->
+              <li class="nav-item has-submenu">
+                <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="patients-submenu">
+                  <i class="fa-solid fa-user nav-icon"></i>
+                  <span>Patients</span>
+                  <i class="fa-solid fa-chevron-down nav-arrow"></i>
+                </button>
+                <ul class="submenu" id="patients-submenu">
+                  <li><a href="AccessDenied.html" class="submenu-link">Patient Records</a></li>
+                </ul>
+              </li>
 
-  <!-- Nav -->
-  <nav class="nav">
-    <ul class="nav-list">
+              <!-- Expandable: Doctors -->
+              <li class="nav-item has-submenu">
+                <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="doctors-submenu">
+                  <i class="fa-solid fa-user-doctor nav-icon"></i>
+                  <span>Doctors</span>
+                  <i class="fa-solid fa-chevron-down nav-arrow"></i>
+                </button>
+                <ul class="submenu" id="doctors-submenu">
+                  <li><a href="AccessDenied.html" class="submenu-link">Consultation Queue</a></li>
+                </ul>
+              </li>
 
-      <li class="nav-item">
-        <a href="#" class="nav-link">
-          <i class="fa-solid fa-house nav-icon"></i>
-          <span>Dashboard</span>
-        </a>
-      </li>
+              <!-- Expandable: Nurses -->
+              <li class="nav-item has-submenu">
+                <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="nurses-submenu">
+                  <i class="fa-solid fa-user-nurse nav-icon"></i>
+                  <span>Nurses</span>
+                  <i class="fa-solid fa-chevron-down nav-arrow"></i>
+                </button>
+                <ul class="submenu" id="nurses-submenu">
+                  <li><a href="AccessDenied.html" class="submenu-link">Triage Queue</a></li>
+                  <li><a href="AccessDenied.html" class="submenu-link">Vital Records</a></li>
+                </ul>
+              </li>
 
-      <!-- Expandable: Patients -->
-      <li class="nav-item has-submenu">
-        <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="patients-submenu">
-          <i class="fa-solid fa-user nav-icon"></i>
-          <span>Patients</span>
-          <i class="fa-solid fa-chevron-down nav-arrow"></i>
-        </button>
-        <ul class="submenu" id="patients-submenu">
-          <li><button type="button" class="submenu-link popup-trigger" id="openPatientPopup">Register Patient</button></li>
-          <li><a href="ConsultationQ.html" class="submenu-link">Patient Records</a></li>
-        </ul>
-      </li>
+              <!-- Expandable: Receptionist -->
+              <li class="nav-item has-submenu">
+                <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="receptionist-submenu">
+                  <i class="fa-solid fa-user-tie nav-icon"></i>
+                  <span>Receptionist</span>
+                  <i class="fa-solid fa-chevron-down nav-arrow"></i>
+                </button>
+                <ul class="submenu" id="receptionist-submenu">
+                  <li><button type="button" class="submenu-link popup-trigger" id="RegPatientPopup">Register Patient</button></li>
+                  <li><a href="SearchP.html" class="submenu-link">Patient Records</a></li>
+                  <li><a href="Appointments.html" class="submenu-link">Appointments</a></li>
+                  <li><a href="Queues.html" class="submenu-link">Queues</a></li>
+                </ul>
+              </li>
 
-      <!-- Expandable: Doctors -->
-      <li class="nav-item has-submenu">
-        <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="doctors-submenu">
-          <i class="fa-solid fa-user-doctor nav-icon"></i>
-          <span>Doctors</span>
-          <i class="fa-solid fa-chevron-down nav-arrow"></i>
-        </button>
-        <ul class="submenu" id="doctors-submenu">
-          <li><a href="DoctorDash.html" class="submenu-link">Consultation Queue</a></li>
-        </ul>
-      </li>
+              <!-- Expandable: Cashier -->
+              <li class="nav-item has-submenu">
+                <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="cashier-submenu">
+                  <i class="fa-solid fa-cash-register nav-icon"></i>
+                  <span>Cashier</span>
+                  <i class="fa-solid fa-chevron-down nav-arrow"></i>
+                </button>
+                <ul class="submenu" id="cashier-submenu">
+                  <li><a href="AccessDenied.html" class="submenu-link">Patient Invoice</a></li>
+                  <li><a href="AccessDenied.html" class="submenu-link">Review Charges</a></li>
+                  <li><a href="AccessDenied.html" class="submenu-link">Record Payment</a></li>
+                  <li><a href="AccessDenied.html" class="submenu-link">Receipts</a></li>
+                </ul>
+              </li>
 
-      <!-- Expandable: Nurses -->
-      <li class="nav-item has-submenu">
-        <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="nurses-submenu">
-          <i class="fa-solid fa-user-nurse nav-icon"></i>
-          <span>Nurses</span>
-          <i class="fa-solid fa-chevron-down nav-arrow"></i>
-        </button>
-        <ul class="submenu" id="nurses-submenu">
-          <li><a href="#" class="submenu-link">Add Nurse</a></li>
-          <li><a href="#" class="submenu-link">Nurse List</a></li>
-        </ul>
-      </li>
+              <!-- Expandable: Billings -->
+              <li class="nav-item has-submenu">
+                <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="billings-submenu">
+                  <i class="fa-solid fa-file-invoice-dollar nav-icon"></i>
+                  <span>Billings</span>            
+                  <i class="fa-solid fa-chevron-down nav-arrow"></i>
+                </button>
+                <ul class="submenu" id="billings-submenu">
+                  <li><a href="AccessDenied.html" class="submenu-link">Billing</a></li>
+                </ul>
+              </li>
 
-      <!-- Expandable: Receptionist -->
-      <li class="nav-item has-submenu">
-        <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="receptionist-submenu">
-          <i class="fa-solid fa-user-tie nav-icon"></i>
-          <span>Receptionist</span>
-          <i class="fa-solid fa-chevron-down nav-arrow"></i>
-        </button>
-        <ul class="submenu" id="receptionist-submenu">
-          <li><a href="#" class="submenu-link">Add Receptionist</a></li>
-          <li><a href="#" class="submenu-link">Receptionist List</a></li>
-        </ul>
-      </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fa-solid fa-gear nav-icon"></i>
+                  <span>Settings</span>
+                </a>
+              </li>
 
-      <!-- Expandable: Cashier -->
-      <li class="nav-item has-submenu">
-        <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="cashier-submenu">
-          <i class="fa-solid fa-cash-register nav-icon"></i>
-          <span>Cashier</span>
-          <i class="fa-solid fa-chevron-down nav-arrow"></i>
-        </button>
-        <ul class="submenu" id="cashier-submenu">
-          <li><a href="#" class="submenu-link">Add Cashier</a></li>
-          <li><a href="#" class="submenu-link">Cashier List</a></li>
-        </ul>
-      </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link logout-link">
+                  <i class="fa-solid fa-right-from-bracket nav-icon"></i>
+                  <span>Logout</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
 
-      <!-- Expandable: Billings -->
-      <li class="nav-item has-submenu">
-        <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="billings-submenu">
-          <i class="fa-solid fa-file-invoice-dollar nav-icon"></i>
-          <span>Billings</span>
-          <i class="fa-solid fa-chevron-down nav-arrow"></i>
-        </button>
-        <ul class="submenu" id="billings-submenu">
-          <li><a href="#" class="submenu-link">Create Invoice</a></li>
-          <li><a href="#" class="submenu-link">Invoice History</a></li>
-        </ul>
-      </li>
-
-      <li class="nav-item">
-        <a href="#" class="nav-link">
-          <i class="fa-solid fa-gear nav-icon"></i>
-          <span>Settings</span>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a href="#" class="nav-link logout-link">
-          <i class="fa-solid fa-right-from-bracket nav-icon"></i>
-          <span>Logout</span>
-        </a>
-      </li>
-
-    </ul>
-  </nav>
-
-  <!-- Footer note -->
-  <div class="info-box">
-    <i class="fa-solid fa-lock info-icon"></i>
-    <p>Your information is safe with us<br>We never share your data</p>
-  </div>
-
-</aside>
+          <!-- Footer note -->
+          <div class="info-box">
+            <i class="fa-solid fa-lock info-icon"></i>
+            <p>Your information is safe with us<br>We never share your data</p>
+          </div>
+        </aside>
 
         <!-- Main content -->
-    <main class="main">
+        <main class="main">
+          <header class="topbar">
+            <button class="hamburger" id="hamburgerBtn" aria-label="Toggle Navigation">☰</button>
+            <h1>Dashboard</h1>
 
-      <header class="topbar">
-        <button class="hamburger" id="hamburgerBtn">☰</button>
-        <h1>Dashboard</h1>
-
-        <div class="topbar-right">
-          <div class="bell-wrapper">
-            <span class="bell"><img src="Assets/bell.png" alt=""></span>
-            <span class="badge">2</span>
-          </div>
-          <div class="divider"></div>
-          <div class="user-info">
-            <div class="avatar"><img src="Assets/recept.png" alt=""></div>
-            <div class="user-text">
-              <div class="user-name">Bola John</div>
-              <div class="user-role">Receptionist</div>
+            <div class="topbar-right">
+              <div class="bell-wrapper">
+                <span class="bell"><img src="Assets/bell.png" alt="Notifications"></span>
+                <span class="badge">2</span>
+              </div>
+              <div class="divider"></div>
+              <div class="user-info">
+                <div class="avatar"><img src="Assets/recept.png" alt="User Avatar"></div>
+                <div class="user-text">
+                  <div class="user-name">Bola John</div>
+                  <div class="user-role">Receptionist</div>
+                </div>
+                <span class="dropdown-arrow">
+                  <i class="fa-solid fa-chevron-down nav-arrow"></i>
+                </span>                   
+              </div>
             </div>
-              <span class="dropdown-arrow">
-              <i class="fa-solid fa-chevron-down nav-arrow"></i>
-              </span>                     
-          </div>
-        </div>
-      </header>
+          </header>
 
-      <section class="welcome-row">
-        <div class="welcome-text">
-          <h2>Welcome back, Bola</h2>
-          <p>Here's whats happening in the hospital today</p>
-        </div>
+          <section class="welcome-row">
+            <div class="welcome-text">
+              <h2>Welcome back, Bola</h2>
+              <p>Here's what's happening in the hospital today</p>
+            </div>
 
-        <div class="search-box">
-          <input type="text" id="searchInput" placeholder="Search">
-          <button id="searchBtn"><img src="Assets/search.png" alt="" class="btn-img"></button>
-        </div>
+            <div class="search-box">
+              <input type="text" id="searchInput" placeholder="Search">
+              <button id="searchBtn"><img src="Assets/search.png" alt="Search" class="btn-img"></button>
+            </div>
 
-        <div >
-          <input type="date" class="date-picker" id="datePicker">
-        </div>
-      </section>
+            <div>
+              <input type="date" class="date-picker" id="datePicker">
+            </div>
+          </section>
 
-      <section class="stats-row">
-        <div class="stat-card">
-          <div class="stat-icon blue"><img src="Assets/Tpatients.png" alt=""></div>
-          <div class="stat-content">
-            <div class="stat-label">Today's Patients</div>
-            <div class="stat-value">78</div>
-            <div class="stat-sub green">+12 from yesterday</div>
-          </div>
-        </div>
-
-        <div class="stat-card">
-          <div class="stat-icon green"><img src="Assets/queue.png" alt=""></div>
-          <div class="stat-content">
-            <div class="stat-label">Currently in Queue</div>
-            <div class="stat-value">23</div>
-            <div class="stat-sub green">Live</div>
-          </div>
-        </div>
-
-        <div class="stat-card">
-          <div class="stat-icon purple"><img src="Assets/clock.png" alt=""></div>
-          <div class="stat-content">
-            <div class="stat-label">Avg. Wait Time</div>
-            <div class="stat-value">25<span class="unit">mins</span></div>
-            <div class="stat-sub green">-5 mins from yesterday</div>
-          </div>
-        </div>
-
-        <div class="stat-card">
-          <div class="stat-icon orange"><img src="Assets/checkin.png" alt=""></div>
-          <div class="stat-content">
-            <div class="stat-label">Checked -in Today</div>
-            <div class="stat-value">55</div>
-            <div class="stat-sub green">+10 from yesterday</div>
-          </div>
-        </div>
-      </section>
-
-      <section class="queue-row">
-        <div class="panel-queue-overview">
-          <h3>Live Queue Overview</h3>
-          <div class="queue-body">
-            <div class="donut-wrapper">
-              <canvas id="donutChart" width="220" height="220"></canvas>
-              <div class="donut-center">
-                <div class="donut-number">23</div>
-                <div class="donut-label">Total in Queue</div>
+          <section class="stats-row">
+            <div class="stat-card">
+              <div class="stat-icon blue"><img src="Assets/Tpatients.png" alt=""></div>
+              <div class="stat-content">
+                <div class="stat-label">Today's Patients</div>
+                <div class="stat-value">78</div>
+                <div class="stat-sub green">+12 from yesterday</div>
               </div>
             </div>
 
-            <div class="queue-legend">
-              <div class="legend-item">
-                <span class="dot blue"></span>
-                <span class="legend-label">Waiting for Triage</span>
-                <span class="legend-value">9 (39%)</span>
-              </div>
-              <div class="legend-item">
-                <span class="dot green"></span>
-                <span class="legend-label">Waiting for Consultation</span>
-                <span class="legend-value">8 (35%)</span>
-              </div>
-              <div class="legend-item">
-                <span class="dot orange"></span>
-                <span class="legend-label">Waiting for Payment</span>
-                <span class="legend-value">6 (26%)</span>
+            <div class="stat-card">
+              <div class="stat-icon green"><img src="Assets/queue.png" alt=""></div>
+              <div class="stat-content">
+                <div class="stat-label">Currently in Queue</div>
+                <div class="stat-value">23</div>
+                <div class="stat-sub green">Live</div>
               </div>
             </div>
-          </div>
 
-          <button class="view-full-queue" id="viewFullQueueBtn">View full queue</button>
-        </div>
-
-        <div class="panel-queue-row">
-          <h3>Queue by Priority</h3>
-
-          <div class="priority-item">
-            <span class="priority-label">High Priority</span>
-            <div class="priority-bar-track">
-              <div class="priority-bar red" style="width: 25%;"></div>
+            <div class="stat-card">
+              <div class="stat-icon purple"><img src="Assets/clock.png" alt=""></div>
+              <div class="stat-content">
+                <div class="stat-label">Avg. Wait Time</div>
+                <div class="stat-value">25<span class="unit">mins</span></div>
+                <div class="stat-sub green">-5 mins from yesterday</div>
+              </div>
             </div>
-            <span class="priority-value">4</span>
-          </div>
 
-          <div class="priority-item">
-            <span class="priority-label">Medium Priority</span>
-            <div class="priority-bar-track">
-              <div class="priority-bar orange" style="width: 100%;"></div>
+            <div class="stat-card">
+              <div class="stat-icon orange"><img src="Assets/checkin.png" alt=""></div>
+              <div class="stat-content">
+                <div class="stat-label">Checked -in Today</div>
+                <div class="stat-value">55</div>
+                <div class="stat-sub green">+10 from yesterday</div>
+              </div>
             </div>
-            <span class="priority-value">11</span>
-          </div>
+          </section>
 
-          <div class="priority-item">
-            <span class="priority-label">Low Priority</span>
-            <div class="priority-bar-track">
-              <div class="priority-bar green" style="width: 72%;"></div>
+          <section class="queue-row">
+            <div class="panel-queue-overview">
+              <h3>Live Queue Overview</h3>
+              <div class="queue-body">
+                <div class="donut-wrapper">
+                  <canvas id="donutChart" width="220" height="220"></canvas>
+                  <div class="donut-center">
+                    <div class="donut-number">23</div>
+                    <div class="donut-label">Total in Queue</div>
+                  </div>
+                </div>
+
+                <div class="queue-legend">
+                  <div class="legend-item">
+                    <span class="dot blue"></span>
+                    <span class="legend-label">Waiting for Triage</span>
+                    <span class="legend-value">9 (39%)</span>
+                  </div>
+                  <div class="legend-item">
+                    <span class="dot green"></span>
+                    <span class="legend-label">Waiting for Consultation</span>
+                    <span class="legend-value">8 (35%)</span>
+                  </div>
+                  <div class="legend-item">
+                    <span class="dot orange"></span>
+                    <span class="legend-label">Waiting for Payment</span>
+                    <span class="legend-value">6 (26%)</span>
+                  </div>
+                </div>
+              </div>
+
+              <button class="view-full-queue" id="viewFullQueueBtn">View full queue</button>
             </div>
-            <span class="priority-value">8</span>
-          </div>
 
-          <div class="total-queue-box">
-            <span>Total Queue</span>
-            <span>23</span>
-          </div>
-        </div>
-      </section>
+            <div class="panel-queue-row">
+              <h3>Queue by Priority</h3>
 
-      <section class="bottom-row">
-        <div class="panel-checkins">
-          <div class="panel-header">
-            <h3>Recent Check-Ins</h3>
-          </div>
+              <div class="priority-item">
+                <span class="priority-label">High Priority</span>
+                <div class="priority-bar-track">
+                  <div class="priority-bar red" style="width: 25%;"></div>
+                </div>
+                <span class="priority-value">4</span>
+              </div>
 
-          <div class="checkin-list" id="checkinList">
-            <div class="checkin-item">
-              <span class="person-icon"><img src="Assets/ppl.png" alt=""></span>
-              <span class="checkin-name">Mary Johnson</span>
-              <span class="checkin-time">10:15AM</span>
-              <span class="checkin-type">General Consultation</span>
+              <div class="priority-item">
+                <span class="priority-label">Medium Priority</span>
+                <div class="priority-bar-track">
+                  <div class="priority-bar orange" style="width: 100%;"></div>
+                </div>
+                <span class="priority-value">11</span>
+              </div>
+
+              <div class="priority-item">
+                <span class="priority-label">Low Priority</span>
+                <div class="priority-bar-track">
+                  <div class="priority-bar green" style="width: 72%;"></div>
+                </div>
+                <span class="priority-value">8</span>
+              </div>
+
+              <div class="total-queue-box">
+                <span>Total Queue</span>
+                <span>23</span>
+              </div>
             </div>
-            <div class="checkin-item">
-              <span class="person-icon"><img src="Assets/ppl.png" alt=""></span>
-              <span class="checkin-name">Akin Olanipekun</span>
-              <span class="checkin-time">10:00AM</span>
-              <span class="checkin-type">Cardiology</span>
-            </div>
-            <div class="checkin-item">
-              <span class="person-icon"><img src="Assets/ppl.png" alt=""></span>
-              <span class="checkin-name">Alice James</span>
-              <span class="checkin-time">09:55AM</span>
-              <span class="checkin-type">Orthopedics</span>
-            </div>
-            <div class="checkin-item">
-              <span class="person-icon"><img src="Assets/ppl.png" alt=""></span>
-              <span class="checkin-name">Akeeb Rahmon</span>
-              <span class="checkin-time">09:43AM</span>
-              <span class="checkin-type">General Consultation</span>
-            </div>
-            <div class="checkin-item">
-              <span class="person-icon"><img src="Assets/ppl.png" alt=""></span>
-              <span class="checkin-name">Charles Nkechi</span>
-              <span class="checkin-time">09:35AM</span>
-              <span class="checkin-type">Pediatrics</span>
-            </div>
-          </div>
+          </section>
 
-          <button class="view-all-btn" id="viewAllCheckinsBtn">View all check-ins</button>
-        </div>
+          <section class="bottom-row">
+            <div class="panel-checkins">
+              <div class="panel-header">
+                <h3>Recent Check-Ins</h3>
+              </div>
 
-        <div class="panel-appointments">
-          <div class="panel-header">
-            <h3>Today's Appointments</h3>
-            <a href="#" class="view-all-link" id="viewAllAppointmentsLink">View all</a>
-          </div>
+              <div class="checkin-list" id="checkinList">
+                <div class="checkin-item">
+                  <span class="person-icon"><img src="Assets/ppl.png" alt=""></span>
+                  <span class="checkin-name">Mary Johnson</span>
+                  <span class="checkin-time">10:15AM</span>
+                  <span class="checkin-type">General Consultation</span>
+                </div>
+                <div class="checkin-item">
+                  <span class="person-icon"><img src="Assets/ppl.png" alt=""></span>
+                  <span class="checkin-name">Akin Olanipekun</span>
+                  <span class="checkin-time">10:00AM</span>
+                  <span class="checkin-type">Cardiology</span>
+                </div>
+                <div class="checkin-item">
+                  <span class="person-icon"><img src="Assets/ppl.png" alt=""></span>
+                  <span class="checkin-name">Alice James</span>
+                  <span class="checkin-time">09:55AM</span>
+                  <span class="checkin-type">Orthopedics</span>
+                </div>
+                <div class="checkin-item">
+                  <span class="person-icon"><img src="Assets/ppl.png" alt=""></span>
+                  <span class="checkin-name">Akeeb Rahmon</span>
+                  <span class="checkin-time">09:43AM</span>
+                  <span class="checkin-type">General Consultation</span>
+                </div>
+                <div class="checkin-item">
+                  <span class="person-icon"><img src="Assets/ppl.png" alt=""></span>
+                  <span class="checkin-name">Charles Nkechi</span>
+                  <span class="checkin-time">09:35AM</span>
+                  <span class="checkin-type">Pediatrics</span>
+                </div>
+              </div>
 
-          <table class="appointments-table">
-            <thead>
-              <tr>
-                <th>Time</th>
-                <th>Patient</th>
-                <th>Doctor</th>
-                <th>Department</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody class="appointmentsBody">
-              <tr>
-                <td>09:00AM</td>
-                <td>Raji Akeem</td>
-                <td>Dr. Ben Adeniyi</td>
-                <td>Cardiology</td>
-                <td><span class="status completed">Completed</span></td>
-              </tr>
-              <tr>
-                <td>09:43M</td>
-                <td>Keyu Philip</td>
-                <td>Dr. Austine Agbona</td>
-                <td>General</td>
-                <td><span class="status confirmed">Confirmed</span></td>
-              </tr>
-              <tr>
-                <td>10:15AM</td>
-                <td>Sani Jenifer</td>
-                <td>Dr. Ruth Bilewu</td>
-                <td>Cardiology</td>
-                <td><span class="status confirmed">Confirmed</span></td>
-              </tr>
-              <tr>
-                <td>11:10AM</td>
-                <td>Ella James</td>
-                <td>Dr. Friday Abu</td>
-                <td>Neurology</td>
-                <td><span class="status pending">Pending</span></td>
-              </tr>
-              <tr>
-                <td>12::23AM</td>
-                <td>Bolaji Aina</td>
-                <td>Dr. Habib Raheem</td>
-                <td>General</td>
-                <td><span class="status pending">Pending</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
+              <button class="view-all-btn" id="viewAllCheckinsBtn">View all check-ins</button>
+            </div>
 
-    </main>
+            <div class="panel-appointments">
+              <div class="panel-header">
+                <h3>Today's Appointments</h3>
+                <a href="#" class="view-all-link" id="viewAllAppointmentsLink">View all</a>
+              </div>
+
+              <div style="overflow-x: auto;">
+                <table class="appointments-table">
+                  <thead>
+                    <tr>
+                      <th>Time</th>
+                      <th>Patient</th>
+                      <th>Doctor</th>
+                      <th>Department</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody class="appointmentsBody">
+                    <tr>
+                      <td>09:00AM</td>
+                      <td>Raji Akeem</td>
+                      <td>Dr. Ben Adeniyi</td>
+                      <td>Cardiology</td>
+                      <td><span class="status completed">Completed</span></td>
+                    </tr>
+                    <tr>
+                      <td>09:43AM</td>
+                      <td>Keyu Philip</td>
+                      <td>Dr. Austine Agbona</td>
+                      <td>General</td>
+                      <td><span class="status confirmed">Confirmed</span></td>
+                    </tr>
+                    <tr>
+                      <td>10:15AM</td>
+                      <td>Sani Jenifer</td>
+                      <td>Dr. Ruth Bilewu</td>
+                      <td>Cardiology</td>
+                      <td><span class="status confirmed">Confirmed</span></td>
+                    </tr>
+                    <tr>
+                      <td>11:10AM</td>
+                      <td>Ella James</td>
+                      <td>Dr. Friday Abu</td>
+                      <td>Neurology</td>
+                      <td><span class="status pending">Pending</span></td>
+                    </tr>
+                    <tr>
+                      <td>12:23PM</td>
+                      <td>Bolaji Aina</td>
+                      <td>Dr. Habib Raheem</td>
+                      <td>General</td>
+                      <td><span class="status pending">Pending</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+        </main>
     </div>
 
     <!-- Patient Management Popup -->
@@ -424,38 +424,6 @@
         </div>
       </a>
     </dialog>
-
-    <script>
-  // Wire up every expandable nav item (Patients, Doctors, Nurses, Receptionist, Cashier, Billings)
-  const toggleButtons = document.querySelectorAll('.nav-toggle');
-
-  toggleButtons.forEach((btn) => {
-    const parentItem = btn.closest('.has-submenu');
-
-    btn.addEventListener('click', () => {
-      const isOpen = parentItem.classList.toggle('open');
-      btn.setAttribute('aria-expanded', isOpen);
-    });
-  });
-
-  // Patient Management popup
-  const patientPopup = document.getElementById('patient-popup');
-  const openPatientBtn = document.getElementById('openPatientPopup');
-  const closePatientBtn = document.getElementById('closePatientPopup');
-
-  openPatientBtn.addEventListener('click', () => {
-    patientPopup.showModal();
-  });
-
-  closePatientBtn.addEventListener('click', () => {
-    patientPopup.close();
-  });
-
-  patientPopup.addEventListener('click', (e) => {
-    if (e.target === patientPopup) {
-      patientPopup.close();
-    }
-  });
-    </script>
+<script src="Receptionist.js"></script>
 </body>
 </html>

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Today's Appointments - SwiftCare</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="Appointments.css">
+</head>
+<body>
+  <div class="app">
+    <!-- Overlay for closing mobile sidebar -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+      <div>
+        <div class="logo">
+          <img src="Assets/logo.png" alt="SwiftCare Logo" class="logo-img">
+        </div>
+
+        <nav class="nav">
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="fa-solid fa-house nav-icon"></i>
+                <span>Dashboard</span>
+              </a>
+            </li>
+
+            <!-- Expandable: Patients -->
+            <li class="nav-item has-submenu">
+              <button class="nav-link nav-toggle" type="button" aria-expanded="false">
+                <i class="fa-solid fa-user nav-icon"></i>
+                <span>Patients</span>
+                <i class="fa-solid fa-chevron-down nav-arrow"></i>
+              </button>
+              <ul class="submenu">
+                <li><button type="button" class="submenu-link popup-trigger">Register Patient</button></li>
+                <li><a href="AccessDenied.html" class="submenu-link">Patient Records</a></li>
+              </ul>
+            </li>
+
+            <!-- Expandable: Doctors -->
+            <li class="nav-item has-submenu">
+              <button class="nav-link nav-toggle" type="button" aria-expanded="false">
+                <i class="fa-solid fa-user-doctor nav-icon"></i>
+                <span>Doctors</span>
+                <i class="fa-solid fa-chevron-down nav-arrow"></i>
+              </button>
+              <ul class="submenu">
+                <li><a href="AccessDenied.html" class="submenu-link">Consultation Queue</a></li>
+              </ul>
+            </li>
+
+            <!-- Expandable: Nurses -->
+            <li class="nav-item has-submenu">
+              <button class="nav-link nav-toggle" type="button" aria-expanded="false">
+                <i class="fa-solid fa-user-nurse nav-icon"></i>
+                <span>Nurses</span>
+                <i class="fa-solid fa-chevron-down nav-arrow"></i>
+              </button>
+              <ul class="submenu">
+                <li><a href="AccessDenied.html" class="submenu-link">Triage Queue</a></li>
+                <li><a href="AccessDenied.html" class="submenu-link">Vital Records</a></li>
+              </ul>
+            </li>
+
+            <!-- Expandable: Receptionist (Active Default) -->
+            <li class="nav-item has-submenu open">
+              <button class="nav-link nav-toggle" type="button" aria-expanded="true">
+                <i class="fa-solid fa-user-tie nav-icon"></i>
+                <span>Receptionist</span>
+                <i class="fa-solid fa-chevron-down nav-arrow"></i>
+              </button>
+              <ul class="submenu">
+                <li><button type="button" class="submenu-link popup-trigger">Register Patient</button></li>
+                <li><a href="SearchP.html" class="submenu-link">Patient Records</a></li>
+                <li><a href="Appointments.html" class="submenu-link active">Appointments</a></li>
+                <li><a href="Queues.html" class="submenu-link">Queues</a></li>
+              </ul>
+            </li>
+
+            <!-- Expandable: Cashier -->
+            <li class="nav-item has-submenu">
+              <button class="nav-link nav-toggle" type="button" aria-expanded="false">
+                <i class="fa-solid fa-cash-register nav-icon"></i>
+                <span>Cashier</span>
+                <i class="fa-solid fa-chevron-down nav-arrow"></i>
+              </button>
+              <ul class="submenu">
+                <li><a href="AccessDenied.html" class="submenu-link">Add Cashier</a></li>
+                <li><a href="AccessDenied.html" class="submenu-link">Cashier List</a></li>
+              </ul>
+            </li>
+
+            <!-- Expandable: Billings -->
+            <li class="nav-item has-submenu">
+              <button class="nav-link nav-toggle" type="button" aria-expanded="false">
+                <i class="fa-solid fa-file-invoice-dollar nav-icon"></i>
+                <span>Billings</span>
+                <i class="fa-solid fa-chevron-down nav-arrow"></i>
+              </button>
+              <ul class="submenu">
+                <li><a href="AccessDenied.html" class="submenu-link">Patient Invoice</a></li>
+                <li><a href="AccessDenied.html" class="submenu-link">Review Charges</a></li>
+                <li><a href="AccessDenied.html" class="submenu-link">Record Payment</a></li>
+                <li><a href="AccessDenied.html" class="submenu-link">Receipt</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a href="AccessDenied.html" class="nav-link">
+                <i class="fa-solid fa-gear nav-icon"></i>
+                <span>Settings</span>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="#" class="nav-link logout-link">
+                <i class="fa-solid fa-right-from-bracket nav-icon"></i>
+                <span>Logout</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="info-box">
+        <i class="fa-solid fa-lock info-icon"></i>
+        <p>Your information is safe with us.<br>We never share your data.</p>
+      </div>
+    </aside>
+
+    <!-- Main Section -->
+    <main class="main">
+      <header class="topbar">
+        <button class="hamburger" id="hamburgerBtn" aria-label="Toggle Sidebar">☰</button>
+        <h1>Dashboard</h1>
+
+        <div class="topbar-right">
+          <div class="bell-wrapper">
+            <img src="Assets/bell.png" alt="Notifications">
+            <span class="badge">2</span>
+          </div>
+          <div class="divider"></div>
+          <div class="user-info">
+            <div class="avatar"><img src="Assets/recept.png" alt="User Profile"></div>
+            <div class="user-text">
+              <div class="user-name">Bola John</div>
+              <div class="user-role">Receptionist</div>
+            </div>
+            <i class="fa-solid fa-chevron-down nav-arrow"></i>
+          </div>
+        </div>
+      </header>
+
+      <!-- Today's Appointments -->
+      <section class="appointments-page">
+        <div class="appointments-page-header">
+          <h2>Today's Appointments</h2>
+          <button class="refresh-btn" id="refreshBtn" type="button">
+            <i class="fa-solid fa-rotate-right"></i>
+            <span>Refresh</span>
+          </button>
+        </div>
+
+        <div class="appointments-panel">
+          <div class="appointments-panel-scroll">
+            <table class="appt-table">
+              <thead>
+                <tr>
+                  <th>Time</th>
+                  <th>Patient</th>
+                  <th>Doctor</th>
+                  <th>Department</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>09:00AM</td>
+                  <td>Raji Akeem</td>
+                  <td>Dr. Ben Adeniyi</td>
+                  <td>Cardiology</td>
+                  <td><span class="appt-status-pill completed" data-status="completed">Completed</span></td>
+                </tr>
+                <tr>
+                  <td>09:10AM</td>
+                  <td>Keyu Philip</td>
+                  <td>Dr. Austine Agbona</td>
+                  <td>General</td>
+                  <td><span class="appt-status-pill completed" data-status="completed">Completed</span></td>
+                </tr>
+                <tr>
+                  <td>09:15AM</td>
+                  <td>Sani Jenifer</td>
+                  <td>Dr. Ruth Bilewu</td>
+                  <td>Cardiology</td>
+                  <td><span class="appt-status-pill completed" data-status="completed">Completed</span></td>
+                </tr>
+                <tr>
+                  <td>09:30AM</td>
+                  <td>Ayoola Bola</td>
+                  <td>Dr. Friday Abu</td>
+                  <td>Neurology</td>
+                  <td><span class="appt-status-pill completed" data-status="completed">Completed</span></td>
+                </tr>
+                <tr>
+                  <td>09:45AM</td>
+                  <td>Chisom Paul</td>
+                  <td>Dr. Habib Raheem</td>
+                  <td>General</td>
+                  <td><span class="appt-status-pill confirmed" data-status="confirmed">Confirmed</span></td>
+                </tr>
+                <tr>
+                  <td>09:50AM</td>
+                  <td>Dasola Tola</td>
+                  <td>Dr. Ben Adeniyi</td>
+                  <td>Cardiology</td>
+                  <td><span class="appt-status-pill confirmed" data-status="confirmed">Confirmed</span></td>
+                </tr>
+                <tr>
+                  <td>10:00AM</td>
+                  <td>Sani Attah</td>
+                  <td>Dr. Habib Raheem</td>
+                  <td>General</td>
+                  <td><span class="appt-status-pill confirmed" data-status="confirmed">Confirmed</span></td>
+                </tr>
+                <tr>
+                  <td>10:07AM</td>
+                  <td>Silas Ayeni</td>
+                  <td>Dr. Habib Raheem</td>
+                  <td>General</td>
+                  <td><span class="appt-status-pill pending" data-status="pending">Pending</span></td>
+                </tr>
+                <tr>
+                  <td>10:15AM</td>
+                  <td>Blessing John</td>
+                  <td>Dr. Austine Agbona</td>
+                  <td>General</td>
+                  <td><span class="appt-status-pill pending" data-status="pending">Pending</span></td>
+                </tr>
+                <tr>
+                  <td>10:30AM</td>
+                  <td>Bisi Akande</td>
+                  <td>Dr. Austine Agbona</td>
+                  <td>General</td>
+                  <td><span class="appt-status-pill pending" data-status="pending">Pending</span></td>
+                </tr>
+                <tr>
+                  <td>11:00AM</td>
+                  <td>Faith Lawal</td>
+                  <td>Dr. Friday Abu</td>
+                  <td>Neurology</td>
+                  <td><span class="appt-status-pill pending" data-status="pending">Pending</span></td>
+                </tr>
+                <tr>
+                  <td>11:45AM</td>
+                  <td>Idowu Ajibade</td>
+                  <td>Dr. Ben Adeniyi</td>
+                  <td>Cardiology</td>
+                  <td><span class="appt-status-pill pending" data-status="pending">Pending</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Patient Management Dialog -->
+  <dialog id="patient-popup" class="patient-popup">
+    <button class="popup-close" id="closePatientPopup" aria-label="Close modal">
+      <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+        <path d="M1 1L19 19M19 1L1 19" stroke="white" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    <div class="popup-header">
+      <h1>Patient Management</h1>
+      <p>Register, search, view, and manage patient records</p>
+    </div>
+
+    <a href="RegisterNP.html" class="popup-option-card">
+      <div class="popup-option-icon">
+        <svg width="40" height="40" viewBox="0 0 48 48" fill="none">
+          <circle cx="21" cy="14" r="8" stroke="#0d0d0d" stroke-width="3.2"/>
+          <path d="M6 42c0-9.4 6.7-15 15-15s15 5.6 15 15" stroke="#0d0d0d" stroke-width="3.2" stroke-linecap="round"/>
+          <path d="M38 12v10M33 17h10" stroke="#0d0d0d" stroke-width="3.2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="popup-option-text">
+        <h2>Register New Patient</h2>
+        <p>Add a new patient to the system</p>
+      </div>
+    </a>
+
+    <a href="SearchP.html" class="popup-option-card">
+      <div class="popup-option-icon">
+        <svg width="40" height="40" viewBox="0 0 48 48" fill="none">
+          <circle cx="20" cy="20" r="13" stroke="#0d0d0d" stroke-width="3.2"/>
+          <path d="M29.5 29.5L41 41" stroke="#0d0d0d" stroke-width="3.2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="popup-option-text">
+        <h2>Search Existing Patient</h2>
+        <p>Find and manage existing patient records</p>
+      </div>
+    </a>
+  </dialog>
+
+  <!-- Script Implementation -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // --- Mobile Sidebar Functionality ---
+      const hamburgerBtn = document.getElementById('hamburgerBtn');
+      const sidebar = document.getElementById('sidebar');
+      const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+      const toggleMobileSidebar = () => {
+        const isOpen = sidebar.classList.toggle('mobile-open');
+        sidebarOverlay.classList.toggle('active', isOpen);
+      };
+
+      hamburgerBtn.addEventListener('click', toggleMobileSidebar);
+      sidebarOverlay.addEventListener('click', toggleMobileSidebar);
+
+      // --- Expandable Nav Accordion ---
+      const toggleButtons = document.querySelectorAll('.nav-toggle');
+      toggleButtons.forEach((btn) => {
+        const parentItem = btn.closest('.has-submenu');
+        btn.addEventListener('click', () => {
+          const isOpen = parentItem.classList.toggle('open');
+          btn.setAttribute('aria-expanded', isOpen);
+        });
+      });
+
+      // --- Dialog Popup Handler ---
+      const patientPopup = document.getElementById('patient-popup');
+      const closePatientBtn = document.getElementById('closePatientPopup');
+
+      document.querySelectorAll('.popup-trigger').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          if (sidebar.classList.contains('mobile-open')) {
+            toggleMobileSidebar(); // Close drawer when popup opens
+          }
+          patientPopup.showModal();
+        });
+      });
+
+      closePatientBtn.addEventListener('click', () => patientPopup.close());
+
+      patientPopup.addEventListener('click', (e) => {
+        if (e.target === patientPopup) patientPopup.close();
+      });
+
+      // --- Appointment Status Cycling ---
+      const statusOrder = ['pending', 'confirmed', 'completed'];
+      const statusLabel = {
+        pending: 'Pending',
+        confirmed: 'Confirmed',
+        completed: 'Completed'
+      };
+
+      document.querySelectorAll('.appt-status-pill').forEach((pill) => {
+        pill.addEventListener('click', () => {
+          const current = pill.dataset.status;
+          const nextIndex = (statusOrder.indexOf(current) + 1) % statusOrder.length;
+          const next = statusOrder[nextIndex];
+
+          pill.classList.remove(current);
+          pill.classList.add(next);
+          pill.dataset.status = next;
+          pill.textContent = statusLabel[next];
+        });
+      });
+
+      // --- Refresh Button Animation ---
+      const refreshBtn = document.getElementById('refreshBtn');
+      refreshBtn.addEventListener('click', () => {
+        refreshBtn.classList.add('spinning');
+        setTimeout(() => refreshBtn.classList.remove('spinning'), 500);
+      });
+    });
+  </script>
+</body>
+</html>
