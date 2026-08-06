@@ -15,7 +15,7 @@ const loginForm = document.getElementById("loginForm");
     }
 
     if (email === correctEmail && password === correctPassword) {
-      window.location.href = "dashboard.html";
+      window.location.href = "ADMIN-dashboard.html";
     } else {
       alert("Incorrect email or password.");
     }
