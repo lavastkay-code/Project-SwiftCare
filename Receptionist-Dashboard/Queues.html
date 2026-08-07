@@ -9,6 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="Queues.css">
+    <script src="../shared/config.js"></script>
+    <script src="../shared/api.js"></script>
 </head>
 <body>
     <div class="app">
@@ -178,10 +180,10 @@
             </div>
 
             <div class="filter-tabs" id="filterTabs">
-              <button class="filter-tab active" type="button" data-filter="all">All (12)</button>
-              <button class="filter-tab" type="button" data-filter="checkin">Check-In / Triage (9)</button>
-              <button class="filter-tab" type="button" data-filter="progress">In Progress (2)</button>
-              <button class="filter-tab" type="button" data-filter="completed">Completed (1)</button>
+              <button class="filter-tab active" type="button" data-filter="all">All</button>
+              <button class="filter-tab" type="button" data-filter="checkin">Checked-In</button>
+              <button class="filter-tab" type="button" data-filter="progress">In Progress</button>
+              <button class="filter-tab" type="button" data-filter="completed">Completed / Cancelled</button>
             </div>
 
             <div class="queue-table-panel">
@@ -191,134 +193,13 @@
                     <th>#</th>
                     <th>Patient</th>
                     <th>Patient ID</th>
-                    <th>Department</th>
-                    <th>Queue Stage</th>
-                    <th>Wait time</th>
+                    <th>Assigned Doctor</th>
+                    <th>Status</th>
+                    <th>Queue ID</th>
                     <th>Action</th>
                   </tr>
                 </thead>
                 <tbody id="queueBody">
-
-                  <tr data-category="progress">
-                    <td>1.</td>
-                    <td>Adeoye Oyewale</td>
-                    <td>SWC-00012345</td>
-                    <td>General Medicine</td>
-                    <td>Check-in</td>
-                    <td>12mins</td>
-                    <td><button class="action-btn filled-blue" type="button">In Triage</button></td>
-                  </tr>
-
-                  <tr data-category="checkin">
-                    <td>2.</td>
-                    <td>Mary Jane</td>
-                    <td>SWC-00012346</td>
-                    <td>General Medicine</td>
-                    <td>Check-in</td>
-                    <td>14mins</td>
-                    <td><button class="action-btn outline-green" type="button">Start Triage</button></td>
-                  </tr>
-
-                  <tr data-category="checkin">
-                    <td>3.</td>
-                    <td>Joshua Edward</td>
-                    <td>SWC-00012347</td>
-                    <td>Pediatric</td>
-                    <td>Awaiting</td>
-                    <td>17mins</td>
-                    <td><button class="action-btn outline-blue" type="button">Consultation</button></td>
-                  </tr>
-
-                  <tr data-category="checkin">
-                    <td>4.</td>
-                    <td>Blessing Akanji</td>
-                    <td>SWC-00012348</td>
-                    <td>Orthopedic</td>
-                    <td>Check-in</td>
-                    <td>20mins</td>
-                    <td><button class="action-btn outline-green" type="button">Start Triage</button></td>
-                  </tr>
-
-                  <tr data-category="checkin">
-                    <td>5.</td>
-                    <td>Yusuf Hassa</td>
-                    <td>SWC-00012349</td>
-                    <td>General Medicine</td>
-                    <td>Check-in</td>
-                    <td>25mins</td>
-                    <td><button class="action-btn outline-green" type="button">Start Triage</button></td>
-                  </tr>
-
-                  <tr data-category="progress">
-                    <td>6.</td>
-                    <td>Chidinma Anaje</td>
-                    <td>SWC-00012310</td>
-                    <td>Orthopedic</td>
-                    <td><span class="stage-pill in-triage">In Triage</span></td>
-                    <td>5mins</td>
-                    <td><button class="action-btn outline-blue" type="button">Resume</button></td>
-                  </tr>
-
-                  <tr data-category="checkin">
-                    <td>7.</td>
-                    <td>Haruna Bala</td>
-                    <td>SWC-00012312</td>
-                    <td>Pediatric</td>
-                    <td>Check-in</td>
-                    <td>30mins</td>
-                    <td><button class="action-btn outline-green" type="button">Start Triage</button></td>
-                  </tr>
-
-                  <tr data-category="checkin">
-                    <td>8.</td>
-                    <td>Akinbode Silas</td>
-                    <td>SWC-00012313</td>
-                    <td>Pediatric</td>
-                    <td>Awaiting</td>
-                    <td>30mins</td>
-                    <td><button class="action-btn outline-blue" type="button">Consultation</button></td>
-                  </tr>
-
-                  <tr data-category="checkin">
-                    <td>9.</td>
-                    <td>Bello Jubril</td>
-                    <td>SWC-00012314</td>
-                    <td>General Medicine</td>
-                    <td>Check-in</td>
-                    <td>30mins</td>
-                    <td><button class="action-btn outline-green" type="button">Start Triage</button></td>
-                  </tr>
-
-                  <tr data-category="checkin">
-                    <td>10.</td>
-                    <td>Ngozi Okwokwo</td>
-                    <td>SWC-00012315</td>
-                    <td>Pediatric</td>
-                    <td>Check-in</td>
-                    <td>30mins</td>
-                    <td><button class="action-btn outline-green" type="button">Start Triage</button></td>
-                  </tr>
-
-                  <tr data-category="checkin">
-                    <td>11.</td>
-                    <td>Sani Attach</td>
-                    <td>SWC-00012316</td>
-                    <td>Orthopedic</td>
-                    <td>Awaiting</td>
-                    <td>30mins</td>
-                    <td><button class="action-btn outline-blue" type="button">Consultation</button></td>
-                  </tr>
-
-                  <tr data-category="completed">
-                    <td>12.</td>
-                    <td>Tunde Bakare</td>
-                    <td>SWC-00012317</td>
-                    <td>General Medicine</td>
-                    <td><span class="stage-pill completed">Completed</span></td>
-                    <td>8mins</td>
-                    <td><button class="action-btn completed-check" type="button"><i class="fa-solid fa-check"></i>&nbsp; Done</button></td>
-                  </tr>
-
                 </tbody>
               </table>
 
@@ -457,11 +338,96 @@
     });
   });
 
+  // ---- Load the real queue from the API ----
+  const queueBody = document.getElementById('queueBody');
+
+  function categoryFor(status) {
+    if (status === 'Checked-In') return 'checkin';
+    if (status === 'Completed' || status === 'Cancelled') return 'completed';
+    return 'progress';
+  }
+
+  function patientLabel(entry) {
+    if (entry.patient) return `${entry.patient.firstName || ''} ${entry.patient.lastName || ''}`.trim() || entry.patientId;
+    return entry.patientId || '—';
+  }
+
+  async function cancelEntry(queueId) {
+    const note = prompt('Reason for cancelling this visit (required):');
+    if (!note || !note.trim()) return;
+
+    try {
+      await swiftcareApiRequest(`/queue/${queueId}/status`, {
+        method: 'POST',
+        body: { status: 'Cancelled', note: note.trim() },
+      });
+      loadQueue();
+    } catch (err) {
+      console.error('Cancel visit error:', err);
+      alert(err.message || 'Failed to cancel visit.');
+    }
+  }
+
+  async function loadQueue() {
+    queueBody.innerHTML = '<tr><td colspan="7">Loading queue...</td></tr>';
+
+    try {
+      const result = await swiftcareApiRequest('/queue');
+      const entries = result.queue || [];
+
+      if (entries.length === 0) {
+        queueBody.innerHTML = '';
+        noResults.classList.add('show');
+        return;
+      }
+
+      noResults.classList.remove('show');
+
+      queueBody.innerHTML = entries
+        .map((entry, index) => {
+          const queueId = entry.queueId || entry.id;
+          const category = categoryFor(entry.status);
+          const actionCell = entry.status === 'Checked-In'
+            ? `<button class="action-btn outline-red" type="button" data-cancel="${queueId}">Cancel</button>`
+            : `<span class="stage-pill">${entry.status}</span>`;
+
+          return `
+            <tr data-category="${category}">
+              <td>${index + 1}.</td>
+              <td>${patientLabel(entry)}</td>
+              <td>${entry.patientId || '—'}</td>
+              <td>${entry.assignedDoctorId || '—'}</td>
+              <td>${entry.status}</td>
+              <td>${queueId}</td>
+              <td>${actionCell}</td>
+            </tr>
+          `;
+        })
+        .join('');
+
+      queueBody.querySelectorAll('[data-cancel]').forEach((btn) => {
+        btn.addEventListener('click', () => cancelEntry(btn.dataset.cancel));
+      });
+
+      // Re-apply the currently active filter to the freshly rendered rows
+      const activeFilter = document.querySelector('.filter-tab.active')?.dataset.filter || 'all';
+      document.querySelectorAll('#queueBody tr').forEach((row) => {
+        const matches = activeFilter === 'all' || row.dataset.category === activeFilter;
+        row.classList.toggle('row-hidden', !matches);
+      });
+    } catch (err) {
+      console.error('Failed to load queue:', err);
+      queueBody.innerHTML = `<tr><td colspan="7">Failed to load queue: ${err.message}</td></tr>`;
+    }
+  }
+
+  loadQueue();
+
   // ---- Refresh button ----
   const refreshBtn = document.getElementById('refreshBtn');
   refreshBtn.addEventListener('click', () => {
     refreshBtn.classList.add('spinning');
-    setTimeout(() => refreshBtn.classList.remove('spinning'), 500);
+    loadQueue().finally(() => setTimeout(() => refreshBtn.classList.remove('spinning'), 500));
   });
 </script>
 </body>

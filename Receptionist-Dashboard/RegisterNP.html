@@ -215,16 +215,19 @@
       </div>
 
       <div class="form-footer">
-        <a href="RegisterNP2.html" class="continue-btn">Continue</a>      
+        <a href="RegisterNP2.html" class="continue-btn" id="regStep1Continue">Continue</a>
       </div>
 
     </form>
 
   </div>
           </div>
-         
+
         </main>
     </div>
+
+    <script src="../shared/config.js"></script>
+    <script src="../shared/api.js"></script>
 
     <dialog id="patient-popup" class="patient-popup">
       <button class="popup-close" id="closePatientPopup" aria-label="Close">
@@ -301,6 +304,28 @@
 closeBtn.addEventListener('click', () => {
   window.history.back();
 });
+
+      document.getElementById('regStep1Continue').addEventListener('click', (e) => {
+        e.preventDefault();
+
+        const firstName = document.getElementById('firstName').value.trim();
+        const lastName = document.getElementById('lastName').value.trim();
+        const dob = document.getElementById('dob').value;
+        const gender = document.getElementById('gender').value;
+        const phone = document.getElementById('phone').value.trim();
+        const email = document.getElementById('email').value.trim();
+
+        if (!firstName || !lastName || !dob || !gender || !phone) {
+          alert('Please fill in first name, last name, date of birth, gender, and phone number.');
+          return;
+        }
+
+        sessionStorage.setItem('swiftcareNewPatientDraft', JSON.stringify({
+          firstName, lastName, dob, gender: gender.toLowerCase(), phone, email
+        }));
+
+        window.location.href = 'RegisterNP2.html';
+      });
     </script>
 </body>
 </html>

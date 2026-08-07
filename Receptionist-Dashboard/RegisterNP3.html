@@ -165,39 +165,39 @@
               <h2>All information is valid</h2>
             </div>
 
-            <div class="patient-details">
+            <div class="patient-details" id="patientDetails">
               <div class="details">
                 <p>Patient Name</p>
-                <h3>Babatunde Adeniji</h3>
+                <h3 id="reviewName">&mdash;</h3>
               </div>
               <div class="details">
                 <p>Date of Birth</p>
-                <h3>15th December 1990</h3>
+                <h3 id="reviewDob">&mdash;</h3>
               </div>
               <div class="details">
                 <p>Gender</p>
-                <h3>Male</h3>
+                <h3 id="reviewGender">&mdash;</h3>
               </div>
               <div class="details">
                 <p>Phone Number</p>
-                <h3>08123456789</h3>
+                <h3 id="reviewPhone">&mdash;</h3>
               </div>
               <div class="details">
                 <p>Email</p>
-                <h3>ade.b@gmail.com</h3>
+                <h3 id="reviewEmail">&mdash;</h3>
               </div>
 
               <div class="break-line"></div>
 
               <div class="details">
                 <p>Address</p>
-                <h3>12, Allen Avenue, Ikeja, Lagos</h3>
+                <h3 id="reviewAddress">&mdash;</h3>
               </div>
               <div class="details">
                 <p>Emergency Contact</p>
                 <div class="contact-details">
-                  <h3>Adebisi Adeniji (Sister)</h3>
-                  <h3>08123456789</h3>
+                  <h3 id="reviewContactName">&mdash;</h3>
+                  <h3 id="reviewContactPhone">&mdash;</h3>
                 </div>
               </div>
             </div>
@@ -259,13 +259,15 @@
       </div>
 
       <h2 class="success-title">Patient Profile Saved Successfully!</h2>
-      <p class="success-subtitle">Babatunde Adeniji&rsquo;s profile has been created</p>
+      <p class="success-subtitle" id="successSubtitle">Patient profile has been created</p>
 
-      <div class="success-id-box">Patient ID: SWC-000012345</div>
+      <div class="success-id-box" id="successIdBox">Patient ID: &mdash;</div>
 
       <button type="button" class="success-continue-btn" id="successContinueBtn">Continue</button>
     </dialog>
 
+    <script src="../shared/config.js"></script>
+    <script src="../shared/api.js"></script>
     <script>
       const toggleButtons = document.querySelectorAll('.nav-toggle');
 
@@ -301,16 +303,95 @@
         document.querySelector('.reg-new-patient').style.display = 'none';
       });
 
-      // Success popup: opened by "Save Patient Profile", Continue goes to Receptionist.html
+      // ---- Populate review from Step 1 & 2 data ----
+      const draft = JSON.parse(sessionStorage.getItem('swiftcareNewPatientDraft') || '{}');
+
+      if (!draft.firstName) {
+        alert('No patient details found. Please start registration again.');
+        window.location.href = 'RegisterNP.html';
+      }
+
+      document.getElementById('reviewName').textContent = `${draft.firstName} ${draft.lastName}`;
+      document.getElementById('reviewDob').textContent = draft.dob || '—';
+      document.getElementById('reviewGender').textContent = draft.gender || '—';
+      document.getElementById('reviewPhone').textContent = draft.phone || '—';
+      document.getElementById('reviewEmail').textContent = draft.email || '—';
+
+      const addr = draft.address || {};
+      const addressLine = [addr.line1, addr.line2, addr.city, addr.state].filter(Boolean).join(', ');
+      document.getElementById('reviewAddress').textContent = addressLine || '—';
+
+      const contact = draft.emergencyContact || {};
+      document.getElementById('reviewContactName').textContent = contact.name
+        ? `${contact.name}${contact.relationship ? ' (' + contact.relationship + ')' : ''}`
+        : '—';
+      document.getElementById('reviewContactPhone').textContent = contact.phone || '—';
+
+      // Success popup: opened by "Save Patient Profile" after a real POST /patients call
       const successPopup = document.getElementById('success-popup');
       const savePatientProfileBtn = document.getElementById('savePatientProfileBtn');
       const successContinueBtn = document.getElementById('successContinueBtn');
 
-      savePatientProfileBtn.addEventListener('click', () => {
-        successPopup.showModal();
+      async function registerPatient(confirmNewPatient) {
+        return swiftcareApiRequest('/patients', {
+          method: 'POST',
+          body: {
+            firstName: draft.firstName,
+            lastName: draft.lastName,
+            phone: draft.phone,
+            gender: draft.gender,
+            dob: draft.dob,
+            ...(confirmNewPatient ? { confirmNewPatient: true } : {}),
+          },
+        });
+      }
+
+      savePatientProfileBtn.addEventListener('click', async () => {
+        savePatientProfileBtn.disabled = true;
+        savePatientProfileBtn.textContent = 'Saving...';
+
+        try {
+          let patient;
+          try {
+            patient = await registerPatient(false);
+          } catch (err) {
+            if (err.code === 'DUPLICATE_PATIENT') {
+              const existing = err.payload?.error?.existingPatients || [];
+              const names = existing.map((p) => `${p.firstName} ${p.lastName} (${p.phone})`).join('\n');
+              const proceed = confirm(
+                `A possible existing patient match was found:\n${names || '(details unavailable)'}\n\nRegister as a new patient anyway?`
+              );
+              if (!proceed) {
+                savePatientProfileBtn.disabled = false;
+                savePatientProfileBtn.textContent = 'Save Patient Profile';
+                return;
+              }
+              patient = await registerPatient(true);
+            } else {
+              throw err;
+            }
+          }
+
+          sessionStorage.setItem('swiftcareCheckInPatient', JSON.stringify({
+            id: patient.id,
+            name: `${patient.firstName} ${patient.lastName}`,
+          }));
+
+          document.getElementById('successSubtitle').textContent = `${patient.firstName} ${patient.lastName}'s profile has been created`;
+          document.getElementById('successIdBox').textContent = `Patient ID: ${patient.id}`;
+
+          successPopup.showModal();
+        } catch (err) {
+          console.error('Patient registration error:', err);
+          alert(err.message || 'Failed to save patient profile. Please try again.');
+        } finally {
+          savePatientProfileBtn.disabled = false;
+          savePatientProfileBtn.textContent = 'Save Patient Profile';
+        }
       });
 
       successContinueBtn.addEventListener('click', () => {
+        sessionStorage.removeItem('swiftcareNewPatientDraft');
         window.location.href = 'SelectQ.html';
       });
     </script>
