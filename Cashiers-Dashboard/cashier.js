@@ -214,25 +214,76 @@
 
       let selectedMethod = 'cash';
       let selectedMethodName = 'Cash Payment';
-      let currentAmountStr = '₦1900.00';
+      let currentAmountStr = '₦0.00';
+      let currentInvoiceId = null;
 
-      // Open modal dynamically when clicking ANY print button in the table
-      document.querySelectorAll('.transactions-table .action-print').forEach((btn) => {
-        btn.addEventListener('click', (e) => {
-          const row = e.target.closest('tr');
-          if (row) {
-            const rowAmount = row.children[3]?.textContent.trim();
-            if (rowAmount) {
-              currentAmountStr = rowAmount;
-              modalPaymentAmount.textContent = currentAmountStr;
-            }
-          }
-          // Reset view state
+      // ---- Load real "Awaiting Payment" queue entries ----
+      const awaitingList = document.getElementById('awaitingPaymentList');
+      const refreshAwaitingBtn = document.getElementById('refreshAwaitingBtn');
+
+      function patientLabel(entry) {
+        if (entry.patient) return `${entry.patient.firstName || ''} ${entry.patient.lastName || ''}`.trim() || entry.patientId;
+        return entry.patientId || 'Patient';
+      }
+
+      async function openPaymentForPatient(entry) {
+        try {
+          const invoice = await swiftcareApiRequest(
+            `/invoices/${entry.patientId}?queueEntryId=${encodeURIComponent(entry.queueId || entry.id)}`
+          );
+
+          const amount = invoice.amount ?? invoice.total ?? invoice.invoice?.amount;
+          currentInvoiceId = invoice.id || invoice.invoiceId || invoice.invoice?.id;
+          currentAmountStr = amount != null ? `₦${Number(amount).toLocaleString()}` : '—';
+          modalPaymentAmount.textContent = currentAmountStr;
+
           paymentModalContent.style.display = 'block';
           paymentSuccessMsg.style.display = 'none';
           paymentPopup.showModal();
-        });
-      });
+        } catch (err) {
+          console.error('Failed to load invoice:', err);
+          alert(err.message || 'Failed to load invoice for this patient.');
+        }
+      }
+
+      async function loadAwaitingPayment() {
+        awaitingList.innerHTML = '<li><span>Loading...</span></li>';
+
+        try {
+          const result = await swiftcareApiRequest('/queue?status=Awaiting Payment');
+          const entries = result.queue || [];
+
+          if (entries.length === 0) {
+            awaitingList.innerHTML = '<li><span>No patients awaiting payment.</span></li>';
+            return;
+          }
+
+          awaitingList.innerHTML = entries
+            .map((entry, i) => `
+              <li>
+                <span>${patientLabel(entry)}</span>
+                <button type="button" class="badge-pill badge-pending-solid" data-pay-index="${i}" style="cursor:pointer;border:none;">Pay</button>
+              </li>
+            `)
+            .join('');
+
+          awaitingList.querySelectorAll('[data-pay-index]').forEach((btn) => {
+            btn.addEventListener('click', () => {
+              const entry = entries[Number(btn.dataset.payIndex)];
+              openPaymentForPatient(entry);
+            });
+          });
+        } catch (err) {
+          console.error('Failed to load awaiting-payment queue:', err);
+          awaitingList.innerHTML = `<li><span>Failed to load: ${err.message}</span></li>`;
+        }
+      }
+
+      loadAwaitingPayment();
+
+      if (refreshAwaitingBtn) {
+        refreshAwaitingBtn.addEventListener('click', loadAwaitingPayment);
+      }
 
       // Synchronize selection state (Tabs & Radio Options)
       function setPaymentMethod(methodKey) {
@@ -272,12 +323,41 @@
         });
       });
 
-      // Submit Payment Action Simulation
+      // Submit Payment — POST /payments against the real invoice
       if (btnSubmitPayment) {
-        btnSubmitPayment.addEventListener('click', () => {
-          successDetailText.textContent = `Transaction of ${currentAmountStr} processed successfully via ${selectedMethodName}.`;
-          paymentModalContent.style.display = 'none';
-          paymentSuccessMsg.style.display = 'block';
+        btnSubmitPayment.addEventListener('click', async () => {
+          if (!currentInvoiceId) {
+            alert('No invoice loaded for this patient.');
+            return;
+          }
+
+          btnSubmitPayment.disabled = true;
+          btnSubmitPayment.textContent = 'Processing...';
+
+          try {
+            await swiftcareApiRequest('/payments', {
+              method: 'POST',
+              body: { invoiceId: currentInvoiceId, method: selectedMethod },
+            });
+
+            successDetailText.textContent = `Transaction of ${currentAmountStr} processed successfully via ${selectedMethodName}.`;
+            paymentModalContent.style.display = 'none';
+            paymentSuccessMsg.style.display = 'block';
+
+            loadAwaitingPayment();
+          } catch (err) {
+            console.error('Payment failed:', err);
+            if (err.code === 'INVOICE_ALREADY_PAID') {
+              alert('This invoice has already been paid.');
+            } else if (err.code === 'PAYMENT_NOT_DUE') {
+              alert('This patient is not at the Awaiting Payment stage.');
+            } else {
+              alert(err.message || 'Payment failed. Please try again.');
+            }
+          } finally {
+            btnSubmitPayment.disabled = false;
+            btnSubmitPayment.innerHTML = 'Submit Payment <i class="fa-solid fa-arrow-right"></i>';
+          }
         });
       }
 

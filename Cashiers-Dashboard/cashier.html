@@ -9,6 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="cashier.css">
+    <script src="../shared/config.js"></script>
+    <script src="../shared/api.js"></script>
 </head>
 <body>
     <div class="app">
@@ -252,13 +254,10 @@
 
                 <div class="panel-3 awaiting-panel">
                 <div class="panel-title">Awaiting Payment</div>
-                <ul class="awaiting-list">
-                  <li><span>James Taylor</span><span class="badge-pill badge-pending-solid">Pending</span></li>
-                  <li><span>Mary Johnson</span><span class="badge-pill badge-pending-solid">Pending</span></li>
-                  <li><span>Roberts Lee</span><span class="badge-pill badge-pending-solid">Pending</span></li>
-                  <li><span>Ray Taylor</span><span class="badge-pill badge-pending-solid">Pending</span></li>
+                <ul class="awaiting-list" id="awaitingPaymentList">
+                  <li><span>Loading...</span></li>
                 </ul>
-                <button class="view-all-btn">View all activities</button>
+                <button class="view-all-btn" id="refreshAwaitingBtn">Refresh</button>
               </div>
               </div>
 
