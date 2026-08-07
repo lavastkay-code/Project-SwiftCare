@@ -188,8 +188,11 @@ function initPreConsultationPanel() {
   if (viewProfileBtn) {
     viewProfileBtn.addEventListener('click', () => {
       showToast('Opening patient profile...');
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 300); // adjust delay (ms) as needed
     });
-  }
+}
 
   startBtn.addEventListener('click', () => {
     preConsultationPanel.hidden = true;
@@ -207,11 +210,6 @@ function initPreConsultationPanel() {
   });
 }
 
-/* ---------------------------------------------------------
-   ACCORDION CARDS — Appointment Details / Vital Sign /
-   Allergies / Previous Consultation History all start
-   collapsed and expand independently on click.
---------------------------------------------------------- */
 function initAccordions() {
   document.querySelectorAll('.accordion-card').forEach((card) => {
     const toggle = card.querySelector('.accordion-toggle');
@@ -222,10 +220,6 @@ function initAccordions() {
   });
 }
 
-/* ---------------------------------------------------------
-   PREVIOUS CONSULTATION HISTORY — nested month accordion
-   (unchanged behaviour, relocated out of the inline <script>)
---------------------------------------------------------- */
 function initHistoryEntries() {
   document.querySelectorAll('.history-toggle').forEach((toggle) => {
     toggle.addEventListener('click', () => {
@@ -238,10 +232,6 @@ function initHistoryEntries() {
   });
 }
 
-/* ---------------------------------------------------------
-   STATUS PANEL — the date display doubles as the "saved" and
-   "confirm completion" panel depending on what's happening.
---------------------------------------------------------- */
 function initStatusPanelDate() {
   const dateView = document.getElementById('dateView');
   const dateInput = document.getElementById('consultDateInput');
@@ -341,8 +331,8 @@ function initSaveAndComplete() {
 
       showToast('Consultation marked as completed. Returning to queue...');
       setTimeout(() => {
-        window.location.href = 'ConsultationQ.html';
-      }, 1600);
+        window.location.href = 'Doctordash.html';
+      }, 600);
     });
   }
 }

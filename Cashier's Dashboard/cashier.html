@@ -21,7 +21,7 @@
             <ul class="nav-list">
 
               <li class="nav-item">
-                <a href="home.html" class="nav-link" id="navDashboard">
+                <a href="cashier.html" class="nav-link" id="navDashboard">
                   <i class="fa-solid fa-house nav-icon"></i>
                   <span>Dashboard</span>
                 </a>
@@ -46,8 +46,8 @@
                   <i class="fa-solid fa-chevron-down nav-arrow"></i>
                 </button>
                 <ul class="submenu" id="doctors-submenu">
-                  <li><a href="#" class="submenu-link">Add Doctor</a></li>
-                  <li><a href="#" class="submenu-link">Doctor List</a></li>
+                  <li><a href="../Receptionist Dashboard/AccessDenied.html" class="submenu-link">Add Doctor</a></li>
+                  <li><a href="../Receptionist Dashboard/AccessDenied.html" class="submenu-link">Doctor List</a></li>
                 </ul>
               </li>
 
@@ -58,8 +58,8 @@
                   <i class="fa-solid fa-chevron-down nav-arrow"></i>
                 </button>
                 <ul class="submenu" id="nurses-submenu">
-                  <li><a href="#" class="submenu-link">Add Nurse</a></li>
-                  <li><a href="#" class="submenu-link">Nurse List</a></li>
+                  <li><a href="../Receptionist Dashboard/AccessDenied.html" class="submenu-link">Add Nurse</a></li>
+                  <li><a href="../Receptionist Dashboard/AccessDenied.html" class="submenu-link">Nurse List</a></li>
                 </ul>
               </li>
 
@@ -70,8 +70,8 @@
                   <i class="fa-solid fa-chevron-down nav-arrow"></i>
                 </button>
                 <ul class="submenu" id="receptionist-submenu">
-                  <li><a href="#" class="submenu-link">Add Receptionist</a></li>
-                  <li><a href="#" class="submenu-link">Receptionist List</a></li>
+                  <li><a href="../Receptionist Dashboard/AccessDenied.html" class="submenu-link">Add Receptionist</a></li>
+                  <li><a href="../Receptionist Dashboard/AccessDenied.html" class="submenu-link">Receptionist List</a></li>
                 </ul>
               </li>
 
@@ -82,10 +82,10 @@
                   <i class="fa-solid fa-chevron-down nav-arrow"></i>
                 </button>
                 <ul class="submenu" id="cashier-submenu">
-                  <li><a href="AccessDenied.html" class="submenu-link">Patient Invoice</a></li>
-                  <li><a href="AccessDenied.html" class="submenu-link">Review Charges</a></li>
-                  <li><a href="AccessDenied.html" class="submenu-link">Record Payment</a></li>
-                  <li><a href="AccessDenied.html" class="submenu-link">Receipts</a></li>
+                  <li><a href="invoice-record.html" class="submenu-link">Patient Invoice</a></li>
+                  <li><a href="#" class="submenu-link popup-trigger" id="openChargesPopup">Review Charges</a></li>
+                  <li><a href="#" class="submenu-link">Record Payment</a></li>
+                  <li><a href="#" class="submenu-link">Receipts</a></li>
                 </ul>
               </li>
 
@@ -147,7 +147,7 @@
                 </div>
               </div>
             </header>
-            
+
       <section class="welcome-row">
         <div class="welcome-text">
           <h2>Welcome back, Sandra</h2>
@@ -172,57 +172,48 @@
               <div class="stat-grid">
                 <div class="stat-card stat-blue">
                   <div class="stat-top">
-                    <div class="stat-icon"><i class="fa-solid fa-user-group"></i></div>
+                    <div class="stat-icon" id="statA"><img src="Assets/Vector (3).png" alt=""></div>
                     <div>
                       <div class="stat-label">Total Patients</div>
                       <div class="stat-number">37</div>
+                      <p class="stat-para">+1 from yesterday</p>
                     </div>
                   </div>
-                  <svg class="sparkline" viewBox="0 0 160 40" preserveAspectRatio="none"><polyline points="0,30 20,20 40,28 60,10 80,22 100,8 120,26 140,14 160,24" fill="none" stroke="#3b82c4" stroke-width="2.5"/></svg>
+                  <img src="Assets/Vector 180 (3).png" class="stat-graph" alt="">
                 </div>
-
-                <div class="stat-card stat-green">
-                  <div class="stat-top">
-                    <div class="stat-icon"><i class="fa-solid fa-stethoscope"></i></div>
-                    <div>
-                      <div class="stat-label">Doctors on Duty</div>
-                      <div class="stat-number">12</div>
-                    </div>
-                  </div>
-                  <svg class="sparkline" viewBox="0 0 160 40" preserveAspectRatio="none"><polyline points="0,20 30,32 60,12 90,26 120,18 160,10" fill="none" stroke="#2f9e58" stroke-width="2.5"/></svg>
-                </div>
-
                 <div class="stat-card stat-peach">
                   <div class="stat-top">
-                    <div class="stat-icon"><i class="fa-solid fa-chart-line"></i></div>
+                    <div class="stat-icon" id="statB"><img src="Assets/Vector (2).png" alt=""></div>
+                    <div>
+                      <div class="stat-label">Patients in Consultation</div>
+                      <div class="stat-number">21</div>
+                      <p class="stat-para">+5 from yesterday</p>
+                    </div>
+                  </div>
+                  <img src="Assets/Vector 180 (2).png" class="stat-graph" alt="">
+                </div>
+                  <div class="stat-card stat-green">
+                  <div class="stat-top">
+                    <div class="stat-icon" id="statC"><img src="Assets/Vector (1).png" alt=""></div>
+                    <div>
+                      <div class="stat-label">Doctors on Duty</div>
+                      <div class="stat-number">11</div>
+                      <a href="#" class="doc-list-view">view all</a>
+                    </div>
+                  </div>
+                  <img src="Assets/Vector 180 (1).png" class="stat-graph" alt="">
+                </div>
+                <div class="stat-card stat-plain">
+                  <div class="stat-top">
+                    <div class="stat-icon" id="statD"><img src="Assets/Vector(4).png" alt=""></div>
                     <div>
                       <div class="stat-label">Revenue Today</div>
                       <div class="stat-number">₦4,200</div>
+                      <p class="stat-para">+8% from yesterday</p>
                     </div>
                   </div>
-                  <svg class="sparkline" viewBox="0 0 160 40" preserveAspectRatio="none"><polyline points="0,32 20,32 40,18 60,18 80,26 100,10 120,10 140,22 160,22" fill="none" stroke="#c98a4b" stroke-width="2.5"/></svg>
-                </div>
-
-                <div class="stat-card stat-plain">
-                  <div class="stat-top">
-                    <div class="stat-icon stat-icon-lavender"><i class="fa-solid fa-people-group"></i></div>
-                    <div>
-                      <div class="stat-label">Patients in consultation</div>
-                      <div class="stat-number">21</div>
-                    </div>
-                  </div>
-                  <svg class="sparkline" viewBox="0 0 160 40" preserveAspectRatio="none"><polyline points="0,14 40,26 80,10 120,30 160,18" fill="none" stroke="#8a7ee0" stroke-width="2.5"/></svg>
-                </div>
-
-                <div class="stat-card stat-plain">
-                  <div class="stat-top">
-                    <div class="stat-icon stat-icon-blue"><i class="fa-solid fa-user-group"></i></div>
-                    <div>
-                      <div class="stat-label">Pending Transaction</div>
-                      <div class="stat-number">2</div>
-                    </div>
-                  </div>
-                  <svg class="sparkline" viewBox="0 0 160 40" preserveAspectRatio="none"><polyline points="0,30 30,10 60,26 90,6 120,20 160,12" fill="none" stroke="#3b82c4" stroke-width="2.5"/></svg>
+                  <img src="Assets/Vector 180.png" class="stat-graph" alt="">
+                  <a href="home.html" class="rev-link-view">view all</a>
                 </div>
               </div>
 
@@ -396,58 +387,52 @@
       </a>
     </dialog>
 
-    <!-- Charges List Popup Dialog -->
+    <!-- Charges List Popup Dialog (scrollable through patients, searchable by name) -->
     <dialog id="charges-popup" class="charges-modal">
         <div class="charges-modal-header">
             <div class="charges-modal-user">
-                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200" alt="Patient Avatar" class="charges-modal-avatar">
-                <h2 class="charges-modal-title">Charges List</h2>
+                <h2 class="charges-modal-title" id="chargesPatientName">Charges List</h2>
             </div>
             <button type="button" class="charges-modal-close" id="closeChargesPopup" aria-label="Close modal">
                 <i class="fa-solid fa-xmark"></i>
             </button>
         </div>
 
-        <table class="charges-table">
-            <thead>
-                <tr>
-                    <th>Item Name</th>
-                    <th>Description</th>
-                    <th>Department</th>
-                    <th>Amount Paid</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="item-name">Consultation Fee</td>
-                    <td>Consultation + Pharmacy</td>
-                    <td>General Medicine</td>
-                    <td>&#8358;20,000</td>
-                </tr>
-                <tr>
-                    <td class="item-name">Xray</td>
-                    <td>Xray in device rendered</td>
-                    <td>Radiology</td>
-                    <td>&#8358;10,000</td>
-                </tr>
-                <tr>
-                    <td class="item-name">Medication</td>
-                    <td>Medication Pharmacy</td>
-                    <td>Pharmacy</td>
-                    <td>&#8358;35,000</td>
-                </tr>
-                <tr>
-                    <td class="item-name">Lab Tests</td>
-                    <td>Consultation + Lab Test</td>
-                    <td>Laboratory</td>
-                    <td>&#8358;15,000</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="charges-search-row">
+            <input type="text" id="chargesSearchInput" class="charges-search-input" placeholder="Find patient by name...">
+            <button type="button" id="chargesSearchBtn" class="charges-search-btn" aria-label="Search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </div>
+        <p class="charges-search-error" id="chargesSearchError">No matching patient found.</p>
+
+        <div class="charges-table-scroll">
+            <table class="charges-table">
+                <thead>
+                    <tr>
+                        <th>Item Name</th>
+                        <th>Description</th>
+                        <th>Department</th>
+                        <th>Amount Paid</th>
+                    </tr>
+                </thead>
+                <tbody id="chargesTableBody"></tbody>
+            </table>
+        </div>
 
         <div class="charges-total-container">
             <span>Total:</span>
-            <span class="charges-total-amount">&#8358;80,000</span>
+            <span class="charges-total-amount" id="chargesTotalAmount">&#8358;0</span>
+        </div>
+
+        <div class="charges-nav-row">
+            <button type="button" class="charges-nav-btn" id="chargesPrevBtn" aria-label="Previous patient">
+                <i class="fa-solid fa-chevron-left"></i> Prev
+            </button>
+            <span class="charges-nav-indicator" id="chargesNavIndicator">1 / 1</span>
+            <button type="button" class="charges-nav-btn" id="chargesNextBtn" aria-label="Next patient">
+                Next <i class="fa-solid fa-chevron-right"></i>
+            </button>
         </div>
     </dialog>
 
@@ -517,227 +502,6 @@
             <button type="button" class="btn-submit-payment" id="btnDoneClose">Done</button>
         </div>
     </dialog>
-
-    <script>
-      /* ---------- Navigation Submenus ---------- */
-      const toggleButtons = document.querySelectorAll('.nav-toggle');
-
-      toggleButtons.forEach((btn) => {
-        const parentItem = btn.closest('.has-submenu');
-
-        btn.addEventListener('click', (e) => {
-          if (e.target.closest('[data-nav]')) return;
-          const isOpen = parentItem.classList.toggle('open');
-          btn.setAttribute('aria-expanded', isOpen);
-        });
-      });
-
-      document.querySelectorAll('[data-nav]').forEach((btn) => {
-        btn.addEventListener('click', () => {
-          window.location.href = btn.getAttribute('data-nav');
-        });
-      });
-
-      /* ---------- Mobile sidebar toggle ---------- */
-      const sidebar = document.querySelector('.sidebar');
-      const hamburgerBtn = document.getElementById('hamburgerBtn');
-      const sidebarOverlay = document.getElementById('sidebarOverlay');
-
-      function openSidebar() {
-        sidebar.classList.add('mobile-open');
-        sidebarOverlay.classList.add('visible');
-      }
-      function closeSidebar() {
-        sidebar.classList.remove('mobile-open');
-        sidebarOverlay.classList.remove('visible');
-      }
-
-      if (hamburgerBtn) {
-        hamburgerBtn.addEventListener('click', () => {
-          if (sidebar.classList.contains('mobile-open')) {
-            closeSidebar();
-          } else {
-            openSidebar();
-          }
-        });
-      }
-      if (sidebarOverlay) {
-        sidebarOverlay.addEventListener('click', closeSidebar);
-      }
-
-      /* ---------- Search ---------- */
-      const searchInput = document.getElementById('searchInput');
-      if (searchInput) {
-        searchInput.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter') e.preventDefault();
-        });
-      }
-
-      /* ---------- Charges List Modal ---------- */
-      const chargesPopup = document.getElementById('charges-popup');
-      const closeChargesBtn = document.getElementById('closeChargesPopup');
-
-      document.querySelectorAll('.transactions-table .action-view').forEach((btn) => {
-        btn.addEventListener('click', () => {
-          chargesPopup.showModal();
-        });
-      });
-
-      if (closeChargesBtn) {
-        closeChargesBtn.addEventListener('click', () => {
-          chargesPopup.close();
-        });
-      }
-
-      if (chargesPopup) {
-        chargesPopup.addEventListener('click', (e) => {
-          if (e.target === chargesPopup) {
-            chargesPopup.close();
-          }
-        });
-      }
-
-      /* =========================================================
-         INTERACTIVE PAYMENT METHOD / RECEIPT MODAL LOGIC
-         ========================================================= */
-      const paymentPopup = document.getElementById('payment-popup');
-      const closePaymentBtn = document.getElementById('closePaymentPopup');
-      const tabBtns = document.querySelectorAll('.tab-btn');
-      const paymentOptions = document.querySelectorAll('.payment-option');
-      const modalPaymentAmount = document.getElementById('modalPaymentAmount');
-      const btnSubmitPayment = document.getElementById('btnSubmitPayment');
-      const paymentModalContent = document.getElementById('payment-modal-content');
-      const paymentSuccessMsg = document.getElementById('paymentSuccessMsg');
-      const successDetailText = document.getElementById('successDetailText');
-      const btnDoneClose = document.getElementById('btnDoneClose');
-
-      let selectedMethod = 'cash';
-      let selectedMethodName = 'Cash Payment';
-      let currentAmountStr = '₦1900.00';
-
-      // Open modal dynamically when clicking ANY print button in the table
-      document.querySelectorAll('.transactions-table .action-print').forEach((btn) => {
-        btn.addEventListener('click', (e) => {
-          const row = e.target.closest('tr');
-          if (row) {
-            const rowAmount = row.children[3]?.textContent.trim();
-            if (rowAmount) {
-              currentAmountStr = rowAmount;
-              modalPaymentAmount.textContent = currentAmountStr;
-            }
-          }
-          // Reset view state
-          paymentModalContent.style.display = 'block';
-          paymentSuccessMsg.style.display = 'none';
-          paymentPopup.showModal();
-        });
-      });
-
-      // Synchronize selection state (Tabs & Radio Options)
-      function setPaymentMethod(methodKey) {
-        selectedMethod = methodKey;
-
-        // Update Top Tabs
-        tabBtns.forEach((tab) => {
-          if (tab.dataset.method === methodKey) {
-            tab.classList.add('active');
-            selectedMethodName = tab.textContent.trim();
-          } else {
-            tab.classList.remove('active');
-          }
-        });
-
-        // Update Radio Cards
-        paymentOptions.forEach((opt) => {
-          if (opt.dataset.method === methodKey) {
-            opt.classList.add('selected');
-          } else {
-            opt.classList.remove('selected');
-          }
-        });
-      }
-
-      // Event Listeners for Pill Tabs
-      tabBtns.forEach((tab) => {
-        tab.addEventListener('click', () => {
-          setPaymentMethod(tab.dataset.method);
-        });
-      });
-
-      // Event Listeners for Radio Card Rows
-      paymentOptions.forEach((opt) => {
-        opt.addEventListener('click', () => {
-          setPaymentMethod(opt.dataset.method);
-        });
-      });
-
-      // Submit Payment Action Simulation
-      if (btnSubmitPayment) {
-        btnSubmitPayment.addEventListener('click', () => {
-          successDetailText.textContent = `Transaction of ${currentAmountStr} processed successfully via ${selectedMethodName}.`;
-          paymentModalContent.style.display = 'none';
-          paymentSuccessMsg.style.display = 'block';
-        });
-      }
-
-      // Additional Action Buttons Visual Feedback
-      document.getElementById('btnPrintReceipt')?.addEventListener('click', () => {
-        alert(`Printing Thermal Receipt for ${currentAmountStr}...`);
-      });
-
-      document.getElementById('btnSendDigital')?.addEventListener('click', () => {
-        alert(`SMS & Email Receipt dispatched successfully!`);
-      });
-
-      document.getElementById('btnProcessGate')?.addEventListener('click', () => {
-        alert(`Payment processed and Cash Gate cleared.`);
-      });
-
-      // Close Dialog Controls
-      if (btnDoneClose) {
-        btnDoneClose.addEventListener('click', () => {
-          paymentPopup.close();
-        });
-      }
-
-      if (closePaymentBtn) {
-        closePaymentBtn.addEventListener('click', () => {
-          paymentPopup.close();
-        });
-      }
-
-      if (paymentPopup) {
-        paymentPopup.addEventListener('click', (e) => {
-          if (e.target === paymentPopup) {
-            paymentPopup.close();
-          }
-        });
-      }
-
-      /* ---------- Patient Popup ---------- */
-      const patientPopup = document.getElementById('patient-popup');
-      const openPatientBtn = document.getElementById('openPatientPopup');
-      const closePatientBtn = document.getElementById('closePatientPopup');
-
-      if (openPatientBtn && patientPopup) {
-        openPatientBtn.addEventListener('click', () => {
-          patientPopup.showModal();
-        });
-      }
-
-      if (closePatientBtn && patientPopup) {
-        closePatientBtn.addEventListener('click', () => {
-          patientPopup.close();
-        });
-      }
-
-      if (patientPopup) {
-        patientPopup.addEventListener('click', (e) => {
-          if (e.target === patientPopup) {
-            patientPopup.close();
-          }
-        });
-      }
-    </script>
+    <script src="cashier.js"></script>
 </body>
 </html>

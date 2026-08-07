@@ -170,7 +170,7 @@
                 </span>
               </button>
 
-              <button type="button" class="ns-option" data-type="checkin">
+              <button type="button" class="ns-option" id="newOption" data-type="checkin">
                 <span class="ns-icon"><i class="fa-solid fa-person-walking"></i></span>
                 <span class="ns-text">
                   <h2>Check-In Patient (Walk-In)</h2>
@@ -279,6 +279,12 @@
        const nsOption = document.getElementById('nsOption');
         nsOption.addEventListener('click', () => {
         window.location.href = 'AssignDoc.html';
+      });
+
+      const newOption = document.getElementById('newOption');
+
+        newOption.addEventListener('click', () => {
+          window.location.href = 'RegisterNP.html';
       });
     </script>
 </body>

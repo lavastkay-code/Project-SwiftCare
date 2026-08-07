@@ -105,9 +105,9 @@ function initMobileSidebar() {
   });
 }
 
-/* ---------------------------------------------------------
+/* 
    PATIENT MANAGEMENT POPUP (unchanged behaviour, relocated)
---------------------------------------------------------- */
+ */
 function initPatientPopup() {
   const patientPopup = document.getElementById('patient-popup');
   const openPatientBtn = document.getElementById('openPatientPopup');
@@ -121,12 +121,12 @@ function initPatientPopup() {
   });
 }
 
-/* ---------------------------------------------------------
+/* 
    QUEUE TABLE — the welcome-row search bar and the queue
    panel's own search box both search the same table, so they
    stay in sync. Status filter, date filter, row actions and
    the "..." row menu all live here too since they share state.
---------------------------------------------------------- */
+ */
 function initQueueTable() {
   const table = document.querySelector('.queue-table');
   if (!table) return;
@@ -216,11 +216,11 @@ function initQueueTable() {
   initRowMenus(rows);
 }
 
-/* ---------------------------------------------------------
-   ACTION BUTTONS — "Start Consultation" / "Continue"
---------------------------------------------------------- */
-function initActionButtons(table) {
-  table.addEventListener('click', (e) => {
+
+  //  ACTION BUTTONS — "Start Consultation" / "Continue"
+
+  function initActionButtons(table) {
+    table.addEventListener('click', (e) => {
     const btn = e.target.closest('.action-btn');
     if (!btn) return;
 
@@ -234,15 +234,11 @@ function initActionButtons(table) {
     }
 
     setTimeout(() => {
-      window.location.href = 'Consultation.html';
-    }, 400);
+      window.location.href = 'Consult.html';
+    }, 2);
   });
 }
 
-/* ---------------------------------------------------------
-   ROW "..." MENU — one reusable floating menu, positioned
-   next to whichever row's icon was clicked.
---------------------------------------------------------- */
 function initRowMenus(rows) {
   let menu = document.getElementById('rowActionMenu');
   if (!menu) {
