@@ -222,6 +222,8 @@
         }
 
         .success-card {
+          height: 632px;
+          min-width: 778px;
           background: white;
           border: 1px solid #e5edf5;
           border-radius: 22px;

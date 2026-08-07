@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cashier Dashboard | SwiftCare</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="cashier.css">
+</head>
+<body>
+    <div class="app">
+        <aside class="sidebar">
+          <div class="logo">
+            <img src="Assets/logo.png" alt="SwiftCare Logo" class="logo-img">
+          </div>
+
+          <nav class="nav">
+            <ul class="nav-list">
+
+              <li class="nav-item">
+                <a href="home.html" class="nav-link" id="navDashboard">
+                  <i class="fa-solid fa-house nav-icon"></i>
+                  <span>Dashboard</span>
+                </a>
+              </li>
+
+              <li class="nav-item has-submenu">
+                <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="patients-submenu">
+                  <i class="fa-solid fa-user nav-icon"></i>
+                  <span>Patients</span>
+                  <i class="fa-solid fa-chevron-down nav-arrow"></i>
+                </button>
+                <ul class="submenu" id="patients-submenu">
+                  <li><button type="button" class="submenu-link popup-trigger" id="openPatientPopup">Register Patient</button></li>
+                  <li><a href="#" class="submenu-link">Patient Records</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item has-submenu">
+                <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="doctors-submenu">
+                  <i class="fa-solid fa-user-doctor nav-icon"></i>
+                  <span>Doctors</span>
+                  <i class="fa-solid fa-chevron-down nav-arrow"></i>
+                </button>
+                <ul class="submenu" id="doctors-submenu">
+                  <li><a href="#" class="submenu-link">Add Doctor</a></li>
+                  <li><a href="#" class="submenu-link">Doctor List</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item has-submenu">
+                <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="nurses-submenu">
+                  <i class="fa-solid fa-user-nurse nav-icon"></i>
+                  <span>Nurses</span>
+                  <i class="fa-solid fa-chevron-down nav-arrow"></i>
+                </button>
+                <ul class="submenu" id="nurses-submenu">
+                  <li><a href="#" class="submenu-link">Add Nurse</a></li>
+                  <li><a href="#" class="submenu-link">Nurse List</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item has-submenu">
+                <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="receptionist-submenu">
+                  <i class="fa-solid fa-user-tie nav-icon"></i>
+                  <span>Receptionist</span>
+                  <i class="fa-solid fa-chevron-down nav-arrow"></i>
+                </button>
+                <ul class="submenu" id="receptionist-submenu">
+                  <li><a href="#" class="submenu-link">Add Receptionist</a></li>
+                  <li><a href="#" class="submenu-link">Receptionist List</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item has-submenu" id="cashierNavItem">
+                <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="cashier-submenu">
+                  <i class="fa-solid fa-cash-register nav-icon"></i>
+                  <span>Cashier</span>
+                  <i class="fa-solid fa-chevron-down nav-arrow"></i>
+                </button>
+                <ul class="submenu" id="cashier-submenu">
+                  <li><a href="AccessDenied.html" class="submenu-link">Patient Invoice</a></li>
+                  <li><a href="AccessDenied.html" class="submenu-link">Review Charges</a></li>
+                  <li><a href="AccessDenied.html" class="submenu-link">Record Payment</a></li>
+                  <li><a href="AccessDenied.html" class="submenu-link">Receipts</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item has-submenu" id="billingNavItem">
+                <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="billings-submenu" id="navBilling">
+                  <i class="fa-solid fa-file-invoice-dollar nav-icon"></i>
+                  <span>Billings</span>
+                  <i class="fa-solid fa-chevron-down nav-arrow"></i>
+                </button>
+                <ul class="submenu" id="billings-submenu">
+                  <li><a href="#" class="submenu-link">Create Invoice</a></li>
+                  <li><a href="invoice-record.html" class="submenu-link" id="navInvoiceHistory">Invoice History</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fa-solid fa-gear nav-icon"></i>
+                  <span>Settings</span>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="login.html" class="nav-link logout-link">
+                  <i class="fa-solid fa-right-from-bracket nav-icon"></i>
+                  <span>Logout</span>
+                </a>
+              </li>
+
+            </ul>
+          </nav>
+
+          <div class="info-box">
+            <i class="fa-solid fa-lock info-icon"></i>
+            <p>Your information is safe with us<br>We never share your data</p>
+          </div>
+        </aside>
+
+        <main class="main">
+          <header class="topbar">
+              <button class="hamburger" id="hamburgerBtn">☰</button>
+              <h1>Dashboard</h1>
+
+              <div class="topbar-right">
+                <div class="bell-wrapper">
+                  <span class="bell"><img src="Assets/bell.png" alt=""></span>
+                  <span class="badge">5</span>
+                </div>
+                <div class="divider"></div>
+                <div class="user-info">
+                  <div class="avatar avatar-initials">SD</div>
+                  <div class="user-text">
+                    <div class="user-name">Sandra Duke</div>
+                    <div class="user-role">Cashier</div>
+                  </div>
+                  <span class="dropdown-arrow">
+                    <i class="fa-solid fa-chevron-down nav-arrow"></i>
+                  </span>
+                </div>
+              </div>
+            </header>
+            
+      <section class="welcome-row">
+        <div class="welcome-text">
+          <h2>Welcome back, Sandra</h2>
+          <p>Here's whats happening in the hospital today</p>
+        </div>
+
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="Search">
+          <button id="searchBtn"><img src="Assets/search.png" alt="" class="btn-img"></button>
+        </div>
+
+        <div>
+          <input type="date" class="date-picker" id="datePicker">
+        </div>
+      </section>
+
+            <div class="page-content">
+
+            <!-- ============ CASHIER DASHBOARD PAGE ============ -->
+            <section class="page active" id="page-cashier">
+
+              <div class="stat-grid">
+                <div class="stat-card stat-blue">
+                  <div class="stat-top">
+                    <div class="stat-icon"><i class="fa-solid fa-user-group"></i></div>
+                    <div>
+                      <div class="stat-label">Total Patients</div>
+                      <div class="stat-number">37</div>
+                    </div>
+                  </div>
+                  <svg class="sparkline" viewBox="0 0 160 40" preserveAspectRatio="none"><polyline points="0,30 20,20 40,28 60,10 80,22 100,8 120,26 140,14 160,24" fill="none" stroke="#3b82c4" stroke-width="2.5"/></svg>
+                </div>
+
+                <div class="stat-card stat-green">
+                  <div class="stat-top">
+                    <div class="stat-icon"><i class="fa-solid fa-stethoscope"></i></div>
+                    <div>
+                      <div class="stat-label">Doctors on Duty</div>
+                      <div class="stat-number">12</div>
+                    </div>
+                  </div>
+                  <svg class="sparkline" viewBox="0 0 160 40" preserveAspectRatio="none"><polyline points="0,20 30,32 60,12 90,26 120,18 160,10" fill="none" stroke="#2f9e58" stroke-width="2.5"/></svg>
+                </div>
+
+                <div class="stat-card stat-peach">
+                  <div class="stat-top">
+                    <div class="stat-icon"><i class="fa-solid fa-chart-line"></i></div>
+                    <div>
+                      <div class="stat-label">Revenue Today</div>
+                      <div class="stat-number">₦4,200</div>
+                    </div>
+                  </div>
+                  <svg class="sparkline" viewBox="0 0 160 40" preserveAspectRatio="none"><polyline points="0,32 20,32 40,18 60,18 80,26 100,10 120,10 140,22 160,22" fill="none" stroke="#c98a4b" stroke-width="2.5"/></svg>
+                </div>
+
+                <div class="stat-card stat-plain">
+                  <div class="stat-top">
+                    <div class="stat-icon stat-icon-lavender"><i class="fa-solid fa-people-group"></i></div>
+                    <div>
+                      <div class="stat-label">Patients in consultation</div>
+                      <div class="stat-number">21</div>
+                    </div>
+                  </div>
+                  <svg class="sparkline" viewBox="0 0 160 40" preserveAspectRatio="none"><polyline points="0,14 40,26 80,10 120,30 160,18" fill="none" stroke="#8a7ee0" stroke-width="2.5"/></svg>
+                </div>
+
+                <div class="stat-card stat-plain">
+                  <div class="stat-top">
+                    <div class="stat-icon stat-icon-blue"><i class="fa-solid fa-user-group"></i></div>
+                    <div>
+                      <div class="stat-label">Pending Transaction</div>
+                      <div class="stat-number">2</div>
+                    </div>
+                  </div>
+                  <svg class="sparkline" viewBox="0 0 160 40" preserveAspectRatio="none"><polyline points="0,30 30,10 60,26 90,6 120,20 160,12" fill="none" stroke="#3b82c4" stroke-width="2.5"/></svg>
+                </div>
+              </div>
+
+              <div class="two-col">
+                <div class="panel-1">
+                  <div class="panel-title">Checked In Waiting</div>
+                  <ul class="activity-list">
+                    <li><span class="activity-avatar"><i class="fa-solid fa-user"></i></span><span class="activity-text">John Doe has been registered</span><span class="activity-time">10:30 AM</span></li>
+                    <li><span class="activity-avatar"><i class="fa-solid fa-user"></i></span><span class="activity-text">Mary Johnson has checked in</span><span class="activity-time">11:25 AM</span></li>
+                    <li><span class="activity-avatar"><i class="fa-solid fa-user"></i></span><span class="activity-text">Roberts Lee</span><span class="activity-time">14:31 AM</span></li>
+                    <li><span class="activity-avatar"><i class="fa-solid fa-user"></i></span><span class="activity-text">James Taylor</span><span class="activity-time">22:18 AM</span></li>
+                  </ul>
+                  <button class="view-all-btn">View all activities</button>
+                </div>
+
+                <div class="panel-2">
+                  <div class="panel-head">
+                    <div class="panel-title">In Consultation</div>
+                    <a href="#" class="view-all-link">View all</a>
+                  </div>
+                  <div class="table-scroll">
+                    <table class="data-table">
+                      <thead>
+                        <tr><th>Time</th><th>Patient</th><th>Doctor</th><th>Department</th><th>Status</th></tr>
+                      </thead>
+                      <tbody>
+                        <tr><td>09:00 AM</td><td>John Doe</td><td>Dr. Sarah S.</td><td>Cardiology</td><td><span class="badge-pill badge-pending">Pending</span></td></tr>
+                        <tr><td>10:00 AM</td><td>Mary Johnson</td><td>Dr. Michael B.</td><td>General</td><td><span class="badge-pill badge-completed">Completed</span></td></tr>
+                        <tr><td>02:00 PM</td><td>Roberts Lee</td><td>Dr. David W.</td><td>Neurology</td><td><span class="badge-pill badge-completed">Completed</span></td></tr>
+                        <tr><td>05:00 PM</td><td>James Taylor</td><td>Dr. Brown W.</td><td>General</td><td><span class="badge-pill badge-completed">Completed</span></td></tr>
+                        <tr><td>07:15 PM</td><td>Ray Taylor</td><td>Dr. Green W.</td><td>General</td><td><span class="badge-pill badge-completed">Completed</span></td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <div class="panel-3 awaiting-panel">
+                <div class="panel-title">Awaiting Payment</div>
+                <ul class="awaiting-list">
+                  <li><span>James Taylor</span><span class="badge-pill badge-pending-solid">Pending</span></li>
+                  <li><span>Mary Johnson</span><span class="badge-pill badge-pending-solid">Pending</span></li>
+                  <li><span>Roberts Lee</span><span class="badge-pill badge-pending-solid">Pending</span></li>
+                  <li><span>Ray Taylor</span><span class="badge-pill badge-pending-solid">Pending</span></li>
+                </ul>
+                <button class="view-all-btn">View all activities</button>
+              </div>
+              </div>
+
+              <div class="panel">
+                <div class="panel-head">
+                  <div class="panel-title">Recent Transactions</div>
+                  <a href="#" class="view-all-link">View all <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                <div class="table-scroll">
+                  <table class="data-table transactions-table">
+                    <thead>
+                      <tr><th>Patient's Name</th><th>Patient ID</th><th>Service Type</th><th>Amount Paid</th><th>Payment Method</th><th>Date</th><th>Status</th><th>Action</th></tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="name-cell"><span class="row-avatar"><i class="fa-solid fa-user"></i></span>Mr. John Deo</td>
+                        <td>PAT1023</td><td>ER visit</td><td>₦39,000</td><td>Bank Transfer</td><td>20/7/2026</td>
+                        <td><span class="status-text status-paid">Paid</span></td>
+                        <td class="action-cell">
+                          <button type="button" class="action-btn action-view" aria-label="View transaction"><i class="fa-regular fa-eye"></i></button>
+                          <button type="button" class="action-btn action-print" aria-label="Print receipt"><i class="fa-solid fa-print"></i></button>
+                          <button type="button" class="action-btn action-download" aria-label="Download receipt"><i class="fa-solid fa-download"></i></button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="name-cell"><span class="row-avatar"><i class="fa-solid fa-user"></i></span>Mary Johnson</td>
+                        <td>PAT 1025</td><td>Consultation</td><td>₦80,000</td><td>Cash</td><td>20/7/2026</td>
+                        <td><span class="status-text status-paid">Paid</span></td>
+                        <td class="action-cell">
+                          <button type="button" class="action-btn action-view" aria-label="View transaction"><i class="fa-regular fa-eye"></i></button>
+                          <button type="button" class="action-btn action-print" aria-label="Print receipt"><i class="fa-solid fa-print"></i></button>
+                          <button type="button" class="action-btn action-download" aria-label="Download receipt"><i class="fa-solid fa-download"></i></button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="name-cell"><span class="row-avatar"><i class="fa-solid fa-user"></i></span>Roberts Lee</td>
+                        <td>PAT 2351</td><td>Pharmacy</td><td>₦15,000</td><td>Cash</td><td>20/7/2026</td>
+                        <td><span class="status-text status-pending">Pending</span></td>
+                        <td class="action-cell">
+                          <button type="button" class="action-btn action-view" aria-label="View transaction"><i class="fa-regular fa-eye"></i></button>
+                          <button type="button" class="action-btn action-print" aria-label="Print receipt"><i class="fa-solid fa-print"></i></button>
+                          <button type="button" class="action-btn action-download" aria-label="Download receipt"><i class="fa-solid fa-download"></i></button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="name-cell"><span class="row-avatar"><i class="fa-solid fa-user"></i></span>Mr. Okafor</td>
+                        <td>PAT 3427</td><td>Consultation</td><td>₦10,000</td><td>Mobile</td><td>20/7/2026</td>
+                        <td><span class="status-text status-pending">Pending</span></td>
+                        <td class="action-cell">
+                          <button type="button" class="action-btn action-view" aria-label="View transaction"><i class="fa-regular fa-eye"></i></button>
+                          <button type="button" class="action-btn action-print" aria-label="Print receipt"><i class="fa-solid fa-print"></i></button>
+                          <button type="button" class="action-btn action-download" aria-label="Download receipt"><i class="fa-solid fa-download"></i></button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="name-cell"><span class="row-avatar"><i class="fa-solid fa-user"></i></span>Mr. Sam Okafor</td>
+                        <td>PAT 3851</td><td>Pharmacy</td><td>₦10,000</td><td>Credit Card</td><td>20/7/2026</td>
+                        <td><span class="status-text status-paid">Paid</span></td>
+                        <td class="action-cell">
+                          <button type="button" class="action-btn action-view" aria-label="View transaction"><i class="fa-regular fa-eye"></i></button>
+                          <button type="button" class="action-btn action-print" aria-label="Print receipt"><i class="fa-solid fa-print"></i></button>
+                          <button type="button" class="action-btn action-download" aria-label="Download receipt"><i class="fa-solid fa-download"></i></button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="name-cell"><span class="row-avatar"><i class="fa-solid fa-user"></i></span>Mr. Sam</td>
+                        <td>PAT 3851</td><td>Pharmacy</td><td>₦25,000</td><td>Credit Card</td><td>20/7/2026</td>
+                        <td><span class="status-text status-paid">Paid</span></td>
+                        <td class="action-cell">
+                          <button type="button" class="action-btn action-view" aria-label="View transaction"><i class="fa-regular fa-eye"></i></button>
+                          <button type="button" class="action-btn action-print" aria-label="Print receipt"><i class="fa-solid fa-print"></i></button>
+                          <button type="button" class="action-btn action-download" aria-label="Download receipt"><i class="fa-solid fa-download"></i></button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+            </section>
+
+          </div>
+        </main>
+    </div>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Patient Popup Dialog -->
+    <dialog id="patient-popup" class="patient-popup">
+      <button class="popup-close" id="closePatientPopup" aria-label="Close">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1L19 19M19 1L1 19" stroke="white" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <div class="popup-header">
+        <h1>Patient Management</h1>
+        <p>Register, Search, view and manage patient records</p>
+      </div>
+
+      <a href="#" class="popup-option-card">
+        <div class="popup-option-icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="21" cy="14" r="8" stroke="#0d0d0d" stroke-width="3.2"/>
+            <path d="M6 42c0-9.4 6.7-15 15-15s15 5.6 15 15" stroke="#0d0d0d" stroke-width="3.2" stroke-linecap="round"/>
+            <path d="M38 12v10M33 17h10" stroke="#0d0d0d" stroke-width="3.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="popup-option-text">
+          <h2>Register New Patient</h2>
+          <p>Add a new patient to the system</p>
+        </div>
+      </a>
+
+      <a href="SearchP.html" class="popup-option-card">
+        <div class="popup-option-icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="13" stroke="#0d0d0d" stroke-width="3.2"/>
+            <path d="M29.5 29.5L41 41" stroke="#0d0d0d" stroke-width="3.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="popup-option-text">
+          <h2>Search Existing Patient</h2>
+          <p>Find and manage existing patient records</p>
+        </div>
+      </a>
+    </dialog>
+
+    <!-- Charges List Popup Dialog -->
+    <dialog id="charges-popup" class="charges-modal">
+        <div class="charges-modal-header">
+            <div class="charges-modal-user">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200" alt="Patient Avatar" class="charges-modal-avatar">
+                <h2 class="charges-modal-title">Charges List</h2>
+            </div>
+            <button type="button" class="charges-modal-close" id="closeChargesPopup" aria-label="Close modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <table class="charges-table">
+            <thead>
+                <tr>
+                    <th>Item Name</th>
+                    <th>Description</th>
+                    <th>Department</th>
+                    <th>Amount Paid</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="item-name">Consultation Fee</td>
+                    <td>Consultation + Pharmacy</td>
+                    <td>General Medicine</td>
+                    <td>&#8358;20,000</td>
+                </tr>
+                <tr>
+                    <td class="item-name">Xray</td>
+                    <td>Xray in device rendered</td>
+                    <td>Radiology</td>
+                    <td>&#8358;10,000</td>
+                </tr>
+                <tr>
+                    <td class="item-name">Medication</td>
+                    <td>Medication Pharmacy</td>
+                    <td>Pharmacy</td>
+                    <td>&#8358;35,000</td>
+                </tr>
+                <tr>
+                    <td class="item-name">Lab Tests</td>
+                    <td>Consultation + Lab Test</td>
+                    <td>Laboratory</td>
+                    <td>&#8358;15,000</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="charges-total-container">
+            <span>Total:</span>
+            <span class="charges-total-amount">&#8358;80,000</span>
+        </div>
+    </dialog>
+
+    <!-- Payment Method / Thermal Receipt Popup Dialog (INTERACTIVE REPLICA) -->
+    <dialog id="payment-popup" class="payment-modal">
+        <div class="payment-modal-header">
+            <h3>Payment Method</h3>
+            <button type="button" class="modal-close-btn" id="closePaymentPopup" aria-label="Close dialog">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <!-- Main Form Content -->
+        <div id="payment-modal-content">
+            <div class="payment-tabs">
+                <button type="button" class="tab-btn active" data-method="cash">Cash Payment</button>
+                <button type="button" class="tab-btn" data-method="pos">POS / Card Terminal</button>
+                <button type="button" class="tab-btn" data-method="transfer">Bank Transfer</button>
+            </div>
+
+            <div class="payment-body-box">
+                <div class="payment-amount-title">Payment Amount</div>
+                <div class="payment-amount-val" id="modalPaymentAmount">&#8358;1900.00</div>
+
+                <span class="select-payment-label">Select Payment Method</span>
+
+                <div class="payment-option selected" data-method="cash">
+                    <div class="option-left">
+                        <i class="fa-solid fa-money-bill-wave option-icon"></i>
+                        <span>Cash Payment</span>
+                    </div>
+                    <div class="radio-circle"></div>
+                </div>
+
+                <div class="payment-option" data-method="transfer">
+                    <div class="option-left">
+                        <i class="fa-solid fa-mobile-screen option-icon"></i>
+                        <span>Bank Transfer</span>
+                    </div>
+                    <div class="radio-circle"></div>
+                </div>
+
+                <div class="payment-option" data-method="pos">
+                    <div class="option-left">
+                        <i class="fa-solid fa-credit-card option-icon"></i>
+                        <span>POS / Card Terminal</span>
+                    </div>
+                    <div class="radio-circle"></div>
+                </div>
+            </div>
+
+            <div class="payment-action-box">
+                <button type="button" class="btn-submit-payment" id="btnSubmitPayment">
+                    Submit Payment <i class="fa-solid fa-arrow-right"></i>
+                </button>
+                <button type="button" class="btn-secondary-action" id="btnProcessGate">Process Payment & Clear Cash Gate</button>
+                <button type="button" class="btn-secondary-action solid-green" id="btnPrintReceipt">Print Thermal Receipt</button>
+                <button type="button" class="btn-secondary-action" id="btnSendDigital">Send SMS/Email Receipt</button>
+            </div>
+        </div>
+
+        <!-- Interactive Confirmation Success Message -->
+        <div class="payment-success-msg" id="paymentSuccessMsg">
+            <i class="fa-solid fa-circle-check"></i>
+            <h4>Payment Successful!</h4>
+            <p id="successDetailText">Transaction of &#8358;1,900.00 processed via Cash Payment.</p>
+            <button type="button" class="btn-submit-payment" id="btnDoneClose">Done</button>
+        </div>
+    </dialog>
+
+    <script>
+      /* ---------- Navigation Submenus ---------- */
+      const toggleButtons = document.querySelectorAll('.nav-toggle');
+
+      toggleButtons.forEach((btn) => {
+        const parentItem = btn.closest('.has-submenu');
+
+        btn.addEventListener('click', (e) => {
+          if (e.target.closest('[data-nav]')) return;
+          const isOpen = parentItem.classList.toggle('open');
+          btn.setAttribute('aria-expanded', isOpen);
+        });
+      });
+
+      document.querySelectorAll('[data-nav]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          window.location.href = btn.getAttribute('data-nav');
+        });
+      });
+
+      /* ---------- Mobile sidebar toggle ---------- */
+      const sidebar = document.querySelector('.sidebar');
+      const hamburgerBtn = document.getElementById('hamburgerBtn');
+      const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+      function openSidebar() {
+        sidebar.classList.add('mobile-open');
+        sidebarOverlay.classList.add('visible');
+      }
+      function closeSidebar() {
+        sidebar.classList.remove('mobile-open');
+        sidebarOverlay.classList.remove('visible');
+      }
+
+      if (hamburgerBtn) {
+        hamburgerBtn.addEventListener('click', () => {
+          if (sidebar.classList.contains('mobile-open')) {
+            closeSidebar();
+          } else {
+            openSidebar();
+          }
+        });
+      }
+      if (sidebarOverlay) {
+        sidebarOverlay.addEventListener('click', closeSidebar);
+      }
+
+      /* ---------- Search ---------- */
+      const searchInput = document.getElementById('searchInput');
+      if (searchInput) {
+        searchInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') e.preventDefault();
+        });
+      }
+
+      /* ---------- Charges List Modal ---------- */
+      const chargesPopup = document.getElementById('charges-popup');
+      const closeChargesBtn = document.getElementById('closeChargesPopup');
+
+      document.querySelectorAll('.transactions-table .action-view').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          chargesPopup.showModal();
+        });
+      });
+
+      if (closeChargesBtn) {
+        closeChargesBtn.addEventListener('click', () => {
+          chargesPopup.close();
+        });
+      }
+
+      if (chargesPopup) {
+        chargesPopup.addEventListener('click', (e) => {
+          if (e.target === chargesPopup) {
+            chargesPopup.close();
+          }
+        });
+      }
+
+      /* =========================================================
+         INTERACTIVE PAYMENT METHOD / RECEIPT MODAL LOGIC
+         ========================================================= */
+      const paymentPopup = document.getElementById('payment-popup');
+      const closePaymentBtn = document.getElementById('closePaymentPopup');
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      const paymentOptions = document.querySelectorAll('.payment-option');
+      const modalPaymentAmount = document.getElementById('modalPaymentAmount');
+      const btnSubmitPayment = document.getElementById('btnSubmitPayment');
+      const paymentModalContent = document.getElementById('payment-modal-content');
+      const paymentSuccessMsg = document.getElementById('paymentSuccessMsg');
+      const successDetailText = document.getElementById('successDetailText');
+      const btnDoneClose = document.getElementById('btnDoneClose');
+
+      let selectedMethod = 'cash';
+      let selectedMethodName = 'Cash Payment';
+      let currentAmountStr = '₦1900.00';
+
+      // Open modal dynamically when clicking ANY print button in the table
+      document.querySelectorAll('.transactions-table .action-print').forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          const row = e.target.closest('tr');
+          if (row) {
+            const rowAmount = row.children[3]?.textContent.trim();
+            if (rowAmount) {
+              currentAmountStr = rowAmount;
+              modalPaymentAmount.textContent = currentAmountStr;
+            }
+          }
+          // Reset view state
+          paymentModalContent.style.display = 'block';
+          paymentSuccessMsg.style.display = 'none';
+          paymentPopup.showModal();
+        });
+      });
+
+      // Synchronize selection state (Tabs & Radio Options)
+      function setPaymentMethod(methodKey) {
+        selectedMethod = methodKey;
+
+        // Update Top Tabs
+        tabBtns.forEach((tab) => {
+          if (tab.dataset.method === methodKey) {
+            tab.classList.add('active');
+            selectedMethodName = tab.textContent.trim();
+          } else {
+            tab.classList.remove('active');
+          }
+        });
+
+        // Update Radio Cards
+        paymentOptions.forEach((opt) => {
+          if (opt.dataset.method === methodKey) {
+            opt.classList.add('selected');
+          } else {
+            opt.classList.remove('selected');
+          }
+        });
+      }
+
+      // Event Listeners for Pill Tabs
+      tabBtns.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          setPaymentMethod(tab.dataset.method);
+        });
+      });
+
+      // Event Listeners for Radio Card Rows
+      paymentOptions.forEach((opt) => {
+        opt.addEventListener('click', () => {
+          setPaymentMethod(opt.dataset.method);
+        });
+      });
+
+      // Submit Payment Action Simulation
+      if (btnSubmitPayment) {
+        btnSubmitPayment.addEventListener('click', () => {
+          successDetailText.textContent = `Transaction of ${currentAmountStr} processed successfully via ${selectedMethodName}.`;
+          paymentModalContent.style.display = 'none';
+          paymentSuccessMsg.style.display = 'block';
+        });
+      }
+
+      // Additional Action Buttons Visual Feedback
+      document.getElementById('btnPrintReceipt')?.addEventListener('click', () => {
+        alert(`Printing Thermal Receipt for ${currentAmountStr}...`);
+      });
+
+      document.getElementById('btnSendDigital')?.addEventListener('click', () => {
+        alert(`SMS & Email Receipt dispatched successfully!`);
+      });
+
+      document.getElementById('btnProcessGate')?.addEventListener('click', () => {
+        alert(`Payment processed and Cash Gate cleared.`);
+      });
+
+      // Close Dialog Controls
+      if (btnDoneClose) {
+        btnDoneClose.addEventListener('click', () => {
+          paymentPopup.close();
+        });
+      }
+
+      if (closePaymentBtn) {
+        closePaymentBtn.addEventListener('click', () => {
+          paymentPopup.close();
+        });
+      }
+
+      if (paymentPopup) {
+        paymentPopup.addEventListener('click', (e) => {
+          if (e.target === paymentPopup) {
+            paymentPopup.close();
+          }
+        });
+      }
+
+      /* ---------- Patient Popup ---------- */
+      const patientPopup = document.getElementById('patient-popup');
+      const openPatientBtn = document.getElementById('openPatientPopup');
+      const closePatientBtn = document.getElementById('closePatientPopup');
+
+      if (openPatientBtn && patientPopup) {
+        openPatientBtn.addEventListener('click', () => {
+          patientPopup.showModal();
+        });
+      }
+
+      if (closePatientBtn && patientPopup) {
+        closePatientBtn.addEventListener('click', () => {
+          patientPopup.close();
+        });
+      }
+
+      if (patientPopup) {
+        patientPopup.addEventListener('click', (e) => {
+          if (e.target === patientPopup) {
+            patientPopup.close();
+          }
+        });
+      }
+    </script>
+</body>
+</html>

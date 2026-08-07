@@ -453,10 +453,7 @@ body {
   margin-top: 4px;
 }
 
-/* ============================= */
 /* MY CONSULTATION QUEUE PAGE     */
-/* ============================= */
-
 .myqueue-content {
   padding: 32px;
   display: flex;
@@ -764,7 +761,7 @@ body {
   text-align: center;
 }
 
-/* Footer / pagination */
+/* Footer */
 .myqueue-footer {
   display: flex;
   align-items: center;
@@ -819,11 +816,6 @@ body {
     font-size: 13px;
   }
 }
-
-/* =========================================================
-   NEW INTERACTIVE ELEMENTS
-   ========================================================= */
-
 /* Filter dropdowns (All Status / Sort by Time) */
 .filter-dropdown {
   position: relative;
@@ -871,7 +863,6 @@ body {
   color: #1FAE64;
 }
 
-/* Empty search / filter result row */
 .no-results-row {
   grid-template-columns: 1fr !important;
   padding: 36px 6px !important;
@@ -884,7 +875,6 @@ body {
   font-weight: 600;
 }
 
-/* Row "..." menu (floating, shared across rows) */
 .row-menu {
   position: absolute;
   width: 230px;

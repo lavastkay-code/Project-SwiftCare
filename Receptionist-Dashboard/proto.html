@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reception Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="proto.css">   
+</head>
+<body>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+          <!-- Logo -->
+          <div class="logo">
+            <img src="Assets/logo.png" alt="SwiftCare Logo" class="logo-img" role="img">
+          </div>
+
+          <!-- Nav -->
+          <nav class="nav">
+            <ul class="nav-list">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fa-solid fa-house nav-icon"></i>
+                  <span>Dashboard</span>
+                </a>
+              </li>
+
+              <!-- Expandable: Patients -->
+              <li class="nav-item has-submenu">
+                <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="patients-submenu">
+                  <i class="fa-solid fa-user nav-icon"></i>
+                  <span>Patients</span>
+                  <i class="fa-solid fa-chevron-down nav-arrow"></i>
+                </button>
+                <ul class="submenu" id="patients-submenu">
+                  <li><a href="AccessDenied.html" class="submenu-link">Patient Records</a></li>
+                </ul>
+              </li>
+
+              <!-- Expandable: Doctors -->
+              <li class="nav-item has-submenu">
+                <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="doctors-submenu">
+                  <i class="fa-solid fa-user-doctor nav-icon"></i>
+                  <span>Doctors</span>
+                  <i class="fa-solid fa-chevron-down nav-arrow"></i>
+                </button>
+                <ul class="submenu" id="doctors-submenu">
+                  <li><a href="AccessDenied.html" class="submenu-link">Consultation Queue</a></li>
+                </ul>
+              </li>
+
+              <!-- Expandable: Nurses -->
+              <li class="nav-item has-submenu">
+                <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="nurses-submenu">
+                  <i class="fa-solid fa-user-nurse nav-icon"></i>
+                  <span>Nurses</span>
+                  <i class="fa-solid fa-chevron-down nav-arrow"></i>
+                </button>
+                <ul class="submenu" id="nurses-submenu">
+                  <li><a href="AccessDenied.html" class="submenu-link">Triage Queue</a></li>
+                  <li><a href="AccessDenied.html" class="submenu-link">Vital Records</a></li>
+                </ul>
+              </li>
+
+              <!-- Expandable: Receptionist -->
+              <li class="nav-item has-submenu">
+                <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="receptionist-submenu">
+                  <i class="fa-solid fa-user-tie nav-icon"></i>
+                  <span>Receptionist</span>
+                  <i class="fa-solid fa-chevron-down nav-arrow"></i>
+                </button>
+                <ul class="submenu" id="receptionist-submenu">
+                  <li><button type="button" class="submenu-link popup-trigger" id="RegPatientPopup">Register Patient</button></li>
+                  <li><a href="SearchP.html" class="submenu-link">Patient Records</a></li>
+                  <li><a href="Appointments.html" class="submenu-link">Appointments</a></li>
+                  <li><a href="Queues.html" class="submenu-link">Queues</a></li>
+                </ul>
+              </li>
+
+              <!-- Expandable: Cashier -->
+              <li class="nav-item has-submenu">
+                <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="cashier-submenu">
+                  <i class="fa-solid fa-cash-register nav-icon"></i>
+                  <span>Cashier</span>
+                  <i class="fa-solid fa-chevron-down nav-arrow"></i>
+                </button>
+                <ul class="submenu" id="cashier-submenu">
+                  <li><a href="AccessDenied.html" class="submenu-link">Patient Invoice</a></li>
+                  <li><a href="AccessDenied.html" class="submenu-link">Review Charges</a></li>
+                  <li><a href="AccessDenied.html" class="submenu-link">Record Payment</a></li>
+                  <li><a href="AccessDenied.html" class="submenu-link">Receipts</a></li>
+                </ul>
+              </li>
+
+              <!-- Expandable: Billings -->
+              <li class="nav-item has-submenu">
+                <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="billings-submenu">
+                  <i class="fa-solid fa-file-invoice-dollar nav-icon"></i>
+                  <span>Billings</span>            
+                  <i class="fa-solid fa-chevron-down nav-arrow"></i>
+                </button>
+                <ul class="submenu" id="billings-submenu">
+                  <li><a href="AccessDenied.html" class="submenu-link">Billing</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fa-solid fa-gear nav-icon"></i>
+                  <span>Settings</span>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="login.html" class="nav-link logout-link">
+                  <i class="fa-solid fa-right-from-bracket nav-icon"></i>
+                  <span>Logout</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+          <!-- Footer note -->
+          <div class="info-box">
+            <i class="fa-solid fa-lock info-icon"></i>
+            <p>Your information is safe with us<br>We never share your data</p>
+          </div>
+        </aside>
+
+        <!-- Main content -->
+        <main class="main">
+          <!-- Topbar -->
+          <header class="topbar">
+            <button class="hamburger" id="hamburgerBtn" aria-label="Toggle Navigation">☰</button>
+            <h1>Dashboard</h1>
+
+            <div class="topbar-right">
+              <div class="bell-wrapper">
+                <span class="bell"><img src="Assets/bell.png" alt="Notifications"></span>
+                <span class="badge">2</span>
+              </div>
+              <div class="divider"></div>
+              <div class="user-info">
+                <div class="avatar"><img src="Assets/recept.png" alt="User Avatar"></div>
+                <div class="user-text">
+                  <div class="user-name">Bola John</div>
+                  <div class="user-role">Receptionist</div>
+                </div>
+                <span class="dropdown-arrow">
+                  <i class="fa-solid fa-chevron-down nav-arrow"></i>
+                </span>                 
+              </div>
+            </div>
+          </header>
+        </main>
+    </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+  // Mobile Hamburger Menu Toggle
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const sidebar = document.getElementById('sidebar');
+  const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+  function toggleSidebar() {
+    sidebar.classList.toggle('mobile-open');
+    sidebarOverlay.classList.toggle('active');
+  }
+
+  if (hamburgerBtn && sidebarOverlay) {
+    hamburgerBtn.addEventListener('click', toggleSidebar);
+    sidebarOverlay.addEventListener('click', toggleSidebar);
+  }
+
+  // Submenu items expansion
+  const toggleButtons = document.querySelectorAll('.nav-toggle');
+  toggleButtons.forEach((btn) => {
+    const parentItem = btn.closest('.has-submenu');
+
+    btn.addEventListener('click', () => {
+      const isOpen = parentItem.classList.toggle('open');
+      btn.setAttribute('aria-expanded', isOpen);
+    });
+  });
+
+  // Patient Management popup logic (triggered from sidebar nav item)
+  const patientPopup = document.getElementById('patient-popup');
+  const closePatientBtn = document.getElementById('closePatientPopup');
+
+  if (patientPopup) {
+    document.querySelectorAll('.popup-trigger').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        // Close mobile sidebar if open before showing modal
+        if (sidebar && sidebar.classList.contains('mobile-open')) {
+          toggleSidebar();
+        }
+        patientPopup.showModal();
+      });
+    });
+
+    if (closePatientBtn) {
+      closePatientBtn.addEventListener('click', () => {
+        patientPopup.close();
+      });
+    }
+
+    patientPopup.addEventListener('click', (e) => {
+      if (e.target === patientPopup) {
+        patientPopup.close();
+      }
+    });
+  }
+});
+</script>
+</body>
+</html>

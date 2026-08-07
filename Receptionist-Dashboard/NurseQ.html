@@ -70,8 +70,10 @@
                   <i class="fa-solid fa-chevron-down nav-arrow"></i>
                 </button>
                 <ul class="submenu" id="receptionist-submenu">
-                  <li><a href="#" class="submenu-link">Add Receptionist</a></li>
-                  <li><a href="#" class="submenu-link">Receptionist List</a></li>
+                  <li><button type="button" class="submenu-link popup-trigger" id="RegPatientPopup">Register Patient</button></li>
+                   <li><a href="SearchP.html" class="submenu-link">Patient Records</a></li>
+                   <li><a href="Appointments.html" class="submenu-link">Appointments</a></li>
+                   <li><a href="Queues.html" class="submenu-link">Queues</a></li>
                 </ul>
               </li>
 
@@ -107,7 +109,7 @@
               </li>
 
               <li class="nav-item">
-                <a href="#" class="nav-link logout-link">
+                <a href="login.html" class="nav-link logout-link">
                   <i class="fa-solid fa-right-from-bracket nav-icon"></i>
                   <span>Logout</span>
                 </a>
@@ -200,7 +202,7 @@
             </div>
 
             <div class="dq-actions">
-              <a href="DoctorQ.html" class="dq-primary-btn" id="addToTriageBtn">
+              <a href="Queues.html" class="dq-primary-btn" id="addToTriageBtn">
                 Add to Triage Queue
               </a>
             </div>
@@ -279,9 +281,14 @@
       });
 
       // Add to Nurse Triage Queue panel
-      document.getElementById('closeNurseQueuePanel').addEventListener('click', () => {
-        document.querySelector('.queue-add-panel').style.display = 'none';
-      });
+      const closeNurseQueuePanel = document.querySelector('.queue-add-panel');
+
+      closeNurseQueuePanel.addEventListener('click', () => {
+        window.history.back();
+});
+      // document.getElementById('closeNurseQueuePanel').addEventListener('click', () => {
+      //   document.querySelector('.queue-add-panel').style.display = 'none';
+      // });
 
       document.getElementById('addToTriageBtn').addEventListener('click', () => {
         console.log('Add patient to triage queue');
