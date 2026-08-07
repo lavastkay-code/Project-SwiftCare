@@ -1,21 +1,5 @@
-const API_BASE_URL = "https://swiftcare-backend-production-2ea4.up.railway.app/api";
-
 const loginForm = document.getElementById("loginForm");
 const continueBtn = loginForm.querySelector(".continue-btn");
-
-function getErrorMessage(data, fallback) {
-  if (!data) return fallback;
-
-  if (typeof data.message === "string") return data.message;
-  if (typeof data.error === "string") return data.error;
-  if (Array.isArray(data.errors) && data.errors.length) {
-    return data.errors
-      .map((item) => (typeof item === "string" ? item : item.message || JSON.stringify(item)))
-      .join("\n");
-  }
-
-  return fallback;
-}
 
 function setLoading(isLoading) {
   continueBtn.disabled = isLoading;
@@ -36,32 +20,16 @@ loginForm.addEventListener("submit", async function (e) {
   setLoading(true);
 
   try {
-    const response = await fetch(`${API_BASE_URL}/auth/login`, {
+    const result = await swiftcareApiRequest("/auth/login", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({ email, password }),
+      body: { email, password },
     });
-
-    let data = null;
-
-    try {
-      data = await response.json();
-    } catch {
-      data = null;
-    }
-
-    if (!response.ok) {
-      alert(getErrorMessage(data, "Incorrect email or password."));
-      return;
-    }
-
-    const result = data?.data || data;
 
     if (result?.token) {
       localStorage.setItem("authToken", result.token);
+    }
+    if (result?.user) {
+      localStorage.setItem("swiftcareUser", JSON.stringify(result.user));
     }
 
     if (result?.clinic?.id) {
@@ -81,7 +49,7 @@ loginForm.addEventListener("submit", async function (e) {
     window.location.href = "ADMIN-dashboard.html";
   } catch (error) {
     console.error("Login error:", error);
-    alert("Unable to reach the server. Please check your connection and try again.");
+    alert(error.message || "Incorrect email or password.");
   } finally {
     setLoading(false);
   }
