@@ -9,6 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="Doctordash.css">
+    <script src="../shared/config.js"></script>
+    <script src="../shared/api.js"></script>
     <script src="Doctordash.js" defer></script>
 </head>
 <body>
@@ -270,120 +272,6 @@
                   <span class="col-menu"></span>
                 </div>
 
-                <div class="queue-row" data-row-id="1" data-status="waiting" data-date="2025-07-25">
-                  <span class="col-num">1</span>
-                  <span class="col-patient">
-                    <img src="Assets/patient1.jpg" alt="" class="patient-avatar">
-                    <span class="patient-name-block">
-                      <span class="patient-name">Sarah Johnson</span>
-                      <span class="patient-id">SC-10234</span>
-                    </span>
-                  </span>
-                  <span class="col-age">
-                    <span class="age-line">29 Yrs</span>
-                    <span class="gender-line">Female</span>
-                  </span>
-                  <span class="col-time">
-                    <span class="time-line"><i class="fa-regular fa-clock"></i> 09:00 AM</span>
-                    <span class="date-line">July 25, 2025</span>
-                  </span>
-                  <span class="col-reason">Regular Checkup</span>
-                  <span class="col-status"><span class="status-pill status-waiting">Waiting</span></span>
-                  <span class="col-action"><button type="button" class="action-btn btn-solid-green">Start Consultation</button></span>
-                  <span class="col-menu"><i class="fa-solid fa-ellipsis-vertical"></i></span>
-                </div>
-
-                <div class="queue-row" data-row-id="2" data-status="waiting" data-date="2025-07-25">
-                  <span class="col-num">2</span>
-                  <span class="col-patient">
-                    <img src="Assets/patient2.jpg" alt="" class="patient-avatar">
-                    <span class="patient-name-block">
-                      <span class="patient-name">Micheal James</span>
-                      <span class="patient-id">SC-10235</span>
-                    </span>
-                  </span>
-                  <span class="col-age">
-                    <span class="age-line">45 Yrs</span>
-                    <span class="gender-line">Male</span>
-                  </span>
-                  <span class="col-time">
-                    <span class="time-line"><i class="fa-regular fa-clock"></i> 09:30 AM</span>
-                    <span class="date-line">July 25, 2025</span>
-                  </span>
-                  <span class="col-reason">Fever &amp; Headache</span>
-                  <span class="col-status"><span class="status-pill status-waiting">Waiting</span></span>
-                  <span class="col-action"><button type="button" class="action-btn btn-solid-green">Start Consultation</button></span>
-                  <span class="col-menu"><i class="fa-solid fa-ellipsis-vertical"></i></span>
-                </div>
-
-                <div class="queue-row" data-row-id="3" data-status="waiting" data-date="2025-07-25">
-                  <span class="col-num">3</span>
-                  <span class="col-patient">
-                    <img src="Assets/patient3.jpg" alt="" class="patient-avatar">
-                    <span class="patient-name-block">
-                      <span class="patient-name">Grace Wilson</span>
-                      <span class="patient-id">SC-10236</span>
-                    </span>
-                  </span>
-                  <span class="col-age">
-                    <span class="age-line">34 Yrs</span>
-                    <span class="gender-line">Female</span>
-                  </span>
-                  <span class="col-time">
-                    <span class="time-line"><i class="fa-regular fa-clock"></i> 10:00 AM</span>
-                    <span class="date-line">July 25, 2025</span>
-                  </span>
-                  <span class="col-reason">Stomach Pain</span>
-                  <span class="col-status"><span class="status-pill status-waiting">Waiting</span></span>
-                  <span class="col-action"><button type="button" class="action-btn btn-solid-green">Start Consultation</button></span>
-                  <span class="col-menu"><i class="fa-solid fa-ellipsis-vertical"></i></span>
-                </div>
-
-                <div class="queue-row" data-row-id="4" data-status="progress" data-date="2025-07-25">
-                  <span class="col-num">4</span>
-                  <span class="col-patient">
-                    <img src="Assets/patient4.jpg" alt="" class="patient-avatar">
-                    <span class="patient-name-block">
-                      <span class="patient-name">Daniel Smith</span>
-                      <span class="patient-id">SC-10237</span>
-                    </span>
-                  </span>
-                  <span class="col-age">
-                    <span class="age-line">52 Yrs</span>
-                    <span class="gender-line">Male</span>
-                  </span>
-                  <span class="col-time">
-                    <span class="time-line"><i class="fa-regular fa-clock"></i> 10:30 AM</span>
-                    <span class="date-line">July 25, 2025</span>
-                  </span>
-                  <span class="col-reason">Diabetes Follow-up</span>
-                  <span class="col-status"><span class="status-pill status-progress">In Progress</span></span>
-                  <span class="col-action"><button type="button" class="action-btn btn-outline-blue">Continue</button></span>
-                  <span class="col-menu"><i class="fa-solid fa-ellipsis-vertical"></i></span>
-                </div>
-
-                <div class="queue-row" data-row-id="5" data-status="upcoming" data-date="2025-07-25">
-                  <span class="col-num">5</span>
-                  <span class="col-patient">
-                    <img src="Assets/patient5.jpg" alt="" class="patient-avatar">
-                    <span class="patient-name-block">
-                      <span class="patient-name">Linda Smith</span>
-                      <span class="patient-id">SC-10238</span>
-                    </span>
-                  </span>
-                  <span class="col-age">
-                    <span class="age-line">28 Yrs</span>
-                    <span class="gender-line">Male</span>
-                  </span>
-                  <span class="col-time">
-                    <span class="time-line"><i class="fa-regular fa-clock"></i> 11:00 AM</span>
-                    <span class="date-line">July 25, 2025</span>
-                  </span>
-                  <span class="col-reason">Skin Rash</span>
-                  <span class="col-status"><span class="status-pill status-upcoming">Upcoming</span></span>
-                  <span class="col-action"><button type="button" class="action-btn btn-outline-green">Start Consultation</button></span>
-                  <span class="col-menu"><i class="fa-solid fa-ellipsis-vertical"></i></span>
-                </div>
               </div>
 
               <div class="queue-footer">

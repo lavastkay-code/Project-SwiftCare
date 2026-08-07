@@ -9,6 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="Consult.css">
+    <script src="../shared/config.js"></script>
+    <script src="../shared/api.js"></script>
     <script src="Consult.js" defer></script>
 </head>
 <body>
@@ -381,17 +383,17 @@
 
                   <div class="c-field">
                     <label>Diagnosis</label>
-                    <input type="text" class="c-input" >
+                    <input type="text" class="c-input" id="diagnosisInput">
                   </div>
 
                   <div class="c-field">
                     <label>Clinical Notes</label>
-                    <textarea class="c-textarea c-textarea-lg">..</textarea>
+                    <textarea class="c-textarea c-textarea-lg" id="notesInput"></textarea>
                   </div>
 
                   <div class="c-field">
-                    <label>Prescription</label>
-                    <textarea class="c-textarea c-textarea-lg"></textarea>
+                    <label>Prescription <span class="optional">(one per line, e.g. "Paracetamol 500mg, twice daily, 5 days")</span></label>
+                    <textarea class="c-textarea c-textarea-lg" id="prescriptionInput"></textarea>
                   </div>
 
                   <div class="c-field">

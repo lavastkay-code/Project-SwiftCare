@@ -4,7 +4,10 @@
    Sidebar markup/content is untouched ÔÇö only wired up here.
    ========================================================= */
 
+let activeConsultation = null;
+
 document.addEventListener('DOMContentLoaded', function () {
+  activeConsultation = loadActiveConsultation();
   initSidebarSubmenus();
   initMobileSidebar();
   initPatientPopup();
@@ -18,6 +21,19 @@ document.addEventListener('DOMContentLoaded', function () {
   initUploadButtons();
   initPagination();
 });
+
+function loadActiveConsultation() {
+  const raw = sessionStorage.getItem('swiftcareActiveConsultation');
+  const visit = raw ? JSON.parse(raw) : null;
+
+  if (!visit || !visit.consultationId) {
+    alert('No active consultation. Please start one from the dashboard queue.');
+    window.location.href = 'Doctordash.html';
+    return null;
+  }
+
+  return visit;
+}
 
 /* ---------------------------------------------------------
    TOAST ÔÇö small reusable feedback message
@@ -317,22 +333,58 @@ function initSaveAndComplete() {
   }
 
   if (confirmYesBtn) {
-    confirmYesBtn.addEventListener('click', () => {
-      showStatusView('dateView');
+    confirmYesBtn.addEventListener('click', async () => {
+      if (!activeConsultation) return;
 
-      if (statusTag) {
-        statusTag.classList.remove('status-tag-active');
-        statusTag.classList.add('status-tag-neutral');
-        statusTag.querySelector('.status-tag-text').textContent = 'Completed';
+      const diagnosis = document.getElementById('diagnosisInput')?.value.trim() || '';
+      const notes = document.getElementById('notesInput')?.value.trim() || '';
+      const prescriptionText = document.getElementById('prescriptionInput')?.value.trim() || '';
+
+      const prescriptions = prescriptionText
+        .split('\n')
+        .map((line) => line.trim())
+        .filter(Boolean)
+        .map((line) => {
+          const [drugName, dosage, frequency, duration] = line.split(',').map((part) => part.trim());
+          return {
+            drugName: drugName || line,
+            dosage: dosage || '',
+            frequency: frequency || '',
+            duration: duration || '',
+          };
+        });
+
+      confirmYesBtn.disabled = true;
+      confirmYesBtn.textContent = 'Completing...';
+
+      try {
+        await swiftcareApiRequest(`/consultations/${activeConsultation.consultationId}/complete`, {
+          method: 'POST',
+          body: { notes, diagnosis, prescriptions },
+        });
+
+        showStatusView('dateView');
+
+        if (statusTag) {
+          statusTag.classList.remove('status-tag-active');
+          statusTag.classList.add('status-tag-neutral');
+          statusTag.querySelector('.status-tag-text').textContent = 'Completed';
+        }
+
+        [saveBtn, completeBtn].forEach((btn) => (btn.disabled = true));
+        document.querySelectorAll('.c-input, .c-textarea').forEach((field) => (field.disabled = true));
+
+        sessionStorage.removeItem('swiftcareActiveConsultation');
+        showToast('Consultation completed. Invoice created, patient sent to cashier.');
+        setTimeout(() => {
+          window.location.href = 'Doctordash.html';
+        }, 1200);
+      } catch (err) {
+        console.error('Failed to complete consultation:', err);
+        showToast(err.message || 'Failed to complete consultation.');
+        confirmYesBtn.disabled = false;
+        confirmYesBtn.textContent = 'Yes, Complete';
       }
-
-      [saveBtn, completeBtn].forEach((btn) => (btn.disabled = true));
-      document.querySelectorAll('.c-input, .c-textarea').forEach((field) => (field.disabled = true));
-
-      showToast('Consultation marked as completed. Returning to queue...');
-      setTimeout(() => {
-        window.location.href = 'Doctordash.html';
-      }, 600);
     });
   }
 }
