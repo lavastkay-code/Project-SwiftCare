@@ -262,6 +262,9 @@
         </main>
     </div>
 
+    <script src="../shared/config.js"></script>
+    <script src="../shared/api.js"></script>
+
     <dialog id="patient-popup" class="patient-popup">
       <button class="popup-close" id="closePatientPopup" aria-label="Close">
         <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -342,11 +345,30 @@
       });
 
       registerBackBtn.addEventListener('click', () => {
-        console.log('Go back to Step 1');
+        window.location.href = 'RegisterNP.html';
       });
 
-      document.getElementById('registerContinueBtn').addEventListener('click', () => {
-        console.log('Proceed to Step 3');
+      document.getElementById('registerContinueBtn').addEventListener('click', (e) => {
+        e.preventDefault();
+
+        const draft = JSON.parse(sessionStorage.getItem('swiftcareNewPatientDraft') || '{}');
+
+        draft.address = {
+          line1: document.getElementById('addr1').value.trim(),
+          line2: document.getElementById('addr2').value.trim(),
+          city: document.getElementById('city').value.trim(),
+          state: document.getElementById('state').value,
+          postal: document.getElementById('postal').value.trim(),
+        };
+        draft.emergencyContact = {
+          name: document.getElementById('contactName').value.trim(),
+          relationship: document.getElementById('relationship').value.trim(),
+          phone: document.getElementById('phone').value.trim(),
+        };
+
+        sessionStorage.setItem('swiftcareNewPatientDraft', JSON.stringify(draft));
+
+        window.location.href = 'RegisterNP3.html';
       });
     </script>
 </body>

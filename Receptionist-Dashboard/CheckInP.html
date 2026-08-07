@@ -9,6 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="CheckInP.css">
+    <script src="../shared/config.js"></script>
+    <script src="../shared/api.js"></script>
 </head>
 <body>
 
@@ -173,27 +175,15 @@
           <div class="patient-summary">
             <div class="summary-row">
               <span class="label">Patient Name</span>
-              <span class="value">Adeoye Oyewale</span>
+              <span class="value" id="summaryPatientName">&mdash;</span>
             </div>
             <div class="summary-row">
               <span class="label">Patient ID</span>
-              <span class="value">SWC-00012345</span>
-            </div>
-            <div class="summary-row">
-              <span class="label">Appointment Type</span>
-              <span class="value">Scheduled Appointment</span>
-            </div>
-            <div class="summary-row">
-              <span class="label">Department</span>
-              <span class="value">General Medicine</span>
+              <span class="value" id="summaryPatientId">&mdash;</span>
             </div>
             <div class="summary-row">
               <span class="label">Doctor</span>
-              <span class="value">Dr. Chinedu Okafor</span>
-            </div>
-            <div class="summary-row">
-              <span class="label">Appointment Time</span>
-              <span class="value">29 July 2026, 10:30AM</span>
+              <span class="value" id="summaryDoctorName">&mdash;</span>
             </div>
           </div>
 
@@ -256,8 +246,7 @@
     </div>
 
     <h2 class="success-title">Check-In Successful!</h2>
-    <p class="success-subtitle">Adeoye Oyewale has been checked in successfully,</p>
-    <p class="success-time">Check-In Time: 29 July 2026, 10:30AM</p>
+    <p class="success-subtitle" id="checkinSuccessSubtitle">Patient has been checked in successfully.</p>
     <p class="success-queue-note">Patient has been added to the queue.</p>
 
     <div class="success-actions">
@@ -317,8 +306,48 @@
       const confirmCheckInBtn = document.getElementById('confirmCheckInBtn');
       const printSlipBtn = document.getElementById('printSlipBtn');
 
-      confirmCheckInBtn.addEventListener('click', () => {
-        checkinSuccessPopup.showModal();
+      // --- Populate summary from the registration & doctor-assignment steps ---
+      const patient = JSON.parse(sessionStorage.getItem('swiftcareCheckInPatient') || 'null');
+      const doctor = JSON.parse(sessionStorage.getItem('swiftcareAssignedDoctor') || 'null');
+
+      if (!patient || !doctor) {
+        alert('Missing patient or doctor selection. Please start from patient registration.');
+        window.location.href = 'RegisterNP.html';
+      } else {
+        document.getElementById('summaryPatientName').textContent = patient.name;
+        document.getElementById('summaryPatientId').textContent = patient.id;
+        document.getElementById('summaryDoctorName').textContent = doctor.name;
+      }
+
+      confirmCheckInBtn.addEventListener('click', async () => {
+        confirmCheckInBtn.disabled = true;
+        confirmCheckInBtn.textContent = 'Checking in...';
+
+        try {
+          const result = await swiftcareApiRequest('/queue/check-in', {
+            method: 'POST',
+            body: { patientId: patient.id, assignedDoctorId: doctor.id },
+          });
+
+          sessionStorage.setItem('swiftcareActiveQueueId', result.queueId);
+          sessionStorage.removeItem('swiftcareCheckInPatient');
+          sessionStorage.removeItem('swiftcareAssignedDoctor');
+
+          document.getElementById('checkinSuccessSubtitle').textContent =
+            `${patient.name} has been checked in successfully.`;
+
+          checkinSuccessPopup.showModal();
+        } catch (err) {
+          console.error('Check-in error:', err);
+          if (err.code === 'QUEUE_ALREADY_CHECKED_IN') {
+            alert('This patient already has an active visit in the queue.');
+          } else {
+            alert(err.message || 'Failed to check in patient. Please try again.');
+          }
+        } finally {
+          confirmCheckInBtn.disabled = false;
+          confirmCheckInBtn.textContent = 'Confirm Check-In';
+        }
       });
 
       printSlipBtn.addEventListener('click', () => {

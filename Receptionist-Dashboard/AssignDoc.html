@@ -9,6 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="AssignDoc.css">
+    <script src="../shared/config.js"></script>
+    <script src="../shared/api.js"></script>
 </head>
 <body>
 
@@ -183,10 +185,7 @@
               <label for="doctorSelect">Select Available Doctor</label>
               <div class="select-box">
                 <select id="doctorSelect">
-                  <option value="chinedu">Dr. Chinedu Okafor</option>
-                  <option value="ben">Dr. Ben Adeniyi</option>
-                  <option value="ruth">Dr. Ruth Bilewu</option>
-                  <option value="friday">Dr. Friday Abu</option>
+                  <option value="">Loading doctors...</option>
                 </select>
                 <i class="fa-solid fa-chevron-down"></i>
               </div>
@@ -196,9 +195,9 @@
           <div class="doctor-card">
             <img src="Assets/doctor.png" alt="Doctor profile picture">
             <div class="doctor-info">
-              <h2>Dr. Chinedu Okafor</h2>
-              <p>Consultant Physician</p>
-              <span>General Medicine</span>
+              <h2 id="selectedDoctorName">&mdash;</h2>
+              <p>Attending Physician</p>
+              <span>&nbsp;</span>
             </div>
             <div class="availability">
               <h3>Availability</h3>
@@ -207,7 +206,7 @@
           </div>
 
           <div class="assign-footer">
-            <a href="CheckInP.html" class="continue-btn">Continue</a>
+            <a href="CheckInP.html" class="continue-btn" id="assignDocContinue">Continue</a>
           </div>
         </div>
       </section>
@@ -310,6 +309,55 @@
           assignCard.style.display = 'none';
         });
       }
+
+      // --- Load real doctors and wire Continue to the check-in step ---
+      const doctorSelect = document.getElementById('doctorSelect');
+      const selectedDoctorName = document.getElementById('selectedDoctorName');
+      let doctors = [];
+
+      function updateSelectedDoctorCard() {
+        const doctor = doctors.find((d) => d.id === doctorSelect.value);
+        selectedDoctorName.textContent = doctor ? doctor.name : '—';
+      }
+
+      (async () => {
+        try {
+          const result = await swiftcareApiRequest('/staff/doctors');
+          doctors = result.doctors || [];
+
+          if (doctors.length === 0) {
+            doctorSelect.innerHTML = '<option value="">No doctors available</option>';
+            return;
+          }
+
+          doctorSelect.innerHTML = doctors
+            .map((d) => `<option value="${d.id}">${d.name}</option>`)
+            .join('');
+
+          updateSelectedDoctorCard();
+        } catch (err) {
+          console.error('Failed to load doctors:', err);
+          doctorSelect.innerHTML = '<option value="">Failed to load doctors</option>';
+        }
+      })();
+
+      doctorSelect.addEventListener('change', updateSelectedDoctorCard);
+
+      document.getElementById('assignDocContinue').addEventListener('click', (e) => {
+        e.preventDefault();
+
+        if (!doctorSelect.value) {
+          alert('Please select a doctor.');
+          return;
+        }
+
+        sessionStorage.setItem('swiftcareAssignedDoctor', JSON.stringify({
+          id: doctorSelect.value,
+          name: selectedDoctorName.textContent,
+        }));
+
+        window.location.href = 'CheckInP.html';
+      });
     });
   </script>
 </body>

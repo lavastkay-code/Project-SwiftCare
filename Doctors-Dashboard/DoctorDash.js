@@ -131,55 +131,83 @@ function initQueueTable() {
   const table = document.querySelector('.queue-table');
   if (!table) return;
 
-  const rows = Array.from(table.querySelectorAll('.queue-row:not(.queue-head-row)'));
   const topSearchInput = document.querySelector('.search-bar input');
   const panelSearchInput = document.querySelector('.queue-search input');
-  const dateInput = document.querySelector('.date-card input[type="date"]');
   const showingText = document.querySelector('.showing-text');
-  const totalCount = rows.length;
 
-  const state = {
-    search: '',
-    status: 'all',
-    date: dateInput ? dateInput.value : '',
-  };
+  const state = { search: '', status: 'all' };
+  let entries = [];
 
-  function rowMatchesFilters(row) {
-    const name = row.querySelector('.patient-name')?.textContent.toLowerCase() || '';
-    const id = row.querySelector('.patient-id')?.textContent.toLowerCase() || '';
-    const reason = row.querySelector('.col-reason')?.textContent.toLowerCase() || '';
-    const term = state.search;
-    const matchesSearch = !term || name.includes(term) || id.includes(term) || reason.includes(term);
-
-    const matchesStatus = state.status === 'all' || row.dataset.status === state.status;
-    const matchesDate = !state.date || row.dataset.date === state.date;
-
-    return matchesSearch && matchesStatus && matchesDate;
+  function patientLabel(entry) {
+    if (entry.patient) return `${entry.patient.firstName || ''} ${entry.patient.lastName || ''}`.trim() || entry.patientId;
+    return entry.patientId || 'Patient';
   }
 
-  function applyFilters() {
-    const visible = rows.filter(rowMatchesFilters);
+  function rowMatchesFilters(entry) {
+    const name = patientLabel(entry).toLowerCase();
+    const id = (entry.patientId || '').toLowerCase();
+    const term = state.search;
+    const matchesSearch = !term || name.includes(term) || id.includes(term);
 
-    rows.forEach((r) => (r.style.display = 'none'));
-    visible.forEach((r) => (r.style.display = ''));
+    const rowStatus = entry.status === 'In Consultation' ? 'progress' : 'waiting';
+    const matchesStatus = state.status === 'all' || rowStatus === state.status;
 
-    let emptyRow = table.querySelector('.no-results-row');
+    return matchesSearch && matchesStatus;
+  }
+
+  function renderRows() {
+    const visible = entries.filter(rowMatchesFilters);
+
+    table.querySelectorAll('.queue-row:not(.queue-head-row)').forEach((r) => r.remove());
+
     if (visible.length === 0) {
-      if (!emptyRow) {
-        emptyRow = document.createElement('div');
-        emptyRow.className = 'queue-row no-results-row';
-        emptyRow.innerHTML = '<span class="no-results-text">No patients match your search or filters.</span>';
-        table.appendChild(emptyRow);
-      }
-    } else if (emptyRow) {
-      emptyRow.remove();
+      const emptyRow = document.createElement('div');
+      emptyRow.className = 'queue-row no-results-row';
+      emptyRow.innerHTML = '<span class="no-results-text">No patients waiting for consultation.</span>';
+      table.appendChild(emptyRow);
+    } else {
+      visible.forEach((entry, index) => {
+        const queueId = entry.queueId || entry.id;
+        const inConsultation = entry.status === 'In Consultation';
+        const row = document.createElement('div');
+        row.className = 'queue-row';
+        row.dataset.queueId = queueId;
+        row.dataset.patientId = entry.patientId;
+        row.dataset.status = inConsultation ? 'progress' : 'waiting';
+        row.innerHTML = `
+          <span class="col-num">${index + 1}</span>
+          <span class="col-patient">
+            <span class="patient-name-block">
+              <span class="patient-name">${patientLabel(entry)}</span>
+              <span class="patient-id">${entry.patientId || '—'}</span>
+            </span>
+          </span>
+          <span class="col-age"></span>
+          <span class="col-time"></span>
+          <span class="col-reason"></span>
+          <span class="col-status"><span class="status-pill ${inConsultation ? 'status-progress' : 'status-waiting'}">${entry.status}</span></span>
+          <span class="col-action"><button type="button" class="action-btn ${inConsultation ? 'btn-outline-blue' : 'btn-solid-green'}">${inConsultation ? 'Continue' : 'Start Consultation'}</button></span>
+          <span class="col-menu"></span>
+        `;
+        table.appendChild(row);
+      });
     }
 
     if (showingText) {
-      showingText.innerHTML =
-        visible.length === totalCount
-          ? `Showing 1 to ${visible.length}&nbsp; of ${totalCount} patients`
-          : `Showing ${visible.length} of ${totalCount} patients (filtered)`;
+      showingText.textContent = `Showing ${visible.length} of ${entries.length} patients`;
+    }
+  }
+
+  async function loadQueue() {
+    try {
+      const result = await swiftcareApiRequest('/queue');
+      entries = (result.queue || []).filter(
+        (e) => e.status === 'Awaiting Doctor' || e.status === 'In Consultation'
+      );
+      renderRows();
+    } catch (err) {
+      console.error('Failed to load consultation queue:', err);
+      showToast(err.message || 'Failed to load queue.');
     }
   }
 
@@ -188,7 +216,7 @@ function initQueueTable() {
     if (mirrorInput && mirrorInput.value !== sourceInput.value) {
       mirrorInput.value = sourceInput.value;
     }
-    applyFilters();
+    renderRows();
   }
 
   if (topSearchInput) {
@@ -198,44 +226,67 @@ function initQueueTable() {
     panelSearchInput.addEventListener('input', () => handleSearchInput(panelSearchInput, topSearchInput));
   }
 
-  if (dateInput) {
-    dateInput.addEventListener('change', () => {
-      state.date = dateInput.value;
-      applyFilters();
-    });
-  }
-
   window.queueController = {
     setStatus(value) {
       state.status = value;
-      applyFilters();
+      renderRows();
     },
   };
 
   initActionButtons(table);
-  initRowMenus(rows);
+  loadQueue();
 }
 
 
   //  ACTION BUTTONS — "Start Consultation" / "Continue"
 
   function initActionButtons(table) {
-    table.addEventListener('click', (e) => {
+    table.addEventListener('click', async (e) => {
     const btn = e.target.closest('.action-btn');
     if (!btn) return;
 
     const row = btn.closest('.queue-row');
-    const name = row?.querySelector('.patient-name')?.textContent || 'Patient';
+    if (!row) return;
 
-    if (btn.textContent.trim() === 'Start Consultation') {
-      showToast(`Starting consultation for ${name}...`);
-    } else {
-      showToast(`Resuming consultation for ${name}...`);
-    }
+    const queueId = row.dataset.queueId;
+    const patientId = row.dataset.patientId;
+    const name = row.querySelector('.patient-name')?.textContent || 'Patient';
+    const startingFresh = btn.textContent.trim() === 'Start Consultation';
 
-    setTimeout(() => {
+    btn.disabled = true;
+    btn.textContent = startingFresh ? 'Starting...' : 'Loading...';
+
+    try {
+      let consultationId = null;
+
+      if (startingFresh) {
+        await swiftcareApiRequest(`/queue/${queueId}/status`, {
+          method: 'POST',
+          body: { status: 'In Consultation' },
+        });
+        const consultation = await swiftcareApiRequest('/consultations', {
+          method: 'POST',
+          body: { queueEntryId: queueId, patientId },
+        });
+        consultationId = consultation.id;
+      } else {
+        const existing = await swiftcareApiRequest(
+          `/consultations/${patientId}?queueEntryId=${encodeURIComponent(queueId)}`
+        );
+        consultationId = existing?.id || existing?.consultation?.id;
+      }
+
+      sessionStorage.setItem('swiftcareActiveConsultation', JSON.stringify({
+        queueId, patientId, consultationId, patientName: name,
+      }));
+
       window.location.href = 'Consult.html';
-    }, 2);
+    } catch (err) {
+      console.error('Failed to start/resume consultation:', err);
+      showToast(err.message || 'Failed to open consultation.');
+      btn.disabled = false;
+      btn.textContent = startingFresh ? 'Start Consultation' : 'Continue';
+    }
   });
 }
 
