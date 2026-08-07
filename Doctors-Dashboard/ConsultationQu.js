@@ -257,7 +257,7 @@ function initActionButtons(table) {
 
     // Small delay so the user sees the toast before navigating.
     setTimeout(() => {
-      window.location.href = 'Consultation.html';
+      window.location.href = 'Consult.html';
     }, 400);
   });
 }

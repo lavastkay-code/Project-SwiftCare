@@ -1,7 +1,7 @@
 /* =========================================================
    index1.js
    All interactive behaviour for the "Consultation" page.
-   Sidebar markup/content is untouched — only wired up here.
+   Sidebar markup/content is untouched ÔÇö only wired up here.
    ========================================================= */
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 /* ---------------------------------------------------------
-   TOAST — small reusable feedback message
+   TOAST ÔÇö small reusable feedback message
 --------------------------------------------------------- */
 function showToast(message) {
   let toast = document.querySelector('.app-toast');
@@ -36,7 +36,7 @@ function showToast(message) {
 }
 
 /* ---------------------------------------------------------
-   SIDEBAR — submenu expand/collapse (unchanged behaviour,
+   SIDEBAR ÔÇö submenu expand/collapse (unchanged behaviour,
    just relocated out of the inline <script>)
 --------------------------------------------------------- */
 function initSidebarSubmenus() {
@@ -50,7 +50,7 @@ function initSidebarSubmenus() {
 }
 
 /* ---------------------------------------------------------
-   MOBILE SIDEBAR — the hamburger opens the entire sidebar as
+   MOBILE SIDEBAR ÔÇö the hamburger opens the entire sidebar as
    a slide-in drawer (backdrop + close button + escape key +
    auto-close on link tap), matching the other SwiftCare pages.
 --------------------------------------------------------- */
@@ -125,7 +125,7 @@ function initPatientPopup() {
 }
 
 /* ---------------------------------------------------------
-   PATIENT DATA LOAD — simulates fetching the patient record.
+   PATIENT DATA LOAD ÔÇö simulates fetching the patient record.
    Shows a loading overlay, then either the normal page or the
    "Unable to Load Patient Information" error state.
 
@@ -171,7 +171,7 @@ function initPatientDataLoad() {
 }
 
 /* ---------------------------------------------------------
-   PRE-CONSULTATION PANEL — "View Patients profile" /
+   PRE-CONSULTATION PANEL ÔÇö "View Patients profile" /
    "Start New Consultation" + billing summary, which gives way
    to the full consultation workspace once started.
 --------------------------------------------------------- */
@@ -338,7 +338,7 @@ function initSaveAndComplete() {
 }
 
 /* ---------------------------------------------------------
-   VITAL SIGN PILLS — quick detail toast on click
+   VITAL SIGN PILLS ÔÇö quick detail toast on click
 --------------------------------------------------------- */
 function initVitalPills() {
   document.querySelectorAll('.vital-pill').forEach((pill) => {
@@ -351,7 +351,7 @@ function initVitalPills() {
 }
 
 /* ---------------------------------------------------------
-   UPLOAD BUTTONS — trigger a hidden file input and confirm
+   UPLOAD BUTTONS ÔÇö trigger a hidden file input and confirm
    the selection with a toast.
 --------------------------------------------------------- */
 function initUploadButtons() {
@@ -371,7 +371,7 @@ function initUploadButtons() {
 }
 
 /* ---------------------------------------------------------
-   PAGINATION — active page + prev/next state
+   PAGINATION ÔÇö active page + prev/next state
 --------------------------------------------------------- */
 function initPagination() {
   const pagination = document.querySelector('.pagination');

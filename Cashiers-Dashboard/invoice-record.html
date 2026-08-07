@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | SwiftCare</title>
+    <title>Invoice Record List | SwiftCare</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="invoice-record.css">
 </head>
 <body>
     <div class="app">
@@ -21,7 +21,7 @@
             <ul class="nav-list">
 
               <li class="nav-item">
-                <a href="home.html" class="nav-link active" id="navDashboard">
+                <a href="cashier.html" class="nav-link" id="navDashboard">
                   <i class="fa-solid fa-house nav-icon"></i>
                   <span>Dashboard</span>
                 </a>
@@ -82,22 +82,22 @@
                   <i class="fa-solid fa-chevron-down nav-arrow"></i>
                 </button>
                 <ul class="submenu" id="cashier-submenu">
-                  <li><a href="AccessDenied.html" class="submenu-link">Patient Invoice</a></li>
-                  <li><a href="AccessDenied.html" class="submenu-link">Review Charges</a></li>
+                  <li><a href="invoice-record.html" class="submenu-link">Patient Invoice</a></li>
+                  <li><a href="#" class="submenu-link">Review Charges</a></li>
                   <li><a href="AccessDenied.html" class="submenu-link">Record Payment</a></li>
                   <li><a href="AccessDenied.html" class="submenu-link">Receipts</a></li>
                 </ul>
               </li>
 
-              <li class="nav-item has-submenu" id="billingNavItem">
-                <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="billings-submenu" id="navBilling">
+              <li class="nav-item has-submenu open" id="billingNavItem">
+                <button class="nav-link nav-toggle active" type="button" aria-expanded="true" aria-controls="billings-submenu" id="navBilling">
                   <i class="fa-solid fa-file-invoice-dollar nav-icon"></i>
                   <span>Billings</span>
                   <i class="fa-solid fa-chevron-down nav-arrow"></i>
                 </button>
                 <ul class="submenu" id="billings-submenu">
                   <li><a href="#" class="submenu-link">Create Invoice</a></li>
-                  <li><a href="invoice-record.html" class="submenu-link" id="navInvoiceHistory">Invoice History</a></li>
+                  <li><a href="invoice-record.html" class="submenu-link active" id="navInvoiceHistory">Invoice History</a></li>
                 </ul>
               </li>
 
@@ -131,7 +131,7 @@
 
               <div class="topbar-right">
                 <div class="bell-wrapper">
-                  <span class="bell"><img src="Assets/bell.png" alt=""></span>
+                  <span class="bell"><img src="Assets/bell.png" alt=""></i></span>
                   <span class="badge">5</span>
                 </div>
                 <div class="divider"></div>
@@ -150,78 +150,78 @@
 
             <div class="page-content">
 
-            <!-- ============ ANALYTICS / HOME PAGE ============ -->
-            <section class="page active" id="page-analytics">
+            <!-- ============ INVOICE RECORD LIST PAGE ============ -->
+            <section class="page active" id="page-invoice">
 
-              <div class="analytics-top">
-                <div class="checkins-card">
-                  <div class="panel-title">Today's Check - ins</div>
-                  <div class="checkins-number">37</div>
-                  <div class="checkins-label">Today's Cumulative Patient Check -ins</div>
-                  <svg class="sparkline" viewBox="0 0 220 40" preserveAspectRatio="none"><polyline points="0,10 30,30 60,14 90,26 120,8 150,20 180,12 220,18" fill="none" stroke="#7c6ce8" stroke-width="2.5"/></svg>
+              <div class="invoice-top">
+                <div class="stat-card stat-blue invoice-stat">
+                  <div class="stat-label">Current Balance (Total)</div>
+                  <div class="stat-number">₦139,000</div>
                 </div>
-
-                <div class="mini-stat">
-                  <div class="mini-icon mini-blue"><i class="fa-solid fa-user-group"></i></div>
-                  <div class="mini-number">12</div>
-                  <div class="mini-label">New Patients</div>
+                <div class="stat-card stat-green invoice-stat">
+                  <div class="stat-label">Paid to Date</div>
+                  <div class="stat-number">₦139,000</div>
                 </div>
-
-                <div class="mini-stat">
-                  <div class="mini-icon mini-green"><i class="fa-solid fa-file-lines"></i></div>
-                  <div class="mini-number">25</div>
-                  <div class="mini-label">Follow - ups Visits</div>
+                <div class="stat-card stat-peach invoice-stat">
+                  <div class="stat-label">Amount Due (Unpaid</div>
+                  <div class="stat-number">₦30,000</div>
                 </div>
-
-                <div class="mini-stat">
-                  <div class="mini-icon mini-orange"><i class="fa-solid fa-truck-medical"></i></div>
-                  <div class="mini-number">3</div>
-                  <div class="mini-label">Emergency Cases</div>
+                <div class="last-invoice">
+                  <div class="stat-label">Last Invoice Generated</div>
+                  <div class="last-invoice-name">James Taylor</div>
+                  <div class="last-invoice-time">12:30, 10/7/206</div>
                 </div>
               </div>
 
-              <div class="panel chart-panel">
-                <div class="chart-legend">
-                  <span><i class="legend-dot dot-purple"></i>Cash Payment</span>
-                  <span><i class="legend-dot dot-gray"></i>POS / Card Terminal</span>
-                  <span><i class="legend-dot dot-red"></i>Bank Transfer</span>
-                </div>
-                <div class="bar-chart">
-                  <div class="bar-group"><div class="bar bar-purple" style="height:70%"></div><span class="bar-value">500</span></div>
-                  <div class="bar-group"><div class="bar bar-red" style="height:30%"></div><span class="bar-value">200</span></div>
-                  <div class="bar-group"><div class="bar bar-gray" style="height:55%"></div><span class="bar-value">400</span></div>
-                  <div class="bar-group"><div class="bar bar-gray" style="height:55%"></div><span class="bar-value">400</span></div>
-                  <div class="bar-group"><div class="bar bar-purple" style="height:70%"></div><span class="bar-value">500</span></div>
-                  <div class="bar-group"><div class="bar bar-red" style="height:30%"></div><span class="bar-value">200</span></div>
-                  <div class="bar-group"><div class="bar bar-gray" style="height:55%"></div><span class="bar-value">400</span></div>
-                  <div class="bar-group"><div class="bar bar-purple" style="height:70%"></div><span class="bar-value">500</span></div>
-                  <div class="bar-group"><div class="bar bar-red" style="height:30%"></div><span class="bar-value">200</span></div>
-                  <div class="bar-group"><div class="bar bar-gray" style="height:55%"></div><span class="bar-value">400</span></div>
-                  <div class="bar-group"><div class="bar bar-purple" style="height:70%"></div><span class="bar-value">500</span></div>
-                  <div class="bar-group"><div class="bar bar-red" style="height:30%"></div><span class="bar-value">200</span></div>
-                </div>
-              </div>
+              <h2 class="section-heading">Invoice Record List</h2>
 
-              <div class="two-col">
-                <div class="panel">
-                  <div class="panel-title">Recent Check - in Activity</div>
-                  <div class="table-scroll">
-                    <table class="data-table">
-                      <thead><tr><th>Patient Name</th><th>Description</th><th>Service</th></tr></thead>
-                      <tbody>
-                        <tr><td>Mary Johnson</td><td>July 25, 2026</td><td>Service</td></tr>
-                        <tr><td>Mary Johnson</td><td>July 25, 2026</td><td>Cash Payments</td></tr>
-                        <tr><td>Mary Johnson</td><td>July 25, 2026</td><td>Service</td></tr>
-                      </tbody>
-                    </table>
-                  </div>
+              <div class="panel">
+                <div class="table-scroll">
+                  <table class="data-table transactions-table">
+                    <thead>
+                      <tr><th>Patient's Name</th><th>Patient ID</th><th>Service Type</th><th>Amount Paid</th><th>Issue Date</th><th>Statues</th><th>Action</th></tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="name-cell"><span class="row-avatar"><i class="fa-solid fa-user"></i></span>Mr. John Deo</td>
+                        <td>PAT1023</td><td>ER visit</td><td>₦ 39,000</td><td>20/7/2026</td>
+                        <td><span class="status-text status-paid">Paid</span></td>
+                        <td class="action-cell"><i class="fa-regular fa-eye"></i><i class="fa-solid fa-print"></i><i class="fa-solid fa-download"></i></td>
+                      </tr>
+                      <tr>
+                        <td class="name-cell"><span class="row-avatar"><i class="fa-solid fa-user"></i></span>Mary Johnson</td>
+                        <td>PAT 1025</td><td>Consultation</td><td>₦ 80,000</td><td>20/7/2026</td>
+                        <td><span class="status-text status-paid">Paid</span></td>
+                        <td class="action-cell"><i class="fa-regular fa-eye"></i><i class="fa-solid fa-print"></i><i class="fa-solid fa-download"></i></td>
+                      </tr>
+                      <tr>
+                        <td class="name-cell"><span class="row-avatar"><i class="fa-solid fa-user"></i></span>Roberts Lee</td>
+                        <td>PAT 2351</td><td>Pharmacy</td><td>₦15,000</td><td>20/7/2026</td>
+                        <td><span class="status-text status-pending">Pending</span></td>
+                        <td class="action-cell"><i class="fa-regular fa-eye"></i><i class="fa-solid fa-print"></i><i class="fa-solid fa-download"></i></td>
+                      </tr>
+                      <tr>
+                        <td class="name-cell"><span class="row-avatar"><i class="fa-solid fa-user"></i></span>Mr. Okafor</td>
+                        <td>PAT 3427</td><td>Consultation</td><td>₦10,000</td><td>20/7/2026</td>
+                        <td><span class="status-text status-pending">Pending</span></td>
+                        <td class="action-cell"><i class="fa-regular fa-eye"></i><i class="fa-solid fa-print"></i><i class="fa-solid fa-download"></i></td>
+                      </tr>
+                      <tr>
+                        <td class="name-cell"><span class="row-avatar"><i class="fa-solid fa-user"></i></span>Mr. Sam Okafor</td>
+                        <td>PAT 3851</td><td>Pharmacy</td><td>₦10,000</td><td>20/7/2026</td>
+                        <td><span class="status-text status-paid">Paid</span></td>
+                        <td class="action-cell"><i class="fa-regular fa-eye"></i><i class="fa-solid fa-print"></i><i class="fa-solid fa-download"></i></td>
+                      </tr>
+                      <tr>
+                        <td class="name-cell"><span class="row-avatar"><i class="fa-solid fa-user"></i></span>Mr. Sam</td>
+                        <td>PAT 3801</td><td>Pharmacy</td><td>₦25,000</td><td>20/7/2026</td>
+                        <td><span class="status-text status-paid">Paid</span></td>
+                        <td class="action-cell"><i class="fa-regular fa-eye"></i><i class="fa-solid fa-print"></i><i class="fa-solid fa-download"></i></td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
-
-                <div class="panel top-payment-card">
-                  <div class="panel-title">Top Performing Payment Service</div>
-                  <div class="top-payment-sub">Cash payment are the highest</div>
-                  <div class="top-payment-pill"><i class="fa-solid fa-sack-dollar"></i> Cash payments</div>
-                </div>
+                <div class="table-footer"><button class="view-all-btn small">View all <i class="fa-solid fa-arrow-right"></i></button></div>
               </div>
 
             </section>
