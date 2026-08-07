@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SwiftCare - Dashboard</title>
-    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="nurseDash.css">
 </head>
 <body>
     <div class="dashboard-container">
@@ -32,8 +32,8 @@
                 </a>
 
                 <div class="submenu">
-                    <a href="#" class="submenu-item">Register Patient</a>
-                    <a href="#" class="submenu-item">Patient Records</a>
+                    <a href="../Receptionist Dashboard/AccessDenied.html" class="submenu-item">Register Patient</a>
+                    <a href="../Receptionist Dashboard/AccessDenied.html" class="submenu-item">Patient Records</a>
                 </div>
 
                 <a href="#" class="nav-item">
@@ -44,13 +44,19 @@
                     <img src="icons/icon-chevron-right.svg" alt="" class="arrow-icon">
                 </a>
 
-                <a href="#" class="nav-item">
+               
+                <a href="#" class="nav-item has-submenu active">
                     <div class="icon-container">
-                        <img src="icons/icon-nurses.svg" alt="Nurses" class="nav-icon">
+                        <img src="icons/icon-patients.svg" alt="Patients" class="nav-icon">
                     </div>
                     <span>Nurses</span>
-                    <img src="icons/icon-chevron-right.svg" alt="" class="arrow-icon">
+                    <img src="icons/icon-chevron-down.svg" alt="" class="arrow-icon">
                 </a>
+
+                <div class="submenu">
+                    <a href="nurseTriage.html" class="submenu-item">Triage</a>
+                    <a href="profile-popup.html" class="submenu-item">Vital Records</a>
+                </div>
 
                 <a href="#" class="nav-item">
                     <div class="icon-container">
@@ -240,7 +246,7 @@
             <section class="patients-section">
                 <div class="section-header">
                     <h2>Patients Overview</h2>
-                    <a href="#" class="view-all-btn">
+                    <a href="Nurse-Dashboard/index.html" class="view-all-btn">
                         View all patients 
                         <span class="seperator"></span>
                         <img src="icons/icon-arrow.svg" alt="" class="arrow-icon">
@@ -442,6 +448,6 @@
         </main>
     </div>
 
-    <script src="script.js"></script>
+    <script src="nurseDash.js"></script>
 </body>
 </html>

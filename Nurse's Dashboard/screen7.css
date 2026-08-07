@@ -615,7 +615,7 @@ a {
 
 .start-button.primary {
     border: 1px solid #27ac6d;
-    background: #27ac6d;
+    background: #0166e4;
     color: #ffffff;
 }
 
@@ -659,60 +659,110 @@ a {
     font-size: 10px;
 }
 
-.table-footer {
-    width: 1060px;
-    height: 40px;
-    margin-top: 45px;
-    margin-left: -42px;
-    padding: 0;
+.triage-notification {
+    position: absolute;
+    width: 855px;
+    height: 129px;
+    top: 872px;
+    left: 432px;
+
+    padding: 21px 28px;
+
+    display: flex;
+    align-items: center;
+    gap: 34px;
+
+    box-sizing: border-box;
+
+    background: #E7FFEF;
+    border: 1px solid #27AC6D;
+    border-radius: 15px;
+}
+
+.notification-success-icon {
+    width: 79px;
+    height: 79px;
+    flex: 0 0 79px;
+    object-fit: contain;
+}
+
+.notification-content {
+    width: 686px;
+    height: 87px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+}
+
+.notification-title-row {
+    width: 686px;
+    height: 38px;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 135px;
 }
 
-.table-footer p {
-    margin: 0;
-    color: #000000;
-    font-size: 18px;
+.notification-title {
+    width: 514px;
+    height: 38px;
+
+    font-family: "SF Pro", "SF Pro Display",
+        -apple-system, BlinkMacSystemFont,
+        "Helvetica Neue", Arial, sans-serif;
+
+    font-size: 32px;
     font-weight: 700;
+    line-height: 100%;
+    letter-spacing: 0;
+
+    color: #000000;
     white-space: nowrap;
 }
 
-.pagination {
-    height: 40px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
+.notification-close {
+    width: 37px;
+    height: 37px;
 
-.pagination-button {
-    width: 36px;
-    height: 36px;
     padding: 0;
-    border: 1px solid #bdc9cd;
-    border-radius: 5px;
-    background: #ffffff;
-    color: #58676d;
+    margin: 0;
+
+    border: none;
+    background: transparent;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 1;
-    flex-shrink: 0;
+
+    cursor: pointer;
+    flex: 0 0 37px;
 }
 
-.pagination-button:hover {
-    background: #f1f6f5;
+.notification-close img {
+    width: 37px;
+    height: 37px;
+    object-fit: contain;
 }
 
-.pagination-button.active {
-    background: #27ac6d;
-    border-color: #27ac6d;
-    color: #ffffff;
-    font-size: 12px;
-    font-weight: 600;
+.notification-message {
+    width: 686px;
+    height: 38px;
+
+    font-family: "SF Pro", "SF Pro Display",
+        -apple-system, BlinkMacSystemFont,
+        "Helvetica Neue", Arial, sans-serif;
+
+    font-size: 32px;
+    font-weight: 590;
+    line-height: 100%;
+    letter-spacing: 0;
+
+    color: #808080;
+    white-space: nowrap;
 }
+  
 
 /* Responsive */
 

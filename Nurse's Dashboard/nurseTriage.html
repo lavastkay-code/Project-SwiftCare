@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reception Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="nurseTriage.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Side bar -->
+
+<aside class="sidebar">
+
+  <!-- Logo -->
+  <div class="logo">
+    <img src="Assets/logo.png" alt="SwiftCare Logo" class="logo-img" role="img">
+  </div>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <ul class="nav-list">
+
+      <li class="nav-item">
+        <a href="#" class="nav-link">
+          <i class="fa-solid fa-house nav-icon"></i>
+          <span>Dashboard</span>
+        </a>
+      </li>
+
+      <!-- Expandable: Patients -->
+      <li class="nav-item has-submenu">
+        <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="patients-submenu">
+          <i class="fa-solid fa-user nav-icon"></i>
+          <span>Patients</span>
+          <i class="fa-solid fa-chevron-down nav-arrow"></i>
+        </button>
+        <ul class="submenu" id="patients-submenu">
+          <li><button type="button" class="submenu-link popup-trigger" id="openPatientPopup">Register Patient</button></li>
+          <li><a href="ConsultationQ.html" class="submenu-link">Patient Records</a></li>
+        </ul>
+      </li>
+
+      <!-- Expandable: Doctors -->
+      <li class="nav-item has-submenu">
+        <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="doctors-submenu">
+          <i class="fa-solid fa-user-doctor nav-icon"></i>
+          <span>Doctors</span>
+          <i class="fa-solid fa-chevron-down nav-arrow"></i>
+        </button>
+        <ul class="submenu" id="doctors-submenu">
+          <li><a href="DoctorDash.html" class="submenu-link">Consultation Queue</a></li>
+        </ul>
+      </li>
+
+      <!-- Expandable: Nurses -->
+      <li class="nav-item has-submenu">
+        <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="nurses-submenu">
+          <i class="fa-solid fa-user-nurse nav-icon"></i>
+          <span>Nurses</span>
+          <i class="fa-solid fa-chevron-down nav-arrow"></i>
+        </button>
+        <ul class="submenu" id="nurses-submenu">
+          <li><a href="#" class="submenu-link">Triage Queue</a></li>
+          <li><a href="#" class="submenu-link">Vital Records</a></li>
+        </ul>
+      </li>
+
+      <!-- Expandable: Receptionist -->
+      <li class="nav-item has-submenu">
+        <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="receptionist-submenu">
+          <i class="fa-solid fa-user-tie nav-icon"></i>
+          <span>Receptionist</span>
+          <i class="fa-solid fa-chevron-down nav-arrow"></i>
+        </button>
+        <ul class="submenu" id="receptionist-submenu">
+          <li><button type="button" class="submenu-link popup-trigger" id="RegPatientPopup">Register Patient</button></li>
+          <li><a href="#" class="submenu-link">Patient Records</a></li>
+          <li><a href="#" class="submenu-link">Appointments</a></li>
+          <li><a href="#" class="submenu-link">Queues</a></li>
+        </ul>
+      </li>
+
+      <!-- Expandable: Cashier -->
+      <li class="nav-item has-submenu">
+        <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="cashier-submenu">
+          <i class="fa-solid fa-cash-register nav-icon"></i>
+          <span>Cashier</span>
+          <i class="fa-solid fa-chevron-down nav-arrow"></i>
+        </button>
+        <ul class="submenu" id="cashier-submenu">
+          <li><a href="#" class="submenu-link">Add Cashier</a></li>
+          <li><a href="#" class="submenu-link">Cashier List</a></li>
+        </ul>
+      </li>
+
+      <!-- Expandable: Billings -->
+      <li class="nav-item has-submenu">
+        <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="billings-submenu">
+          <i class="fa-solid fa-file-invoice-dollar nav-icon"></i>
+          <span>Billings</span>
+          <i class="fa-solid fa-chevron-down nav-arrow"></i>
+        </button>
+        <ul class="submenu" id="billings-submenu">
+          <li><a href="#" class="submenu-link">Patient Invoice</a></li>
+          <li><a href="#" class="submenu-link">Review Charges</a></li>
+          <li><a href="#" class="submenu-link">Record Payment</a></li>
+          <li><a href="#" class="submenu-link">Receipt</a></li>
+        </ul>
+      </li>
+
+      <li class="nav-item">
+        <a href="#" class="nav-link">
+          <i class="fa-solid fa-gear nav-icon"></i>
+          <span>Settings</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="login.html" class="nav-link logout-link">
+          <i class="fa-solid fa-right-from-bracket nav-icon"></i>
+          <span>Logout</span>
+        </a>
+      </li>
+
+    </ul>
+  </nav>
+
+  <!-- Footer note -->
+  <div class="info-box">
+    <i class="fa-solid fa-lock info-icon"></i>
+    <p>Your information is safe with us<br>We never share your data</p>
+  </div>
+
+</aside>
+
+        <!-- Main content -->
+    <main class="main">
+
+      <header class="topbar">
+        <button class="hamburger" id="hamburgerBtn">☰</button>
+        <h1>Dashboard</h1>
+
+        <div class="topbar-right">
+          <div class="bell-wrapper">
+            <span class="bell"><img src="Assets/bell.png" alt=""></span>
+            <span class="badge">2</span>
+          </div>
+          <div class="divider"></div>
+          <div class="user-info">
+            <div class="avatar"><img src="Assets/recept.png" alt=""></div>
+            <div class="user-text">
+              <div class="user-name">Titi Adegoke</div>
+              <div class="user-role">Nurse</div>
+            </div>
+              <span class="dropdown-arrow">
+              <i class="fa-solid fa-chevron-down nav-arrow"></i>
+              </span>                     
+          </div>
+        </div>
+      </header>
+      <!-- My Triage Queue -->
+          <section class="queue-page">
+
+            <div class="queue-page-header">
+              <div class="queue-page-heading">
+                <h2>My Triage Queue</h2>
+                <p>Review and start triage for patients</p>
+              </div>
+              <button class="refresh-btn" id="refreshBtn" type="button">
+                <i class="fa-solid fa-rotate-right"></i>
+                <span>Refresh</span>
+              </button>
+            </div>
+
+            <div class="filter-tabs" id="filterTabs">
+              <button class="filter-tab active" type="button" data-filter="all">All (12)</button>
+              <button class="filter-tab" type="button" data-filter="checkin">Check-In / Triage (9)</button>
+              <button class="filter-tab" type="button" data-filter="progress">In Progress (2)</button>
+              <button class="filter-tab" type="button" data-filter="completed">Completed (1)</button>
+            </div>
+
+            <div class="queue-table-panel">
+              <table class="queue-table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Patient</th>
+                    <th>Patient ID</th>
+                    <th>Department</th>
+                    <th>Queue Stage</th>
+                    <th>Wait time</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="queueBody">
+
+                  <tr data-category="progress">
+                    <td>1.</td>
+                    <td>Adeoye Oyewale</td>
+                    <td>SWC-00012345</td>
+                    <td>General Medicine</td>
+                    <td>Check-in</td>
+                    <td>12mins</td>
+                    <td><button class="action-btn filled-blue" type="button">In Triage</button></td>
+                  </tr>
+
+                  <tr data-category="checkin">
+                    <td>2.</td>
+                    <td>Mary Jane</td>
+                    <td>SWC-00012346</td>
+                    <td>General Medicine</td>
+                    <td>Check-in</td>
+                    <td>14mins</td>
+                    <td><button class="action-btn outline-green" type="button">Start Triage</button></td>
+                  </tr>
+
+                  <tr data-category="checkin">
+                    <td>3.</td>
+                    <td>Joshua Edward</td>
+                    <td>SWC-00012347</td>
+                    <td>Pediatric</td>
+                    <td>Awaiting</td>
+                    <td>17mins</td>
+                    <td><button class="action-btn outline-blue" type="button">Consultation</button></td>
+                  </tr>
+
+                  <tr data-category="checkin">
+                    <td>4.</td>
+                    <td>Blessing Akanji</td>
+                    <td>SWC-00012348</td>
+                    <td>Orthopedic</td>
+                    <td>Check-in</td>
+                    <td>20mins</td>
+                    <td><button class="action-btn outline-green" type="button">Start Triage</button></td>
+                  </tr>
+
+                  <tr data-category="checkin">
+                    <td>5.</td>
+                    <td>Yusuf Hassa</td>
+                    <td>SWC-00012349</td>
+                    <td>General Medicine</td>
+                    <td>Check-in</td>
+                    <td>25mins</td>
+                    <td><button class="action-btn outline-green" type="button">Start Triage</button></td>
+                  </tr>
+
+                  <tr data-category="progress">
+                    <td>6.</td>
+                    <td>Chidinma Anaje</td>
+                    <td>SWC-00012310</td>
+                    <td>Orthopedic</td>
+                    <td><span class="stage-pill in-triage">In Triage</span></td>
+                    <td>5mins</td>
+                    <td><button class="action-btn outline-blue" type="button">Resume</button></td>
+                  </tr>
+
+                  <tr data-category="checkin">
+                    <td>7.</td>
+                    <td>Haruna Bala</td>
+                    <td>SWC-00012312</td>
+                    <td>Pediatric</td>
+                    <td>Check-in</td>
+                    <td>30mins</td>
+                    <td><button class="action-btn outline-green" type="button">Start Triage</button></td>
+                  </tr>
+
+                  <tr data-category="checkin">
+                    <td>8.</td>
+                    <td>Akinbode Silas</td>
+                    <td>SWC-00012313</td>
+                    <td>Pediatric</td>
+                    <td>Awaiting</td>
+                    <td>30mins</td>
+                    <td><button class="action-btn outline-blue" type="button">Consultation</button></td>
+                  </tr>
+
+                  <tr data-category="checkin">
+                    <td>9.</td>
+                    <td>Bello Jubril</td>
+                    <td>SWC-00012314</td>
+                    <td>General Medicine</td>
+                    <td>Check-in</td>
+                    <td>30mins</td>
+                    <td><button class="action-btn outline-green" type="button">Start Triage</button></td>
+                  </tr>
+
+                  <tr data-category="checkin">
+                    <td>10.</td>
+                    <td>Ngozi Okwokwo</td>
+                    <td>SWC-00012315</td>
+                    <td>Pediatric</td>
+                    <td>Check-in</td>
+                    <td>30mins</td>
+                    <td><button class="action-btn outline-green" type="button">Start Triage</button></td>
+                  </tr>
+
+                  <tr data-category="checkin">
+                    <td>11.</td>
+                    <td>Sani Attach</td>
+                    <td>SWC-00012316</td>
+                    <td>Orthopedic</td>
+                    <td>Awaiting</td>
+                    <td>30mins</td>
+                    <td><button class="action-btn outline-blue" type="button">Consultation</button></td>
+                  </tr>
+
+                  <tr data-category="completed">
+                    <td>12.</td>
+                    <td>Tunde Bakare</td>
+                    <td>SWC-00012317</td>
+                    <td>General Medicine</td>
+                    <td><span class="stage-pill completed">Completed</span></td>
+                    <td>8mins</td>
+                    <td><button class="action-btn completed-check" type="button"><i class="fa-solid fa-check"></i>&nbsp; Done</button></td>
+                  </tr>
+
+                </tbody>
+              </table>
+
+              <div class="no-results" id="noResults">No patients in this category right now.</div>
+            </div>
+
+          </section>
+    </main>
+    </div>
+
+    <!-- Patient Management Popup -->
+    <dialog id="patient-popup" class="patient-popup">
+      <button class="popup-close" id="closePatientPopup" aria-label="Close">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1L19 19M19 1L1 19" stroke="white" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <div class="popup-header">
+        <h1>Patient Management</h1>
+        <p>Register, Search, view and manage patient records</p>
+      </div>
+
+      <a href="RegisterNP.html" class="popup-option-card">
+        <div class="popup-option-icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="21" cy="14" r="8" stroke="#0d0d0d" stroke-width="3.2"/>
+            <path d="M6 42c0-9.4 6.7-15 15-15s15 5.6 15 15" stroke="#0d0d0d" stroke-width="3.2" stroke-linecap="round"/>
+            <path d="M38 12v10M33 17h10" stroke="#0d0d0d" stroke-width="3.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="popup-option-text">
+          <h2>Register New Patient</h2>
+          <p>Add a new patient to the system</p>
+        </div>
+      </a>
+
+      <a href="SearchP.html" class="popup-option-card">
+        <div class="popup-option-icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="13" stroke="#0d0d0d" stroke-width="3.2"/>
+            <path d="M29.5 29.5L41 41" stroke="#0d0d0d" stroke-width="3.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="popup-option-text">
+          <h2>Search Existing Patient</h2>
+          <p>Find and manage existing patient records</p>
+        </div>
+      </a>
+    </dialog>
+  <script>
+  // Wire up every expandable nav item (Patients, Doctors, Nurses, Receptionist, Cashier, Billings)
+  const toggleButtons = document.querySelectorAll('.nav-toggle');
+
+  toggleButtons.forEach((btn) => {
+    const parentItem = btn.closest('.has-submenu');
+
+    btn.addEventListener('click', () => {
+      const isOpen = parentItem.classList.toggle('open');
+      btn.setAttribute('aria-expanded', isOpen);
+    });
+  });
+
+  // Patient Management popup — works for ALL trigger buttons, not just one ID
+  const patientPopup = document.getElementById('patient-popup');
+  const closePatientBtn = document.getElementById('closePatientPopup');
+
+  document.querySelectorAll('.popup-trigger').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      patientPopup.showModal();
+    });
+  });
+
+  closePatientBtn.addEventListener('click', () => {
+    patientPopup.close();
+  });
+
+  patientPopup.addEventListener('click', (e) => {
+    if (e.target === patientPopup) {
+      patientPopup.close();
+    }
+  });
+
+  // ---- Triage Queue: filter tabs ----
+  const filterTabs = document.querySelectorAll('.filter-tab');
+  const queueRows = document.querySelectorAll('#queueBody tr');
+  const noResults = document.getElementById('noResults');
+
+  filterTabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      filterTabs.forEach((t) => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      const filter = tab.dataset.filter;
+      let visibleCount = 0;
+
+      queueRows.forEach((row) => {
+        const matches = filter === 'all' || row.dataset.category === filter;
+        row.classList.toggle('row-hidden', !matches);
+        if (matches) visibleCount++;
+      });
+
+      noResults.classList.toggle('show', visibleCount === 0);
+    });
+  });
+
+  // ---- Triage Queue: action buttons ----
+  document.querySelectorAll('.action-btn').forEach((btn) => {
+  if (btn.classList.contains('completed-check')) return;
+
+  btn.addEventListener('click', () => {
+    window.location.href = 'patient-info.html'; 
+  });
+});
+  // ---- Refresh button ----
+  const refreshBtn = document.getElementById('refreshBtn');
+  refreshBtn.addEventListener('click', () => {
+    refreshBtn.classList.add('spinning');
+    setTimeout(() => refreshBtn.classList.remove('spinning'), 500);
+  });
+</script>
+</body>
+</html>
+
+
+  

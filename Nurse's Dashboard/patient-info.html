@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Information - SwiftCare</title>
+
+    <link rel="stylesheet" href="patient-info.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+          <aside class="sidebar" id="sidebar">
+
+            <div class="sidebar-content">
+
+                <!-- LOGO -->
+                <div class="logo-container">
+                    <img
+                        src="icons/logo.svg"
+                        alt="SwiftCare"
+                        class="logo"
+                    >
+                </div>
+
+
+                <!-- NAVIGATION -->
+                <nav class="navigation">
+
+                    <!-- Dashboard -->
+                    <a
+                        href="#"
+                        class="nav-item active"
+                    >
+                        <img
+                            src="icons/dashboard.svg"
+                            alt=""
+                            class="nav-icon"
+                        >
+
+                        <span>Dashboard</span>
+                    </a>
+
+
+                    <!-- Patients -->
+                    <a
+                        href="#"
+                        class="nav-item expandable"
+                    >
+                        <div class="nav-item-left">
+
+                            <img
+                                src="icons/patients.svg"
+                                alt=""
+                                class="nav-icon"
+                            >
+
+                            <span>Patients</span>
+
+                        </div>
+
+                        <img
+                            src="icons/chevron-right.svg"
+                            alt=""
+                            class="arrow-icon"
+                        >
+                    </a>
+
+
+                    <!-- Doctors -->
+                    <a
+                        href="#"
+                        class="nav-item expandable"
+                    >
+                        <div class="nav-item-left">
+
+                            <img
+                                src="icons/doctors.svg"
+                                alt=""
+                                class="nav-icon"
+                            >
+
+                            <span>Doctors</span>
+
+                        </div>
+
+                        <img
+                            src="icons/chevron-right.svg"
+                            alt=""
+                            class="arrow-icon"
+                        >
+                    </a>
+
+
+                    <!-- Nurses -->
+                    <div class="nav-group">
+
+                        <button
+                            type="button"
+                            class="nav-item expandable nurse-toggle"
+                            id="nurseToggle"
+                        >
+
+                            <div class="nav-item-left">
+
+                                <img
+                                    src="icons/nurses.svg"
+                                    alt=""
+                                    class="nav-icon"
+                                >
+
+                                <span>Nurses</span>
+
+                            </div>
+
+                            <img
+                                src="icons/chevron-down.svg"
+                                alt=""
+                                class="arrow-icon nurse-arrow"
+                            >
+
+                        </button>
+
+
+                        <!-- Nurse submenu -->
+                        <div class="submenu" id="nurseSubmenu">
+
+                            <a
+                                href="#"
+                                class="submenu-item active-sub"
+                            >
+                                Triage Queue
+                            </a>
+
+                            <a
+                                href="#"
+                                class="submenu-item"
+                            >
+                                Vitals Records
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Receptionist -->
+                    <a
+                        href="#"
+                        class="nav-item expandable"
+                    >
+                        <div class="nav-item-left">
+
+                            <img
+                                src="icons/receptionist.svg"
+                                alt=""
+                                class="nav-icon"
+                            >
+
+                            <span>Receptionist</span>
+
+                        </div>
+
+                        <img
+                            src="icons/chevron-right.svg"
+                            alt=""
+                            class="arrow-icon"
+                        >
+                    </a>
+
+
+                    <!-- Cashier -->
+                    <a
+                        href="#"
+                        class="nav-item expandable"
+                    >
+                        <div class="nav-item-left">
+
+                            <img
+                                src="icons/cashier.svg"
+                                alt=""
+                                class="nav-icon"
+                            >
+
+                            <span>Cashier</span>
+
+                        </div>
+
+                        <img
+                            src="icons/chevron-right.svg"
+                            alt=""
+                            class="arrow-icon"
+                        >
+                    </a>
+
+
+                    <!-- Billings -->
+                    <a
+                        href="#"
+                        class="nav-item expandable"
+                    >
+                        <div class="nav-item-left">
+
+                            <img
+                                src="icons/billings.svg"
+                                alt=""
+                                class="nav-icon"
+                            >
+
+                            <span>Billings</span>
+
+                        </div>
+
+                        <img
+                            src="icons/chevron-right.svg"
+                            alt=""
+                            class="arrow-icon"
+                        >
+                    </a>
+
+
+                    <!-- Settings -->
+                    <a
+                        href="#"
+                        class="nav-item"
+                    >
+                        <img
+                            src="icons/settings.svg"
+                            alt=""
+                            class="nav-icon"
+                        >
+
+                        <span>Settings</span>
+                    </a>
+
+
+                    <!-- Logout -->
+                    <a
+                        href="#"
+                        class="nav-item logout"
+                    >
+                        <img
+                            src="icons/logout.svg"
+                            alt=""
+                            class="nav-icon"
+                        >
+
+                        <span>Logout</span>
+                    </a>
+
+                </nav>
+
+            </div>
+
+
+            <!-- SIDEBAR BOTTOM -->
+            <div class="sidebar-bottom">
+
+                <!-- Current shift -->
+                <div class="shift-information">
+
+                    <span class="shift-title">
+                        Current Shift
+                    </span>
+
+                    <div class="day-shift">
+                        <span>Day Shift</span>
+                        <img src="icons/sunlight.svg" alt="sunlight-icon">
+                    </div>
+
+                    <span class="shift-time">
+                        7:00AM - 7:00PM
+                    </span>
+
+                    <span>
+                        July 20, 2026
+                    </span>
+
+                </div>
+
+
+                <!-- Security -->
+                <div class="security-message">
+
+                    <img
+                        src="icons/lock.svg"
+                        alt=""
+                        class="security-icon"
+                    >
+
+                    <span class="security-text">
+                        Your information is safe with us<br>
+                        We never share your data
+                    </span>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <main class="main">
+
+            <!-- TOPBAR -->
+              <header class="topbar">
+
+                <div class="topbar-left">
+
+                    <!-- Mobile menu -->
+                    <button
+                        type="button"
+                        class="menu-button"
+                        id="menuButton"
+                        aria-label="Open menu"
+                    >
+                        <img
+                            src="icons/menu.svg"
+                            alt=""
+                        >
+                    </button>
+
+
+                    <h1>
+                        Dashboard
+                    </h1>
+
+                </div>
+
+
+                <!-- TOP RIGHT -->
+                <div class="topbar-right">
+
+                    <!-- Notification -->
+                    <button
+                        type="button"
+                        class="notification-button"
+                        aria-label="Notifications"
+                    >
+
+                        <img
+                            src="icons/notification.svg"
+                            alt="Notification-bell"
+                        >
+
+                        <span class="notification-badge">5</span>
+
+                    </button>
+
+
+                    <!-- Profile -->
+                    <button
+                        type="button"
+                        class="profile"
+                    >
+
+                        <div class="profile-image">
+
+                            <img
+                                src="icons/profile.svg"
+                                alt="Titi Adegoke"
+                            >
+
+                        </div>
+
+
+                        <div class="profile-details">
+
+                            <strong>
+                                Titi Adegoke
+                            </strong>
+
+                            <span>
+                                Nurse
+                            </span>
+
+                        </div>
+
+
+                        <img
+                            src="icons/chevron-down.svg"
+                            alt=""
+                            class="profile-arrow"
+                        >
+
+                    </button>
+
+                </div>
+
+            </header>
+
+            <section class="patient-info-content"  id="patientInfoScreen">
+
+    <div class="patient-loaded-message">
+        <img src="icons/check.svg" alt="" class="patient-loaded-icon">
+        <span>Patient information loaded successfully</span>
+    </div>
+
+    <div class="patient-photo">
+        <img src="icons/patient-photo.png" alt="Patient photo">
+    </div>
+
+    <div class="patient-name">
+        Adeoye Oyewale
+    </div>
+
+    <div class="patient-meta">
+        <span>SWC-00012345</span>
+        <span>Male - 34yrs</span>
+    </div>
+
+    <button class="start-triage-button">
+        Start Triage
+    </button>
+
+    <button class="checkin-triage-button">
+        Check-in/Triage
+    </button>
+
+    <div class="patient-overview">
+    <span>Patient Overview</span>
+    <div class="patient-overview-line"></div>
+    </div>
+
+    <div class="vitals-tab">
+    <span>Vitals</span>
+    </div>
+
+    <div class="history-tab">
+    <span>History</span>
+    </div>
+
+    <h3 class="patient-demographics-title">Patient Demographics</h3>
+    <h3 class="appointment-details-title">Appointment Details</h3>
+
+    <div class="demographics-labels">
+     <span>Date of Birth</span>
+      <span>Gender</span>
+     <span>Phone No:</span>
+     <span>Email</span>
+     <span>Address</span>
+     <span>Next of Kin</span>
+   </div>
+
+   <div class="demographics-values">
+    <span>15 March 1990</span>
+    <span>Male</span>
+    <span>08123456789</span>
+    <span>adeoye.o@gmail.com</span>
+    <span>12, Allen Avenue, Lagos</span>
+    <span>Adeoye Abioye (Brother)</span>
+    <span>08123456789</span>
+   </div>
+
+   <div class="appointment-labels">
+    <span>Appointment ID</span>
+    <span>Department</span>
+    <span>Doctor</span>
+    <span>Appointment Type</span>
+    <span>Appointment Time</span>
+   </div>
+
+  <div class="appointment-values">
+    <span>SWC-00012345</span>
+    <span>General Medicine</span>
+    <span>Dr. Chenedu Okafor</span>
+    <span>Consultation</span>
+    <span>23 June, 2026, 10:30 AM</span>
+  </div>
+
+  <h3 class="queue-information-title">Queue Information</h3>
+
+  <div class="queue-labels">
+    <span>Current Stage</span>
+    <span>Checked in</span>
+    <span>Visit Time</span>
+  </div>
+
+  <div class="queue-values">
+    <span>Check-in/Triage</span>
+    <span>09:16 AM</span>
+    <span>12 mins</span>
+  </div>
+
+  <h3 class="previous-visit-title">Previous Visit</h3>
+  <div class="previous-visit-labels">
+    <span>Date</span>
+    <span>BP</span>
+    <span>Pulse</span>
+    <span>Temperature</span>
+    <span>Regulatory Rate</span>
+  </div>
+
+<div class="previous-visit-values">
+    <span>12 May 2026</span>
+    <span>120/80</span>
+    <span>70</span>
+    <span>36.5</span>
+    <span>10</span>
+</div>
+
+  </section>
+</main>
+
+    </div>
+<!-- Screen 5 - Patient Information Error -->
+<div class="error-modal-overlay" id="errorModalOverlay">
+
+    <div class="error-modal">
+
+        <div class="error-content">
+
+            <div class="error-icon">
+                <img src="icons/error-cloud.svg" alt="Error">
+            </div>
+
+            <div class="error-message">
+
+                <h2>Unable to load patient information</h2>
+
+                <p>There was a problem retrieving the patient data</p>
+
+            </div>
+
+        </div>
+
+        <div class="error-modal-actions">
+
+            <button
+                type="button"
+                class="retry-button"
+                id="retryButton"
+            >
+                Retry
+            </button>
+
+            <button
+                type="button"
+                class="back-queue-button"
+                id="backToQueueButton"
+            >
+                Back to Queue
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- SCREEN 6 - LOADING PATIENT INFORMATION -->
+
+<div class="loading-modal-overlay" id="loadingModalOverlay">
+
+    <div class="loading-modal">
+
+        <div class="loading-content">
+
+            <div class="loading-icon">
+                <img
+                    src="icons/cloud.svg"
+                    alt="Loading"
+                >
+            </div>
+
+            <div class="loading-message">
+
+                <h2>
+                    Loading patient information
+                </h2>
+
+                <p>
+                    Please wait while we fetch the latest data
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="loading-modal-actions">
+
+            <button
+                type="button"
+                class="cancel-button"
+                id="cancelLoadingButton"
+            >
+                Cancel
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+   
+    <script src="patient-info.script.js"></script>
+
+</body>
+</html>

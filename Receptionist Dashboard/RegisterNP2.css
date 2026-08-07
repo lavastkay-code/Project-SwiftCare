@@ -531,7 +531,7 @@ body {
   padding-right: 40px;
 }
 
-.select-wrapper::after {
+/* .select-wrapper::after {
   content: '';
   position: absolute;
   top: 50%;
@@ -542,7 +542,7 @@ body {
   border-bottom: 2px solid #8a8f98;
   transform: translateY(-70%) rotate(45deg);
   pointer-events: none;
-}
+} */
 
 .form-actions {
   display: flex;

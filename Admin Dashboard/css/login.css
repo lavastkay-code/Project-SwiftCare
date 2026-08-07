@@ -307,7 +307,7 @@ body{
     background:#fff;
 }
 
-.select-wrapper::after{
+/* .select-wrapper::after{
     content:"\f078";
     font-family:"Font Awesome 6 Free";
     font-weight:900;
@@ -317,7 +317,7 @@ body{
     transform:translateY(-50%);
     color:#64748b;
     pointer-events:none;
-}
+} */
 
 .country-group input{
     border-top:none;

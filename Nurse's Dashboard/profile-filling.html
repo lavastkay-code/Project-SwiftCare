@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SwiftCare - Record Vitals</title>
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  />
+
+  <link rel="stylesheet" href="profile-filling.css" />
+</head>
+<body>
+
+  <div class="app-layout">
+
+    <aside class="sidebar" id="sidebar">
+
+      <div class="logo">
+        <img src="Assets/logo.png" alt="SwiftCare logo" />
+      </div>
+
+      <nav class="sidebar-nav">
+        <ul class="nav-list">
+
+          <li class="nav-item">
+            <a href="#" class="nav-link active">
+              <i class="fa-solid fa-house nav-icon"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+
+          <li class="nav-item has-submenu">
+            <button class="nav-link nav-toggle" type="button">
+              <i class="fa-solid fa-user nav-icon"></i>
+              <span>Patients</span>
+              <i class="fa-solid fa-chevron-right nav-arrow"></i>
+            </button>
+
+            <ul class="submenu">
+              <li><a href="#" class="submenu-link">Register Patient</a></li>
+              <li><a href="#" class="submenu-link">Patient Records</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item has-submenu">
+            <button class="nav-link nav-toggle" type="button">
+              <i class="fa-solid fa-user-doctor nav-icon"></i>
+              <span>Doctors</span>
+              <i class="fa-solid fa-chevron-right nav-arrow"></i>
+            </button>
+
+            <ul class="submenu">
+              <li><a href="#" class="submenu-link">Add Doctor</a></li>
+              <li><a href="#" class="submenu-link">Doctor List</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item has-submenu open">
+            <button class="nav-link nav-toggle" type="button">
+              <i class="fa-solid fa-user-nurse nav-icon"></i>
+              <span>Nurses</span>
+              <i class="fa-solid fa-chevron-right nav-arrow"></i>
+            </button>
+
+            <ul class="submenu">
+              <li><a href="#" class="submenu-link active-submenu">Triage Queue</a></li>
+              <li><a href="#" class="submenu-link">Vitals Records</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa-solid fa-user-tie nav-icon"></i>
+              <span>Receptionist</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa-solid fa-cash-register nav-icon"></i>
+              <span>Cashier</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa-solid fa-file-invoice-dollar nav-icon"></i>
+              <span>Billings</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa-solid fa-gear nav-icon"></i>
+              <span>Settings</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link logout-link">
+              <i class="fa-solid fa-right-from-bracket nav-icon"></i>
+              <span>Logout</span>
+            </a>
+          </li>
+
+        </ul>
+      </nav>
+
+      <div class="shift-card">
+        <h4>Current Shift</h4>
+        <p class="shift-status">Day Shift ☀️</p>
+        <p class="shift-time">7:00AM - 7:00PM</p>
+        <p class="shift-date" id="sidebarDate"></p>
+      </div>
+
+      <div class="security-note">
+        <img src="image/shield-icon.png" alt="Security Icon" />
+        <p>Your information is safe with us. We never share your data.</p>
+      </div>
+
+    </aside>
+    <main class="main-content">
+
+      <header class="topbar">
+
+        <div class="topbar-left">
+          <button class="hamburger" id="hamburgerBtn" type="button">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+
+          <h1>Dashboard</h1>
+        </div>
+
+        <div class="topbar-right">
+
+          <button class="notification-btn" type="button">
+            <i class="fa-solid fa-bell"></i>
+            <span class="notification-badge">2</span>
+          </button>
+
+          <div class="profile">
+            <img
+              src="https://i.pravatar.cc/100?img=47"
+              alt="Nurse Avatar"
+            />
+
+            <div class="profile-info">
+              <span class="profile-name">Titi Adegoke</span>
+              <span class="profile-role">Nurse</span>
+            </div>
+          </div>
+
+        </div>
+
+      </header>
+
+      <section class="page-body">
+
+        <button class="back-btn" type="button">
+          <i class="fa-solid fa-chevron-left"></i>
+          Back to Queue
+        </button>
+
+        <div class="patient-layout">
+          <section class="patient-main">
+
+            <div class="patient-header with-action">
+
+              <div class="patient-profile">
+
+                <img src="" alt="img"/>
+
+                <div class="patient-info">
+                  <h2>Adeoye Oyewale</h2>
+
+                  <div class="patient-meta">
+                    <span id="patientId">SWC-00012345</span>
+                    <span>Male - 34yrs</span>
+                  </div>
+                  <span class="status-badge">Check-in/Triage</span>
+                </div>
+
+              </div>
+
+              <button class="triage-btn" id="startTriageBtn" type="button">
+                Start Triage
+              </button>
+
+            </div>
+
+            <div class="tabs">
+              <button class="tab-btn" type="button">Patient Overview</button>
+              <button class="tab-btn active" type="button">Vitals</button>
+              <button class="tab-btn" type="button">History</button>
+            </div>
+
+            <div class="card form-card">
+
+              <div class="card-header simple">
+                <h3>Record Vitals</h3>
+              </div>
+
+              <form id="recordVitalsForm">
+
+                <div class="form-group">
+                  <label for="bpInput">
+                    Blood Pressure (mmHg)
+                    <span class="required">*</span>
+                  </label>
+
+                  <input
+                    type="text"
+                    id="bpInput"
+                    placeholder="e.g. 120/80"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="tempInput">
+                    Temperature (°C)
+                    <span class="required">*</span>
+                  </label>
+
+                  <input
+                    type="number"
+                    step="0.1"
+                    id="tempInput"
+                    placeholder="e.g. 36.7"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="weightInput">
+                    Weight (kg)
+                    <span class="required">*</span>
+                  </label>
+
+                  <input
+                    type="number"
+                    step="0.1"
+                    id="weightInput"
+                    placeholder="e.g. 68.2"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="pulseInput">
+                    Pulse Rate (bpm)
+                    <span class="optional">(Optional)</span>
+                  </label>
+
+                  <input
+                    type="number"
+                    id="pulseInput"
+                    placeholder="e.g. 76"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="notesInput">
+                    Additional Notes
+                    <span class="optional">(Optional)</span>
+                  </label>
+
+                  <textarea
+                    id="notesInput"
+                    rows="5"
+                    maxlength="250"
+                    placeholder="Enter any observations, symptoms, or additional notes..."
+                  ></textarea>
+
+                  <div class="char-counter">
+                    <span id="notesCount">0</span>/250
+                  </div>
+                </div>
+
+                <div class="form-actions spread">
+                  <button type="button" class="clear-btn" id="clearFormBtn">
+                    Clear
+                  </button>
+
+                  <button type="submit" class="save-btn" id="saveVitalsBtn">
+                    Save Vitals
+                  </button>
+                </div>
+
+              </form>
+
+            </div>
+
+          </section>
+
+          <aside class="patient-sidebar">
+
+            <div class="side-card">
+
+              <h3>Patient Demographics</h3>
+
+              <div class="detail-item">
+                <span>Date of Birth</span>
+                <strong>15 March 1990</strong>
+              </div>
+
+              <div class="detail-item">
+                <span>Gender</span>
+                <strong>Male</strong>
+              </div>
+
+              <div class="detail-item">
+                <span>Phone</span>
+                <strong>08123456789</strong>
+              </div>
+
+            </div>
+
+            <div class="side-card">
+
+              <h3>Appointment</h3>
+
+              <div class="detail-item">
+                <span>Patient ID</span>
+                <strong>SWC-00012345</strong>
+              </div>
+
+              <div class="detail-item">
+                <span>Department</span>
+                <strong>General Medicine</strong>
+              </div>
+
+              <div class="detail-item">
+                <span>Assigned Doctor</span>
+                <strong>Dr. Chinedu Okafor</strong>
+              </div>
+
+              <div class="detail-item">
+                <span>Appointment Time</span>
+                <strong id="appointmentTime"></strong>
+              </div>
+
+            </div>
+
+            <div class="side-card queue-card">
+
+              <h3>Queue Information</h3>
+
+              <span class="status-badge" id="queueStatusBadge">
+                Check-in/Triage
+              </span>
+
+              <div class="queue-item">
+                <span>Checked In</span>
+                <strong>09:15AM</strong>
+              </div>
+
+              <div class="queue-item">
+                <span>Wait Time</span>
+                <strong id="waitTime">12 mins</strong>
+              </div>
+
+            </div>
+
+          </aside>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+ 
+  <div class="popup-overlay hidden" id="successOverlay">
+
+    <div class="popup-modal">
+
+      <div class="popup-icon">
+        <i class="fa-solid fa-check"></i>
+      </div>
+
+      <h2>Vitals Successfully Recorded</h2>
+
+      <div class="popup-patient-card">
+
+        <img src="images/patient-avatar.jpg" alt="Patient" />
+
+        <div class="popup-patient-info">
+          <h3>Adeoye Oyewale</h3>
+          <p>SWC-00012345</p>
+          <p>Male - 34yrs</p>
+          <p>General Medicine</p>
+          <p>Vitals recorded successfully</p>
+        </div>
+
+      </div>
+
+      <button class="popup-btn" id="continueQueueBtn" type="button">
+        Continue to Queue
+      </button>
+
+    </div>
+
+  </div>
+
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <script src="profile-filling.js"></script>
+
+</body>
+</html>

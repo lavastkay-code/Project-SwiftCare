@@ -9,7 +9,7 @@
     >
     <title>SwiftCare - Dashboard</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="screen7.css">
 </head>
 
 <body>
@@ -536,12 +536,20 @@
 
                                 <td>
 
-                                    <button
+                                    <a 
+                                         href="profile-filling.html" 
+                                        class="action-button start-button primary"
+                                             role="button"
+>
+                                                     In Triage
+                                                            </a>
+
+                                    <!-- <button
                                         type="button"
                                         class="action-button start-button primary"
                                     >
-                                        Start Triage
-                                    </button>
+                                        In Triage
+                                    </button> -->
 
                                 </td>
 
@@ -804,58 +812,45 @@
                 </div>
 
 
-                <!-- TABLE FOOTER -->
+                <div class="triage-notification" id="triageNotification">
 
-                <div class="table-footer">
+    <img
+        src="icons/check-circle.svg"
+        alt="Success"
+        class="notification-success-icon"
+    >
 
-                    <p>
-                        Showing 1 to 7 of 21 entries
-                    </p>
+    <div class="notification-content">
 
+        <div class="notification-title-row">
 
-                    <div class="pagination">
+            <span class="notification-title">
+                Adeoye Oyewale moved to in Triage
+            </span>
 
-                        <button
-                            type="button"
-                            class="pagination-button"
-                            aria-label="Previous page"
-                        >
-                           &#8249
+            <button
+                type="button"
+                class="notification-close"
+                id="notificationClose"
+                aria-label="Close notification"
+            >
+                <img
+                    src="icons/cancel.svg"
+                    alt=""
+                >
+            </button>
 
-                        </button>
+        </div>
 
+        <span class="notification-message">
+            Your queue has been updated
+        </span>
 
-                        <button
-                            type="button"
-                            class="pagination-button active"
-                        >
-                            1
-                        </button>
+    </div>
 
+</div>
 
-                        <button
-                            type="button"
-                            class="pagination-button"
-                        >
-                            2
-                        </button>
-
-
-                        <button
-                            type="button"
-                            class="pagination-button"
-                        >
-                            3
-                        </button>
-
-
-                        <button
-                            type="button"
-                            class="pagination-button"
-                            aria-label="Next page"
-                        >
-                        &#8250
-                </div>
+                
 
             </section>
 
@@ -871,7 +866,8 @@
     ></div>
 
 
-    <script src="script.js"></script>
+    <script src="screen7.script.js"></script>
+
 
 </body>
 
