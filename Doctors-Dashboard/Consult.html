@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="Consult.css">
+    <script src="Consult.js" defer></script>
+</head>
+<body>
+    <div class="app">
+        <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+        <aside class="sidebar">
+          <button class="sidebar-close" id="sidebarCloseBtn" aria-label="Close menu">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+          <div class="logo">
+            <img src="Assets/logo.png" alt="SwiftCare Logo" class="logo-img">
+          </div>
+
+          <nav class="nav">
+            <ul class="nav-list">
+
+              <li class="nav-item">
+                <a href="Doctordash.html" class="nav-link">
+                  <i class="fa-solid fa-house nav-icon"></i>
+                  <span>Dashboard</span>
+                </a>
+              </li>
+
+              <li class="nav-item has-submenu">
+                <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="patients-submenu">
+                  <i class="fa-solid fa-user nav-icon"></i>
+                  <span>Patients</span>
+                  <i class="fa-solid fa-chevron-down nav-arrow"></i>
+                </button>
+                <ul class="submenu" id="patients-submenu">
+                  <li><button type="button" class="submenu-link popup-trigger" id="openPatientPopup">Register Patient</button></li>
+                  <li><a href="#" class="submenu-link">Patient Records</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item has-submenu">
+                <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="doctors-submenu">
+                  <i class="fa-solid fa-user-doctor nav-icon"></i>
+                  <span>Doctors</span>
+                  <i class="fa-solid fa-chevron-down nav-arrow"></i>
+                </button>
+                <ul class="submenu" id="doctors-submenu">
+                  <li><a href="ConsultationQ.html" class="submenu-link">Consultation Queue</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item has-submenu">
+                <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="nurses-submenu">
+                  <i class="fa-solid fa-user-nurse nav-icon"></i>
+                  <span>Nurses</span>
+                  <i class="fa-solid fa-chevron-down nav-arrow"></i>
+                </button>
+                <ul class="submenu" id="nurses-submenu">
+                  <li><a href="#" class="submenu-link">Add Nurse</a></li>
+                  <li><a href="#" class="submenu-link">Nurse List</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item has-submenu">
+                <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="receptionist-submenu">
+                  <i class="fa-solid fa-user-tie nav-icon"></i>
+                  <span>Receptionist</span>
+                  <i class="fa-solid fa-chevron-down nav-arrow"></i>
+                </button>
+                <ul class="submenu" id="receptionist-submenu">
+                  <li><a href="#" class="submenu-link">Add Receptionist</a></li>
+                  <li><a href="#" class="submenu-link">Receptionist List</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item has-submenu">
+                <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="cashier-submenu">
+                  <i class="fa-solid fa-cash-register nav-icon"></i>
+                  <span>Cashier</span>
+                  <i class="fa-solid fa-chevron-down nav-arrow"></i>
+                </button>
+                <ul class="submenu" id="cashier-submenu">
+                  <li><a href="#" class="submenu-link">Add Cashier</a></li>
+                  <li><a href="#" class="submenu-link">Cashier List</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item has-submenu">
+                <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="billings-submenu">
+                  <i class="fa-solid fa-file-invoice-dollar nav-icon"></i>
+                  <span>Billings</span>
+                  <i class="fa-solid fa-chevron-down nav-arrow"></i>
+                </button>
+                <ul class="submenu" id="billings-submenu">
+                  <li><a href="#" class="submenu-link">Create Invoice</a></li>
+                  <li><a href="#" class="submenu-link">Invoice History</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fa-solid fa-gear nav-icon"></i>
+                  <span>Settings</span>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="login.html" class="nav-link logout-link">
+                  <i class="fa-solid fa-right-from-bracket nav-icon"></i>
+                  <span>Logout</span>
+                </a>
+              </li>
+
+            </ul>
+          </nav>
+
+          <div class="info-box">
+            <i class="fa-solid fa-lock info-icon"></i>
+            <p>Your information is safe with us<br>We never share your data</p>
+          </div>
+        </aside>
+
+        <main class="main">
+          <header class="topbar">
+            <button class="hamburger" id="hamburgerBtn">Ôÿ░</button>
+            <h1>Dashboard</h1>
+
+            <div class="topbar-right">
+              <div class="bell-wrapper">
+                <span class="bell"><img src="Assets/bell.png" alt=""></span>
+                <span class="badge">2</span>
+              </div>
+              <div class="divider"></div>
+              <div class="user-info">
+                <div class="avatar"><img src="Assets/recept.png" alt=""></div>
+                <div class="xt">
+                  <div class="user-name">Dr. Yussuf Mohammed</div>
+                  <div class="user-role">General Physician</div>
+                </div>
+                <span class="dropdown-arrow">
+                  <i class="fa-solid fa-chevron-down nav-arrow"></i>
+                </span>
+              </div>
+            </div>
+          </header>
+
+          <div class="consultation-content">
+
+            <!-- Loading state -->
+            <div class="loading-overlay" id="loadingOverlay">
+              <div class="spinner"></div>
+              <p>Loading patient information...</p>
+            </div>
+
+            <!-- Error state -->
+            <div class="error-state" id="errorState" hidden>
+              <div class="error-card">
+                <div class="error-icon-wrap">
+                  <i class="fa-solid fa-folder"></i>
+                  <i class="fa-solid fa-triangle-exclamation error-icon-warning"></i>
+                </div>
+                <h2>Unable to Load Patient Information</h2>
+                <p>We couldn&rsquo;t retrieve the patient&rsquo;s records. Please check your network connection or try again</p>
+                <span class="error-code">Error code : SC -307</span>
+                <div class="error-actions">
+                  <button type="button" class="btn-solid-green" id="retryLoadBtn">Retry</button>
+                  <a href="ConsultationQ.html" class="btn-outline-green">Return to Consultation Queue</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Main view -->
+            <div class="consultation-content-inner" id="mainConsultationView" hidden>
+
+              <section class="consultation-top">
+                <div class="consultation-title-block">
+                  <h1>Consultation</h1>
+                  <p>Patients consultation and medical documentation</p>
+                  <div class="breadcrumb">Dashboard / Consultation / Sarah Johnson</div>
+                </div>
+
+                <div class="status-panel" id="statusPanel" hidden>
+                  <div class="status-view date-view" id="dateView">
+                    <i class="fa-regular fa-calendar"></i>
+                    <div class="date-text">
+                      <span class="date-main" id="dateMain">July 25, 2025</span>
+                      <span class="date-day" id="dateDay">Saturday</span>
+                    </div>
+                    <input type="date" id="consultDateInput" class="hidden-date-input" value="2025-07-25">
+                  </div>
+
+                  <div class="status-view saved-view" id="savedView" hidden>
+                    <strong>Consultation note saved</strong>
+                    <p>Your consultation have been saved successfully.</p>
+                  </div>
+
+                  <div class="status-view confirm-view" id="confirmView" hidden>
+                    <div class="confirm-header">
+                      <strong>Confirm Note</strong>
+                      <i class="fa-regular fa-circle-question"></i>
+                    </div>
+                    <p>Are you sure you want to mark this consultation as completed?</p>
+                    <div class="confirm-actions">
+                      <button type="button" class="confirm-btn confirm-yes" id="confirmYesBtn">Yes, Complete</button>
+                      <button type="button" class="confirm-btn confirm-cancel" id="confirmCancelBtn">Cancel</button>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="consultation-body">
+
+                <div class="consultation-left">
+
+                  <div class="c-card patient-card">
+                    <img src="Assets/patient1.jpg" alt="" class="patient-photo">
+                    <div class="patient-info">
+                      <h3>Sarah Johnson</h3>
+                      <p>Female -29 yrs</p>
+                      <p>Patients ID: SC-10234</p>
+                      <span class="status-tag status-tag-neutral" id="patientStatusTag">
+                        <span class="status-dot"></span><span class="status-tag-text">Completed</span>
+                      </span>
+                    </div>
+                  </div>
+
+                  <!-- Pre-consultation panel -->
+                  <div class="pre-consultation-panel" id="preConsultationPanel">
+                    <div class="pre-consultation-actions">
+                      <button type="button" class="btn-outline-green" id="viewProfileBtn">View Patients profile</button>
+                      <button type="button" class="btn-solid-green" id="startConsultationBtn">Start New Consultation</button>
+                    </div>
+
+                    <div class="billing-card">
+                      <div class="billing-header">
+                        <span class="billing-tag">Patients Status</span>
+                        <span class="status-pill status-pending">Awaitig Payment</span>
+                      </div>
+                      <div class="billing-list">
+                        <div class="billing-row"><span>Consultation Fee</span><span>&#8358; 100,000</span></div>
+                        <div class="billing-row"><span>Amoxicillin 500 mg</span><span>&#8358; 10,000</span></div>
+                        <div class="billing-row"><span>paracetamol</span><span>&#8358; 4000</span></div>
+                        <div class="billing-row"><span>Vitamin C Tablets</span><span>&#8358; 500</span></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Consultation workspace accordions -->
+                  <div class="consultation-accordions" id="consultationAccordions" hidden>
+
+                    <div class="c-card accordion-card">
+                      <button type="button" class="accordion-toggle">
+                        <span>Appointmnet Details Card</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                      </button>
+                      <div class="accordion-panel">
+                        <div class="appt-details-grid">
+                          <div class="appt-detail">
+                            <span class="appt-label">Appointment Time</span>
+                            <span class="appt-value">09:00 AM</span>
+                          </div>
+                          <div class="appt-detail">
+                            <span class="appt-label">Department</span>
+                            <span class="appt-value">GYNI</span>
+                          </div>
+                          <div class="appt-detail">
+                            <span class="appt-label">Doctor</span>
+                            <span class="appt-value">Dr. Yusuf. M</span>
+                          </div>
+                          <div class="appt-detail">
+                            <span class="appt-label">Visit Reason</span>
+                            <span class="appt-value">Reg check up</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="c-card accordion-card">
+                      <button type="button" class="accordion-toggle">
+                        <span>Vital Sign</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                      </button>
+                      <div class="accordion-panel">
+                        <div class="vitals-grid">
+                          <button type="button" class="vital-pill">
+                            <span class="vital-icon vital-icon-red"><i class="fa-solid fa-heart"></i></span>
+                            <span class="vital-text">
+                              <span class="vital-label">Heart Rate</span>
+                              <span class="vital-value">78 BPM</span>
+                            </span>
+                          </button>
+                          <button type="button" class="vital-pill">
+                            <span class="vital-icon vital-icon-red"><i class="fa-solid fa-temperature-half"></i></span>
+                            <span class="vital-text">
+                              <span class="vital-label">Temperature</span>
+                              <span class="vital-value">36.8&deg;C</span>
+                            </span>
+                          </button>
+                          <button type="button" class="vital-pill">
+                            <span class="vital-icon vital-icon-red"><i class="fa-solid fa-droplet"></i></span>
+                            <span class="vital-text">
+                              <span class="vital-label">Blood Pressure</span>
+                              <span class="vital-value"></span>
+                            </span>
+                          </button>
+                          <button type="button" class="vital-pill">
+                            <span class="vital-icon vital-icon-dark"><i class="fa-solid fa-weight-scale"></i></span>
+                            <span class="vital-text">
+                              <span class="vital-label">Weight</span>
+                              <span class="vital-value">65 KG</span>
+                            </span>
+                          </button>
+                          <button type="button" class="vital-pill">
+                            <span class="vital-icon vital-icon-dark"><i class="fa-solid fa-lungs"></i></span>
+                            <span class="vital-text">
+                              <span class="vital-label">Oxygen Saturation</span>
+                              <span class="vital-value">98</span>
+                            </span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="c-card accordion-card">
+                      <button type="button" class="accordion-toggle">
+                        <span>Allergies</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                      </button>
+                      <div class="accordion-panel">
+                        <div class="allergies-row">
+                          <span class="allergies-label">Allergies Tag</span>
+                          <span class="allergy-pill">penicillin</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="c-card accordion-card">
+                      <button type="button" class="accordion-toggle">
+                        <span>Previous Consultation History</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                      </button>
+                      <div class="accordion-panel">
+                        <div class="history-entry open">
+                          <button type="button" class="history-toggle">
+                            <i class="fa-solid fa-chevron-down"></i>
+                            March 2026
+                          </button>
+                          <div class="history-panel">
+                            <div class="history-box">Previous Diagnosis</div>
+                            <div class="history-box history-box-tall">Previous Clinical Notes</div>
+                          </div>
+                        </div>
+
+                        <div class="history-entry">
+                          <button type="button" class="history-toggle">
+                            <i class="fa-solid fa-chevron-right"></i>
+                            January 2026
+                          </button>
+                        </div>
+
+                        <div class="history-entry">
+                          <button type="button" class="history-toggle">
+                            <i class="fa-solid fa-chevron-right"></i>
+                            November 2025
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <div class="consultation-right" id="consultationRight" hidden>
+
+                  <div class="c-field">
+                    <label>Diagnosis</label>
+                    <input type="text" class="c-input" >
+                  </div>
+
+                  <div class="c-field">
+                    <label>Clinical Notes</label>
+                    <textarea class="c-textarea c-textarea-lg">..</textarea>
+                  </div>
+
+                  <div class="c-field">
+                    <label>Prescription</label>
+                    <textarea class="c-textarea c-textarea-lg"></textarea>
+                  </div>
+
+                  <div class="c-field">
+                    <label>Recommendations (optional)</label>
+                    <textarea class="c-textarea"></textarea>
+                  </div>
+
+                  <div class="upload-row">
+                    <button type="button" class="upload-btn" data-file-target="labResultsInput">
+                      <i class="fa-solid fa-vials"></i>
+                      Upload Lab Results
+                    </button>
+                    <input type="file" id="labResultsInput" hidden>
+
+                    <button type="button" class="upload-btn" data-file-target="filesInput">
+                      <i class="fa-regular fa-file-lines"></i>
+                      Upload Files
+                    </button>
+                    <input type="file" id="filesInput" hidden>
+
+                    <button type="button" class="upload-btn" data-file-target="imagingInput">
+                      <i class="fa-regular fa-image"></i>
+                      Upload imaging
+                    </button>
+                    <input type="file" id="imagingInput" accept="image/*" hidden>
+                  </div>
+
+                  <div class="consultation-actions">
+                    <span class="last-saved-text" id="lastSavedText" hidden>
+                      Last saved : <span class="last-saved-time">Just now</span>
+                      <i class="fa-solid fa-arrows-rotate"></i>
+                    </span>
+                    <button type="button" class="save-note-btn" id="saveNoteBtn">Save Note</button>
+                    <button type="button" class="complete-consultation-btn" id="completeConsultationBtn">Complete Consultation</button>
+                  </div>
+
+                  <div class="pagination consultation-pagination">
+                    <button type="button" class="page-arrow"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button type="button" class="page-btn active-page">1</button>
+                    <button type="button" class="page-btn">2</button>
+                    <button type="button" class="page-btn">3</button>
+                    <button type="button" class="page-btn">4</button>
+                    <button type="button" class="page-arrow"><i class="fa-solid fa-chevron-right"></i></button>
+                  </div>
+
+                </div>
+
+              </section>
+            </div>
+
+          </div>
+        </main>
+    </div>
+
+    <dialog id="patient-popup" class="patient-popup">
+      <button class="popup-close" id="closePatientPopup" aria-label="Close">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1L19 19M19 1L1 19" stroke="white" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <div class="popup-header">
+        <h1>Patient Management</h1>
+        <p>Register, Search, view and manage patient records</p>
+      </div>
+
+      <a href="#" class="popup-option-card">
+        <div class="popup-option-icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="21" cy="14" r="8" stroke="#0d0d0d" stroke-width="3.2"/>
+            <path d="M6 42c0-9.4 6.7-15 15-15s15 5.6 15 15" stroke="#0d0d0d" stroke-width="3.2" stroke-linecap="round"/>
+            <path d="M38 12v10M33 17h10" stroke="#0d0d0d" stroke-width="3.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="popup-option-text">
+          <h2>Register New Patient</h2>
+          <p>Add a new patient to the system</p>
+        </div>
+      </a>
+
+      <a href="SearchP.html" class="popup-option-card">
+        <div class="popup-option-icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="13" stroke="#0d0d0d" stroke-width="3.2"/>
+            <path d="M29.5 29.5L41 41" stroke="#0d0d0d" stroke-width="3.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="popup-option-text">
+          <h2>Search Existing Patient</h2>
+          <p>Find and manage existing patient records</p>
+        </div>
+      </a>
+    </dialog>
+</body>
+</html>

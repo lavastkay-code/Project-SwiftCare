@@ -32,7 +32,7 @@
                 </button>
                 <ul class="submenu" id="patients-submenu">
                   <li><button type="button" class="submenu-link popup-trigger" id="openPatientPopup">Register Patient</button></li>
-                  <li><a href="../Receptionist Dashboard/SearchP.html" class="submenu-link">Patient Records</a></li>
+                  <li><a href="../Receptionist-Dashboard/SearchP.html" class="submenu-link">Patient Records</a></li>
                 </ul>
               </li>
 
@@ -43,7 +43,9 @@
                   <i class="fa-solid fa-chevron-down nav-arrow"></i>
                 </button>
                 <ul class="submenu" id="doctors-submenu">
-                  <li><a href="../Doctor's Dashboard/ConsultationQu.html" class="submenu-link">Consultation Queue</a></li>
+                  <li><a href="Admin-Invite.html" class="submenu-link">Add Doctor</a></li>
+                  <li><a href="#" class="submenu-link">Doctor List</a></li>
+                  <li><a href="../Doctors-Dashboard/ConsultationQu.html" class="submenu-link">Consultation Queue</a></li>
                 </ul>
               </li>
 
@@ -54,8 +56,10 @@
                   <i class="fa-solid fa-chevron-down nav-arrow"></i>
                 </button>
                 <ul class="submenu" id="nurses-submenu">
-                  <li><a href="../Receptionist Dashboard/Queues.html" class="submenu-link">Triage Queue</a></li>
-                  <li><a href="../Receptionist Dashboard/SearchP.html" class="submenu-link">Vital Records</a></li>
+                  <li><a href="Admin-Invite.html" class="submenu-link">Add Nurse</a></li>
+                  <li><a href="#" class="submenu-link">Nurse List</a></li>
+                  <li><a href="../Receptionist-Dashboard/Queues.html" class="submenu-link">Triage Queue</a></li>
+                  <li><a href="../Receptionist-Dashboard/SearchP.html" class="submenu-link">Vital Records</a></li>
                 </ul>
               </li>
 
@@ -66,11 +70,12 @@
                   <i class="fa-solid fa-chevron-down nav-arrow"></i>
                 </button>
                 <ul class="submenu" id="receptionist-submenu">
+                  <li><a href="Admin-Invite.html" class="submenu-link">Add Receptionist</a></li>
+                  <li><a href="#" class="submenu-link">Receptionist List</a></li>
                   <li><button type="button" class="submenu-link popup-trigger" id="RegPatientPopup">Register Patient</button></li>
-                  <li><a href="../Receptionist Dashboard/SearchP.html" class="submenu-link">Patient Records</a></li>
-                  <li><a href="../Receptionist Dashboard/Appointments.html" class="submenu-link">Appointments</a></li>
-                  <li><a href="../Receptionist Dashboard/Queues.html" class="submenu-link">Queues</a></li>
-                </ul>
+                  <li><a href="../Receptionist-Dashboard/SearchP.html" class="submenu-link">Patient Records</a></li>
+                  <li><a href="../Receptionist-Dashboard/Appointments.html" class="submenu-link">Appointments</a></li>
+                  <li><a href="../Receptionist-Dashboard/Queues.html" class="submenu-link">Queues</a></li>
                 </ul>
               </li>
 
@@ -81,9 +86,11 @@
                   <i class="fa-solid fa-chevron-down nav-arrow"></i>
                 </button>
                 <ul class="submenu" id="cashier-submenu">
-                  <li><a href="../Cashier's Dashboard/cashier.html" class="submenu-link">Patient Invoice</a></li>
+                  <li><a href="Admin-Invite.html" class="submenu-link">Add Cashier</a></li>
+                  <li><a href="#" class="submenu-link">Cashier List</a></li>
+                  <li><a href="../Cashiers-Dashboard/cashier.html" class="submenu-link">Patient Invoice</a></li>
                   <li><a href="#" class="submenu-link">Review Charges</a></li>
-                  <li><a href="../Cashier's Dashboard/invoice-record.html" class="submenu-link">Record Payment</a></li>
+                  <li><a href="../Cashiers-Dashboard/invoice-record.html" class="submenu-link">Record Payment</a></li>
                   <li><a href="#" class="submenu-link">Receipts</a></li>
                 </ul>
               </li>
@@ -97,6 +104,13 @@
                 <ul class="submenu" id="billings-submenu">
                   <li><a href="" class="submenu-link">Billing Reports</a></li>
                 </ul>
+              </li>
+
+              <li class="nav-item">
+                <a href="Admin-Invite.html" class="nav-link">
+                  <i class="fa-solid fa-user-plus nav-icon"></i>
+                  <span>Invite Staff</span>
+                </a>
               </li>
 
               <li class="nav-item">
@@ -125,9 +139,15 @@
               <a href=""><i class="fa-solid fa-bars"></i></a>
               <h1>Dashboard</h1>
             </div>
-            <div class="notification">
-              <i class="fa-regular fa-bell"></i>
-              <span class="bell-icon">3</span>
+            <div class="top-actions-right">
+              <a href="Admin-Invite.html" class="invite-staff-btn topbar-invite-btn">
+                <i class="fa-solid fa-user-plus"></i>
+                Invite Staff
+              </a>
+              <div class="notification">
+                <i class="fa-regular fa-bell"></i>
+                <span class="bell-icon">3</span>
+              </div>
             </div>
           </div>
 
@@ -176,11 +196,19 @@
             <p>Here's What's happening in the Hospital Today.</p>
           </div>
 
-          <div class="date-widget">
-            <i class="fa-regular fa-calendar-days"></i>
-            <span id="currentDate"></span>
+          <div class="page-title-actions">
+            <a href="Admin-Invite.html" class="invite-staff-btn">
+              <i class="fa-solid fa-user-plus"></i>
+              Invite Staff
+            </a>
 
-            <i class="fa-solid fa-chevron-down"></i>
+            <div class="date-widget">
+              <i class="fa-regular fa-calendar-days"></i>
+
+              <span id="currentDate"></span>
+
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
           </div>
         </section>
 
@@ -819,7 +847,10 @@
               </svg>
             </div>
             <span>
-              <a href="Admin-Invite.html">Register New User</a>
+              <a href="Admin-Invite.html" class="invite-card-link">
+                Invite Staff
+                <small>Register New User</small>
+              </a>
             </span>
           </div>
         </section>

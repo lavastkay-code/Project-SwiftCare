@@ -413,6 +413,64 @@
         margin-top: 9px;
       }
 
+      .page-title-actions {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .top-actions-right {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .invite-staff-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        height: 44px;
+        padding: 0 18px;
+        border-radius: 12px;
+        background: #2563eb;
+        color: #fff !important;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 700;
+        white-space: nowrap;
+        box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+        transition: background 0.2s, transform 0.2s;
+      }
+
+      .invite-staff-btn:hover {
+        background: #1d4ed8;
+        transform: translateY(-1px);
+      }
+
+      .topbar-invite-btn {
+        height: 40px;
+        padding: 0 14px;
+        font-size: 13px;
+      }
+
+      .invite-card-link {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        text-decoration: none;
+        color: black;
+        font-weight: 700;
+        font-size: x-large;
+      }
+
+      .invite-card-link small {
+        font-size: 13px;
+        font-weight: 500;
+        color: #6e7177;
+      }
+
       .date-widget {
         display: flex;
         align-items: center;
