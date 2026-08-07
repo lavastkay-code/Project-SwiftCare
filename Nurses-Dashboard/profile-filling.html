@@ -11,6 +11,8 @@
   />
 
   <link rel="stylesheet" href="profile-filling.css" />
+  <script src="../shared/config.js"></script>
+  <script src="../shared/api.js"></script>
 </head>
 <body>
 
@@ -174,20 +176,15 @@
                 <img src="" alt="img"/>
 
                 <div class="patient-info">
-                  <h2>Adeoye Oyewale</h2>
+                  <h2 id="patientName">Patient</h2>
 
                   <div class="patient-meta">
-                    <span id="patientId">SWC-00012345</span>
-                    <span>Male - 34yrs</span>
+                    <span id="patientId">&mdash;</span>
                   </div>
-                  <span class="status-badge">Check-in/Triage</span>
+                  <span class="status-badge">Checked-In</span>
                 </div>
 
               </div>
-
-              <button class="triage-btn" id="startTriageBtn" type="button">
-                Start Triage
-              </button>
 
             </div>
 
@@ -391,10 +388,8 @@
         <img src="images/patient-avatar.jpg" alt="Patient" />
 
         <div class="popup-patient-info">
-          <h3>Adeoye Oyewale</h3>
-          <p>SWC-00012345</p>
-          <p>Male - 34yrs</p>
-          <p>General Medicine</p>
+          <h3 id="popupPatientName">Patient</h3>
+          <p id="popupPatientId">&mdash;</p>
           <p>Vitals recorded successfully</p>
         </div>
 

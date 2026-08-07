@@ -1,4 +1,7 @@
+let activeVisit = null;
+
 document.addEventListener('DOMContentLoaded', () => {
+  activeVisit = loadActiveVisit();
   initializeSidebar();
   initializeHamburger();
   initializeDates();
@@ -6,10 +9,32 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeTabs();
   initializeCharacterCounter();
   initializeVitalsForm();
-  initializeStartTriageButton();
   initializePopup();
   initializeKeyboardShortcuts();
 });
+
+
+function loadActiveVisit() {
+  const raw = sessionStorage.getItem('swiftcareActiveVisit');
+  const visit = raw ? JSON.parse(raw) : null;
+
+  if (!visit || !visit.queueId || !visit.patientId) {
+    alert('No active patient selected. Please start triage from the queue.');
+    window.location.href = 'nurseTriage.html';
+    return null;
+  }
+
+  const nameEl = document.getElementById('patientName');
+  const idEl = document.getElementById('patientId');
+  const popupNameEl = document.getElementById('popupPatientName');
+  const popupIdEl = document.getElementById('popupPatientId');
+  if (nameEl) nameEl.textContent = visit.patientName || visit.patientId;
+  if (idEl) idEl.textContent = visit.patientId;
+  if (popupNameEl) popupNameEl.textContent = visit.patientName || visit.patientId;
+  if (popupIdEl) popupIdEl.textContent = visit.patientId;
+
+  return visit;
+}
 
 
 function initializeSidebar() {
@@ -144,30 +169,6 @@ function initializeCharacterCounter() {
 }
 
 
-/* UPDATED FUNCTION: Redirects to target page on click */
-function initializeStartTriageButton() {
-  const triageBtn = document.getElementById('startTriageBtn');
-  const statusBadge = document.getElementById('queueStatusBadge');
-
-  if (!triageBtn) return;
-
-  triageBtn.addEventListener('click', () => {
-    triageBtn.disabled = true;
-    triageBtn.textContent = 'Starting Triage...';
-
-    if (statusBadge) {
-      statusBadge.textContent = 'Triage In Progress';
-    }
-
-    showToast('Redirecting to triage workspace...', 'info');
-
-    setTimeout(() => {
-      window.location.href = 'profile-popup.html';
-    }, 500);
-  });
-}
-
-
 function initializeVitalsForm() {
   const form = document.getElementById('recordVitalsForm');
   const clearBtn = document.getElementById('clearFormBtn');
@@ -189,14 +190,15 @@ function initializeVitalsForm() {
   });
 
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
+
+    if (!activeVisit) return;
 
     const bp = document.getElementById('bpInput').value.trim();
     const temp = document.getElementById('tempInput').value.trim();
     const weight = document.getElementById('weightInput').value.trim();
     const pulse = document.getElementById('pulseInput').value.trim();
-    const notes = document.getElementById('notesInput').value.trim();
 
     let isValid = true;
 
@@ -227,40 +229,48 @@ function initializeVitalsForm() {
       return;
     }
 
+    const [bpSystolic, bpDiastolic] = bp.split('/').map((n) => parseInt(n, 10));
+
     const saveBtn = document.getElementById('saveVitalsBtn');
 
     saveBtn.disabled = true;
     saveBtn.textContent = 'Saving...';
 
-    setTimeout(() => {
-      const vitalsData = {
-        bp,
-        temp,
-        weight,
-        pulse: pulse || 'Not recorded',
-        notes,
-        timestamp: new Date().toISOString()
-      };
+    try {
+      await swiftcareApiRequest('/vitals', {
+        method: 'POST',
+        body: {
+          queueEntryId: activeVisit.queueId,
+          patientId: activeVisit.patientId,
+          bpSystolic,
+          bpDiastolic,
+          temperature: parseFloat(temp),
+          weight: parseFloat(weight),
+        },
+      });
 
-      localStorage.setItem('latestVitals', JSON.stringify(vitalsData));
-
-      saveBtn.disabled = false;
-      saveBtn.textContent = 'Save Vitals';
+      // Nurse's two queue transitions per the rulebook: Checked-In -> Triage Ready -> Awaiting Doctor
+      await swiftcareApiRequest(`/queue/${activeVisit.queueId}/status`, {
+        method: 'POST',
+        body: { status: 'Triage Ready' },
+      });
+      await swiftcareApiRequest(`/queue/${activeVisit.queueId}/status`, {
+        method: 'POST',
+        body: { status: 'Awaiting Doctor', note: 'Vitals recorded, ready for doctor' },
+      });
 
       const overlay = document.getElementById('successOverlay');
-
       overlay?.classList.remove('hidden');
-
       document.body.style.overflow = 'hidden';
 
-      showToast('Vitals recorded successfully!', 'success');
-
-      // Redirect after 2 seconds
-      setTimeout(() => {
-        window.location.href = 'profile-popup.html';
-      }, 2000);
-
-    }, 1000);
+      showToast('Vitals recorded and patient sent to doctor.', 'success');
+    } catch (err) {
+      console.error('Failed to record vitals:', err);
+      showToast(err.message || 'Failed to record vitals.', 'error');
+    } finally {
+      saveBtn.disabled = false;
+      saveBtn.textContent = 'Save Vitals';
+    }
   });
 }
 
@@ -325,16 +335,8 @@ function initializePopup() {
   if (!overlay) return;
 
   const closePopup = () => {
-    overlay.classList.add('hidden');
-    document.body.style.overflow = '';
-
-    const statusBadge = document.getElementById('queueStatusBadge');
-
-    if (statusBadge) {
-      statusBadge.textContent = 'Vitals Recorded';
-    }
-
-    showToast('Patient returned to queue successfully.', 'success');
+    sessionStorage.removeItem('swiftcareActiveVisit');
+    window.location.href = 'nurseTriage.html';
   };
 
   continueBtn?.addEventListener('click', closePopup);
