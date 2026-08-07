@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "swiftcare-frontend",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["http-server", "-p", "5500", "-a", "127.0.0.1", "-c-1"],
+      "port": 5500,
+      "url": "http://127.0.0.1:5500"
+    }
+  ]
+}

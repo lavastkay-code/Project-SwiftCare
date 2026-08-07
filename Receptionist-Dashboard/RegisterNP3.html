@@ -333,7 +333,7 @@
       const successContinueBtn = document.getElementById('successContinueBtn');
 
       async function registerPatient(confirmNewPatient) {
-        return swiftcareApiRequest('/patients', {
+        const result = await swiftcareApiRequest('/patients', {
           method: 'POST',
           body: {
             firstName: draft.firstName,
@@ -344,6 +344,8 @@
             ...(confirmNewPatient ? { confirmNewPatient: true } : {}),
           },
         });
+        // Live API nests the record under `patient` (contract's flat example is stale).
+        return result.patient || result;
       }
 
       savePatientProfileBtn.addEventListener('click', async () => {
